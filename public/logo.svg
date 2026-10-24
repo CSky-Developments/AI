@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="500" height="500" viewBox="0 0 500 500">
+  <desc>Created with SVGMaker Editor 3.5.0</desc>
+  <g data-editor-group="true" transform="matrix(1 0 0 1 250.5 250)">
+    <g style="">
+      <g transform="matrix(1 0 0 1 -63.11698 0.05)">
+        <path transform="translate(-163.19329, -249.17437)" style="stroke: #1e40af; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: #1e40af" stroke-linecap="round" d="M 174.02726 138.77437 L 104.59329 359.57437 L 152.43066 359.49103 L 221.79329 138.87437 Z"/>
+      </g>
+      <g transform="matrix(1 0 0 1 -4.49011 -0.34167)">
+        <path transform="translate(-252.73016, -249.89235)" style="stroke: #3b82f6; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: #3b82f6" stroke-linecap="round" d="M 204.73726 139.78402 L 253.0033 139.78402 L 300.72307 360.00068 L 252.82307 360.00068 Z"/>
+      </g>
+      <g transform="matrix(1 0 0 1.28689 97.71698 32.94971)">
+        <path transform="translate(-364, -300)" style="stroke: #60a5fa; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: #60a5fa" stroke-linecap="round" d="M 340 360 L 388 360 L 388 240 L 340 240 Z"/>
+      </g>
+      <g transform="matrix(1 0 0 0.4902 97.71698 -85.55038)">
+        <path transform="translate(-364, -190)" style="stroke: #93c5fd; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: #93c5fd" stroke-linecap="round" d="M 340 140 L 388 140 L 388 240 L 340 240 Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

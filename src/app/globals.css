@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-pale: #F8FAFE;
+  --color-navy: #0F1B2D;
+  --color-slate: #5A6B7F;
+  --color-fog: #8A95A5;
+  --color-sky: #3b82f6;
+  --color-sky-hover: #1e40af;
+  --color-sky-light: #dbeafe;
+  --color-primary: #3b82f6;
+  --color-primary-dark: #1e40af;
+  --color-primary-light: #dbeafe;
+  --color-primary-pale: #eff6ff;
+  --color-mist: #E8EDF2;
+  --font-heading: var(--font-poppins);
+  --font-body: var(--font-dm-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F8FAFE;
+  color: #0F1B2D;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* Hero animations */
+@keyframes drift-slow {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(30px) translateY(-15px); }
+}
+
+@keyframes drift-medium {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-25px) translateY(10px); }
+}
+
+@keyframes drift-fast {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(20px) translateY(-8px); }
+}
+
+/* Logo Floating & Part Animations */
+@keyframes float-main {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0.8deg);
+  }
+}
+
+@keyframes bar-1 {
+  0%, 100% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 10px rgba(30, 64, 175, 0.4));
+  }
+  50% {
+    transform: translateY(-8px);
+    filter: drop-shadow(0 0 20px rgba(30, 64, 175, 0.8));
+  }
+}
+
+@keyframes bar-2 {
+  0%, 100% {
+    transform: translateY(0px);
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.4));
+  }
+  50% {
+    transform: translateY(6px);
+    filter: drop-shadow(0 0 22px rgba(59, 130, 246, 0.8));
+  }
+}
+
+@keyframes bar-3 {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+    filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.4));
+  }
+  50% {
+    transform: translateY(-6px) scaleY(1.04);
+    filter: drop-shadow(0 0 20px rgba(96, 165, 250, 0.75));
+  }
+}
+
+@keyframes bar-4 {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+    filter: drop-shadow(0 0 8px rgba(147, 197, 253, 0.4));
+  }
+  50% {
+    transform: translateY(-10px) scaleY(1.06);
+    filter: drop-shadow(0 0 18px rgba(147, 197, 253, 0.8));
+  }
+}
+
+@keyframes aura-pulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+/* Fluted Glass & Ribbed Bar Animations */
+@keyframes glass-wave-drift {
+  0% {
+    transform: scale(1.05) translate(0%, 0%) rotate(0deg);
+  }
+  33% {
+    transform: scale(1.09) translate(-2%, -1.5%) rotate(0.6deg);
+  }
+  66% {
+    transform: scale(1.07) translate(1.8%, 1%) rotate(-0.5deg);
+  }
+  100% {
+    transform: scale(1.08) translate(-1%, 2%) rotate(0.4deg);
+  }
+}
+
+@keyframes glass-wave-counter {
+  0% {
+    transform: scale(1.1) translate(0%, 0%) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.06) translate(2.5%, -2%) rotate(-0.8deg);
+  }
+  100% {
+    transform: scale(1.11) translate(-2%, 1.5%) rotate(0.7deg);
+  }
+}
+
+@keyframes ribbed-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes orb-float-left {
+  0% {
+    transform: translate(0, 0) scale(0.95);
+  }
+  50% {
+    transform: translate(60px, 40px) scale(1.12);
+  }
+  100% {
+    transform: translate(-30px, 70px) scale(1);
+  }
+}
+
+@keyframes orb-float-right {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-70px, -50px) scale(1.15);
+  }
+  100% {
+    transform: translate(40px, -30px) scale(0.92);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F8FAFE;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E8EDF2;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8A95A5;
+}
