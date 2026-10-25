@@ -76,7 +76,7 @@ for await (const chunk of stream) {
           {/* Left Column: Interactive IDE Showcase Card (Matches Reference Screenshot 2026-10-25 111339.png) */}
           <div className="lg:col-span-6">
             <FadeIn>
-              <div className="bg-white rounded-[32px] p-6 sm:p-8 border border-[#E8EDF2] shadow-sm hover:shadow-lg transition-all">
+              <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-6 sm:p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                 <h2 className="font-heading font-bold text-3xl sm:text-4xl text-[#0F1B2D] tracking-tight leading-tight">
                   Add <span className="text-[#2563eb]">Sovereign AI</span> to your stack in minutes
                 </h2>
@@ -132,7 +132,7 @@ for await (const chunk of stream) {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {/* Feature 1 */}
               <FadeIn delay={80}>
-                <div className="bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-2xs hover:shadow-md transition-all relative overflow-hidden group">
+                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden group">
                   <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#DDD6FE]/60 via-[#EDE9FE]/30 to-transparent rounded-bl-full pointer-events-none transition-transform group-hover:scale-110" />
                   <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-4">
                     <DrishtiSymbol size={22} color="#4F46E5" />
@@ -148,7 +148,7 @@ for await (const chunk of stream) {
 
               {/* Feature 2 */}
               <FadeIn delay={140}>
-                <div className="bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-2xs hover:shadow-md transition-all relative overflow-hidden group">
+                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden group">
                   <div className="w-10 h-10 rounded-xl bg-[#FFF7ED] flex items-center justify-center mb-4">
                     <AkashSymbol size={22} color="#EA580C" />
                   </div>
@@ -163,7 +163,7 @@ for await (const chunk of stream) {
 
               {/* Feature 3 */}
               <FadeIn delay={200}>
-                <div className="bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-2xs hover:shadow-md transition-all relative overflow-hidden group">
+                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden group">
                   <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] flex items-center justify-center mb-4">
                     <AgniSymbol size={22} color="#059669" />
                   </div>
@@ -178,7 +178,7 @@ for await (const chunk of stream) {
 
               {/* Feature 4 */}
               <FadeIn delay={260}>
-                <div className="bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-2xs hover:shadow-md transition-all relative overflow-hidden group">
+                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden group">
                   <div className="w-10 h-10 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center mb-4">
                     <PrithviSymbol size={22} color="#2563eb" />
                   </div>
@@ -195,21 +195,21 @@ for await (const chunk of stream) {
             {/* Bottom 3 Mini SDK Integration Pills (Matches Reference Screenshot 2026-10-25 111339.png) */}
             <FadeIn delay={320}>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-white rounded-2xl p-4 border border-[#E8EDF2] text-left">
+                <div className="card-premium bg-white rounded-2xl p-4 border border-[#E8EDF2] text-left hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                   <div className="font-heading font-bold text-sm text-[#0F1B2D]">REST API</div>
                   <p className="font-body text-xs text-[#64748B] mt-1 leading-snug">
                     Clean, well-documented OpenAPI 3.1 endpoints
                   </p>
                 </div>
 
-                <div className="bg-white rounded-2xl p-4 border border-[#E8EDF2] text-left">
+                <div className="card-premium bg-white rounded-2xl p-4 border border-[#E8EDF2] text-left hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                   <div className="font-heading font-bold text-sm text-[#0F1B2D]">Python SDK</div>
                   <p className="font-body text-xs text-[#64748B] mt-1 leading-snug">
                     One line to install <code className="font-mono text-[#2563eb]">pip install csky</code>
                   </p>
                 </div>
 
-                <div className="bg-white rounded-2xl p-4 border border-[#E8EDF2] text-left">
+                <div className="card-premium bg-white rounded-2xl p-4 border border-[#E8EDF2] text-left hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
                   <div className="font-heading font-bold text-sm text-[#0F1B2D]">Playground</div>
                   <p className="font-body text-xs text-[#64748B] mt-1 leading-snug">
                     Test weights in browser, zero local setup

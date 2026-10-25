@@ -36,7 +36,7 @@ export function BentoFeatures() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-10">
           {/* Left: Chat Card */}
           <FadeIn delay={0}>
-            <div className="bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-between relative overflow-hidden group">
+            <div className="card-premium bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-[#FED7AA]/40 to-transparent rounded-bl-full pointer-events-none" />
 
               <div>
@@ -66,7 +66,7 @@ export function BentoFeatures() {
 
           {/* Right: Work Card */}
           <FadeIn delay={100}>
-            <div className="bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-all h-full flex flex-col justify-between relative overflow-hidden group">
+            <div className="card-premium bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#BBF7D0]/40 to-transparent rounded-bl-full pointer-events-none" />
 
               <div>
@@ -111,7 +111,7 @@ export function BentoFeatures() {
         {/* 2. Wide Card: Turn Team Member Process Into Shared Agent + Constellation of Floating Traditional Motifs
             (Matches Reference Screenshot 2026-10-25 111608.png) */}
         <FadeIn delay={200}>
-          <div className="bg-white rounded-[36px] p-8 md:p-14 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-300 relative overflow-hidden mb-12">
+          <div className="card-premium bg-white rounded-[36px] p-8 md:p-14 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden mb-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Heading & Description */}
               <div className="lg:col-span-7 flex flex-col justify-between">
@@ -188,7 +188,7 @@ export function BentoFeatures() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
             {/* Bento Card 1: Connectors with Scalloped Hill */}
             <FadeIn delay={100}>
-              <div className="bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-all h-[360px] flex flex-col justify-between relative overflow-hidden group">
+              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
                 <div>
                   <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">Connectors</h4>
                   <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
@@ -214,7 +214,7 @@ export function BentoFeatures() {
 
             {/* Bento Card 2: Skills with Scalloped Peach Hill */}
             <FadeIn delay={200}>
-              <div className="bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-all h-[360px] flex flex-col justify-between relative overflow-hidden group">
+              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
                 <div>
                   <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">Skills</h4>
                   <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
@@ -238,7 +238,7 @@ export function BentoFeatures() {
 
             {/* Bento Card 3: Sub-Agents with Scalloped Lavender Hill */}
             <FadeIn delay={300}>
-              <div className="bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-all h-[360px] flex flex-col justify-between relative overflow-hidden group">
+              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
                 <div>
                   <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">Sub-agents</h4>
                   <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">

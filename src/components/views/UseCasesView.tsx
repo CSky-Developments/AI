@@ -107,8 +107,10 @@ export function UseCasesView({ onNavigate }: UseCasesViewProps) {
         <div className="space-y-12">
           {cases.map((c, idx) => (
             <FadeIn key={c.id} delay={idx * 100}>
-              <div className="bg-white rounded-3xl p-8 md:p-12 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="card-premium group relative overflow-hidden bg-white rounded-3xl p-8 md:p-12 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="px-3.5 py-1 rounded-full bg-[#EEF2FF] text-[#4f46e5] text-xs font-heading font-semibold">
                       {c.badge}
@@ -167,7 +169,8 @@ export function UseCasesView({ onNavigate }: UseCasesViewProps) {
                   </div>
                 </div>
               </div>
-            </FadeIn>
+            </div>
+          </FadeIn>
           ))}
         </div>
       </section>

@@ -109,7 +109,11 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {product.metrics.map((m, idx) => (
               <FadeIn key={m.label} delay={idx * 80}>
-                <div className="card-premium p-6 sm:p-7 rounded-3xl bg-white border border-[#E8EDF2] text-center shadow-sm hover:shadow-lg transition-all">
+                <div className="card-premium group relative overflow-hidden p-6 sm:p-7 rounded-3xl bg-white border border-[#E8EDF2] text-center shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                  <div
+                    className="absolute -top-10 -right-10 w-24 h-24 rounded-full blur-xl pointer-events-none opacity-20 group-hover:opacity-60 transition-opacity duration-500"
+                    style={{ background: product.colorScheme.primary }}
+                  />
                   <div
                     className="font-heading font-bold text-3xl md:text-4xl tracking-tight"
                     style={{ color: product.colorScheme.primary }}
@@ -146,7 +150,11 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {product.highlights.map((h, idx) => (
               <FadeIn key={h.title} delay={idx * 120}>
-                <div className="card-premium h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all">
+                <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                  <div
+                    className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl pointer-events-none opacity-20 group-hover:opacity-50 transition-opacity duration-500"
+                    style={{ background: product.colorScheme.primary }}
+                  />
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center font-heading font-bold text-sm mb-6"
                     style={{
@@ -223,7 +231,7 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className="text-left p-8 rounded-3xl bg-white border border-[#E8EDF2] hover:border-[#3b82f6]/40 hover:shadow-lg transition-all duration-300 group cursor-pointer relative overflow-hidden"
+                  className="text-left p-8 rounded-3xl bg-white border border-[#E8EDF2] hover:border-[#3b82f6]/40 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group cursor-pointer relative overflow-hidden"
                 >
                   <div className="flex items-start sm:items-center gap-4">
                     <div className="w-14 h-14 rounded-2xl bg-[#F8FAFE] border border-[#E8EDF2] flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">

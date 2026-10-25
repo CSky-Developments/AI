@@ -122,8 +122,9 @@ export function PricingView({ onNavigate }: PricingViewProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {/* Tier 1: Open Weights Self-Hosted */}
           <FadeIn delay={50}>
-            <div className="h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-              <div>
+            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-emerald-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              <div className="relative z-10">
                 <div className="inline-block px-3 py-1 rounded-full bg-[#F1F5F9] text-[#475569] text-xs font-heading font-semibold mb-4">
                   Self-Hosted Sovereign
                 </div>
@@ -180,12 +181,13 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
           {/* Tier 2: Managed Serverless Endpoints (Highlighted) */}
           <FadeIn delay={120}>
-            <div className="h-full bg-white rounded-3xl p-8 border-2 border-[#0284c7] shadow-md hover:shadow-lg transition-all flex flex-col justify-between relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0284c7] text-white text-[10px] font-heading font-semibold uppercase tracking-wider px-3 py-0.5 rounded-full">
+            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border-2 border-[#0284c7] shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+              <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-sky-500/15 blur-xl pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity duration-500" />
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0284c7] text-white text-[10px] font-heading font-semibold uppercase tracking-wider px-3.5 py-0.5 rounded-full shadow-xs z-20">
                 Most Popular
               </div>
 
-              <div>
+              <div className="relative z-10">
                 <div className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0284c7] text-xs font-heading font-semibold mb-4">
                   Pay-As-You-Go API
                 </div>
@@ -242,8 +244,9 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
           {/* Tier 3: Dedicated Sovereign GPU Cluster */}
           <FadeIn delay={180}>
-            <div className="h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
-              <div>
+            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-indigo-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              <div className="relative z-10">
                 <div className="inline-block px-3 py-1 rounded-full bg-[#EEF2FF] text-[#4F46E5] text-xs font-heading font-semibold mb-4">
                   Enterprise Sovereign
                 </div>

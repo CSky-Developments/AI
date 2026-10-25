@@ -28,7 +28,7 @@ export function OverviewView({ onNavigate }: OverviewViewProps) {
       <StickyStackingCards onNavigate={onNavigate} />
 
       {/* 5. Sticky Side-Nav & Scrolling Showcase (Inspired by Reference "Section scrolling animation...") */}
-      <StickyScrollShowcase />
+      <StickyScrollShowcase onNavigate={onNavigate} />
 
       {/* 6. Asymmetric Bento Grid & Constellations (Inspired by Reference Cards Screenshots 111558, 111608, 111614) */}
       <BentoFeatures />
