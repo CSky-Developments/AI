@@ -15,73 +15,6 @@ interface ProductViewProps {
   onNavigate: (tab: string) => void;
 }
 
-function getMetricMeta(label: string) {
-  const lower = label.toLowerCase();
-  if (lower.includes("sanskrit") || lower.includes("meaning")) {
-    return {
-      tag: "Heritage Roots",
-      subtitle: "Philosophical foundation",
-      badge: "Sanskrit",
-      icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-        </svg>
-      ),
-    };
-  }
-  if (lower.includes("param") || lower.includes("size")) {
-    return {
-      tag: "Model Capacity",
-      subtitle: "Dense attention weights",
-      badge: "FP8 Ready",
-      icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
-          <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
-          <line x1="6" y1="6" x2="6.01" y2="6" />
-          <line x1="6" y1="18" x2="6.01" y2="18" />
-        </svg>
-      ),
-    };
-  }
-  if (lower.includes("context") || lower.includes("window") || lower.includes("token")) {
-    return {
-      tag: "Context Horizon",
-      subtitle: "Needle-in-haystack 100%",
-      badge: "Tokens",
-      icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10" />
-          <polyline points="12 6 12 12 16 14" />
-        </svg>
-      ),
-    };
-  }
-  if (lower.includes("license") || lower.includes("access")) {
-    return {
-      tag: "Sovereign Rights",
-      subtitle: "Permissive commercial use",
-      badge: "Verified",
-      icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          <polyline points="9 12 11 14 15 10" />
-        </svg>
-      ),
-    };
-  }
-  return {
-    tag: label.toUpperCase(),
-    subtitle: "Enterprise runtime spec",
-    badge: "Official",
-    icon: (
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-      </svg>
-    ),
-  };
-}
-
 export function ProductView({ product, onNavigate }: ProductViewProps) {
   const [copied, setCopied] = useState(false);
 
@@ -174,109 +107,30 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
         />
       </section>
 
-      {/* 2. SPECIFICATIONS & METRICS GRID (Located below the fold, only visible on scroll) */}
-      <section className="relative z-10 pt-20 pb-20 bg-[#F8FAFE]">
+      {/* 2. SPECIFICATIONS & METRICS GRID */}
+      <section className="relative z-10 pt-16 pb-20 bg-[#F8FAFE]">
         <div className="max-w-6xl mx-auto px-6">
-          {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <div
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-heading font-semibold mb-3.5 shadow-2xs"
-              style={{
-                backgroundColor: product.colorScheme.light,
-                borderColor: `${product.colorScheme.primary}30`,
-                color: product.colorScheme.primary,
-              }}
-            >
-              <span>✦</span>
-              <span>॥ मानस्तम्भ &middot; विनिर्देश ॥ · Model Specifications</span>
-              <span>✦</span>
-            </div>
-            <h2 className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl text-[#0F1B2D] tracking-tight">
-              Engineered for deterministic scale
-            </h2>
-            <p className="font-body text-xs sm:text-sm text-[#5A6B7F] mt-2.5 max-w-lg mx-auto leading-relaxed">
-              Formal computational guarantees and execution parameters verified for enterprise sovereign clusters.
-            </p>
-          </div>
-
-          {/* 4 Equal-Height Flagship Architectural Metric Bento Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 items-stretch">
-            {product.metrics.map((m, idx) => {
-              const meta = getMetricMeta(m.label);
-              const isLongValue = m.value.length > 12;
-
-              return (
-                <FadeIn key={m.label} delay={idx * 70} className="h-full">
-                  <div className="card-premium group relative overflow-hidden h-full min-h-[220px] p-6 sm:p-7 rounded-[28px] bg-white border border-[#E8EDF2] hover:border-slate-300 flex flex-col justify-between shadow-[0_4px_24px_rgba(15,27,45,0.04)] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
-                    {/* Top Continuous Color Accent Bar */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-1 transition-opacity duration-300 opacity-70 group-hover:opacity-100"
-                      style={{
-                        background: `linear-gradient(90deg, ${product.colorScheme.primary}, ${product.colorScheme.primary}40, transparent)`,
-                      }}
-                    />
-
-                    {/* Top Corner Ambient Glow */}
-                    <div
-                      className="absolute -top-12 -right-12 w-28 h-28 rounded-full blur-2xl pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity duration-500"
-                      style={{ background: product.colorScheme.primary }}
-                    />
-
-                    {/* Card Top Row: Semantic Icon + Micro Category Tag */}
-                    <div className="relative z-10 flex items-center justify-between pb-3.5 border-b border-[#F1F5F9]">
-                      <div
-                        className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-2xs"
-                        style={{
-                          backgroundColor: product.colorScheme.light,
-                          color: product.colorScheme.primary,
-                        }}
-                      >
-                        {meta.icon}
-                      </div>
-                      <span className="font-heading text-[10px] sm:text-[11px] font-semibold text-[#64748B] uppercase tracking-wider">
-                        {meta.tag}
-                      </span>
-                    </div>
-
-                    {/* Card Center: Value with proper responsive font size so words never blow out */}
-                    <div className="relative z-10 my-auto py-3 text-center">
-                      <div
-                        className={`font-heading font-bold tracking-tight text-[#0F1B2D] transition-colors ${
-                          isLongValue
-                            ? "text-xl sm:text-2xl leading-snug"
-                            : "text-2xl sm:text-3xl leading-tight"
-                        }`}
-                        style={{ color: product.colorScheme.primary }}
-                      >
-                        {m.value}
-                      </div>
-                      <div className="font-body text-xs text-[#5A6B7F] font-medium mt-1.5">
-                        {m.label}
-                      </div>
-                    </div>
-
-                    {/* Card Bottom Row: Capability subtitle + verified badge */}
-                    <div className="relative z-10 pt-3 border-t border-[#F1F5F9] flex items-center justify-between text-[11px] font-body text-[#94A3B8]">
-                      <span className="truncate max-w-[130px] sm:max-w-[150px]">{meta.subtitle}</span>
-                      <span
-                        className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-semibold shrink-0 shadow-2xs"
-                        style={{
-                          backgroundColor: product.colorScheme.light,
-                          color: product.colorScheme.primary,
-                        }}
-                      >
-                        {meta.badge}
-                      </span>
-                    </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 items-stretch">
+            {product.metrics.map((m, idx) => (
+              <FadeIn key={m.label} delay={idx * 80} className="h-full">
+                <div className="card-premium h-full min-h-[140px] sm:min-h-[160px] flex flex-col items-center justify-center p-6 sm:p-8 rounded-3xl bg-white border border-[#E8EDF2] text-center shadow-xs hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                  <div
+                    className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight leading-tight"
+                    style={{ color: product.colorScheme.primary }}
+                  >
+                    {m.value}
                   </div>
-                </FadeIn>
-              );
-            })}
+                  <div className="font-body text-xs sm:text-sm text-[#5A6B7F] mt-2 font-medium">
+                    {m.label}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Quickstart Deployment Card (Inspired by Home Page Interactive Code Showcase) */}
+      {/* Quickstart Deployment Card */}
       {product.codeSnippet && (
         <section className="relative z-10 pb-12 bg-[#F8FAFE]">
           <div className="max-w-4xl mx-auto px-6">

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 interface ShowcaseSection {
   id: string;
-  icon: string;
+  icon: React.ReactNode;
   stepNumber: string;
   tabLabel: string;
   title: string;
@@ -20,7 +20,11 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
   const sections: ShowcaseSection[] = [
     {
       id: "card-build-fast",
-      icon: "✦",
+      icon: (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      ),
       stepNumber: "01",
       tabLabel: "Build Fast",
       title: "From bare metal to verified inference in minutes",
@@ -35,7 +39,14 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
     },
     {
       id: "card-workflows",
-      icon: "⚡",
+      icon: (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
+        </svg>
+      ),
       stepNumber: "02",
       tabLabel: "Agent Workflows",
       title: "Build the path every execution should take",
@@ -50,7 +61,13 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
     },
     {
       id: "card-goals",
-      icon: "🎯",
+      icon: (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="6" />
+          <circle cx="12" cy="12" r="2" />
+        </svg>
+      ),
       stepNumber: "03",
       tabLabel: "Formal Goals",
       title: "Define verifiable mathematical targets without guesswork",
@@ -65,7 +82,11 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
     },
     {
       id: "card-natural-flow",
-      icon: "📞",
+      icon: (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+      ),
       stepNumber: "04",
       tabLabel: "Natural Flow",
       title: "Made for real-world interactions across 22 languages",
@@ -80,7 +101,12 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
     },
     {
       id: "card-live-actions",
-      icon: "🔌",
+      icon: (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        </svg>
+      ),
       stepNumber: "05",
       tabLabel: "Live Connectors",
       title: "Connect tools, compilers, and internal microservices",
@@ -95,7 +121,13 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
     },
     {
       id: "card-insights",
-      icon: "📊",
+      icon: (
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <line x1="18" y1="20" x2="18" y2="10" />
+          <line x1="12" y1="20" x2="12" y2="4" />
+          <line x1="6" y1="20" x2="6" y2="14" />
+        </svg>
+      ),
       stepNumber: "06",
       tabLabel: "Call Insights",
       title: "Inspect every token rationale with zero telemetry leaks",
@@ -271,7 +303,7 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
                         <div className="text-emerald-400">$ csky init --cluster sovereign-blr-01</div>
                         <div className="text-[#94A3B8]">✓ Detected 8x NVIDIA H100 SXM5 80GB</div>
                         <div className="text-[#94A3B8]">✓ Allocated FP8 Tensor Cache (Zero Telemetry Mode)</div>
-                        <div className="text-white">🚀 Cluster live: 14.8M tok/sec ready at http://localhost:8000</div>
+                        <div className="text-white">● Cluster live: 14.8M tok/sec ready at http://localhost:8000</div>
                       </div>
                     )}
 

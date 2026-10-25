@@ -219,7 +219,7 @@ export function ResearchView({ onNavigate }: ResearchViewProps) {
                     onClick={() => handleCopyBibtex(featuredPaper.id, featuredPaper.bibtex)}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F8FAFC] border border-[#E2E8F0] hover:bg-[#F1F5F9] text-xs font-body font-medium text-[#0F1B2D] transition-colors cursor-pointer shadow-2xs"
                   >
-                    {copiedBibtex === featuredPaper.id ? "✓ BibTeX Copied" : "📋 Copy BibTeX Citation"}
+                    {copiedBibtex === featuredPaper.id ? "✓ BibTeX Copied" : "Copy BibTeX Citation"}
                   </button>
 
                   <button
@@ -294,7 +294,7 @@ export function ResearchView({ onNavigate }: ResearchViewProps) {
                     onClick={() => handleCopyBibtex(paper.id, paper.bibtex)}
                     className="text-xs font-body font-medium text-[#475569] hover:text-[#0F1B2D] cursor-pointer"
                   >
-                    {copiedBibtex === paper.id ? "✓ BibTeX Copied" : "📋 BibTeX"}
+                    {copiedBibtex === paper.id ? "✓ BibTeX Copied" : "BibTeX"}
                   </button>
 
                   <button

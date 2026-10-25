@@ -225,11 +225,16 @@ export function BentoFeatures() {
                 {/* Scalloped Peach Hill with Skill Pills */}
                 <div className="relative h-32 rounded-2xl bg-gradient-to-t from-orange-100/70 via-orange-50/40 to-transparent flex flex-col items-center justify-end p-3 gap-2 overflow-hidden">
                   <div className="px-4 py-1.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs font-body text-xs font-semibold text-[#0F1B2D] flex items-center gap-2">
-                    <span>📄</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-600">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                      <polyline points="14 2 14 8 20 8" />
+                    </svg>
                     <span>formal-theorem-verifier</span>
                   </div>
                   <div className="px-4 py-1.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs font-body text-xs font-semibold text-[#0F1B2D] flex items-center gap-2">
-                    <span>⚡</span>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-600">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                    </svg>
                     <span>byzantine-consensus-auditor</span>
                   </div>
                 </div>
