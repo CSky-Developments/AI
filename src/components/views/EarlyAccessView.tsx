@@ -143,8 +143,15 @@ export function EarlyAccessView() {
                   <label className="block font-body text-sm font-medium text-[#0F1B2D] mb-3">
                     What are you looking to use or test?
                   </label>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    {["Akash (405B)", "Drishti (70B)", "Vayu (8B)"].map((opt) => {
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {[
+                      "Akash (405B)",
+                      "Agni (120B)",
+                      "Drishti (70B)",
+                      "Prithvi (32B)",
+                      "Soma (14B)",
+                      "Vayu (8B)",
+                    ].map((opt) => {
                       const selected = formData.interests.includes(opt);
                       return (
                         <button

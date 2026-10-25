@@ -191,3 +191,90 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #8A95A5;
 }
+
+/* =========================================================================
+   PHYSICS-BASED MOTION CURVES & ULTRA-PREMIUM CARD GLASSMORPHISM
+   ========================================================================= */
+
+:root {
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.25, 0.64, 1);
+  --ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* Premium Card Elevation with Specular Top Highlight */
+.card-premium {
+  background: #FFFFFF;
+  border: 1px solid #E8EDF2;
+  box-shadow: 
+    0 1px 3px rgba(15, 27, 45, 0.02),
+    0 4px 16px rgba(15, 27, 45, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.35s var(--ease-expo), box-shadow 0.35s var(--ease-expo), border-color 0.35s var(--ease-expo);
+  will-change: transform, box-shadow;
+}
+
+.card-premium:hover {
+  transform: translateY(-3px);
+  border-color: #DDE3EA;
+  box-shadow: 
+    0 4px 12px rgba(15, 27, 45, 0.04),
+    0 16px 36px rgba(15, 27, 45, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Frosted Glass Translucent Card */
+.card-glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(232, 237, 242, 0.8);
+  box-shadow: 
+    0 4px 20px rgba(15, 27, 45, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transition: transform 0.35s var(--ease-expo), box-shadow 0.35s var(--ease-expo), border-color 0.35s var(--ease-expo);
+  will-change: transform, box-shadow;
+}
+
+.card-glass:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(203, 213, 225, 0.9);
+  box-shadow: 
+    0 12px 32px rgba(15, 27, 45, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Interactive Pill Button Motion */
+.btn-interactive {
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease-expo), background-color 0.25s ease;
+  will-change: transform;
+}
+
+.btn-interactive:hover {
+  transform: translateY(-1.5px) scale(1.015);
+}
+
+.btn-interactive:active {
+  transform: translateY(0.5px) scale(0.985);
+}
+
+/* Shimmering Radar Pulse for Live System Indicators */
+@keyframes live-radar {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.pulse-radar-emerald {
+  animation: live-radar 2.4s infinite var(--ease-soft);
+}

@@ -160,7 +160,7 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
         <div className="mt-16 space-y-8">
           {models.map((model, idx) => (
             <FadeIn key={model.id} delay={idx * 100}>
-              <div className="bg-white rounded-3xl p-8 md:p-10 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-shadow">
+              <div className="card-premium bg-white rounded-3xl p-8 md:p-10 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex items-start sm:items-center gap-4">
                     <div className="w-12 h-12 rounded-2xl bg-[#F8FAFE] border border-[#E8EDF2] flex items-center justify-center shrink-0 shadow-2xs">
@@ -199,14 +199,14 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
                     {onNavigate && (
                       <button
                         onClick={() => onNavigate(`csky-${model.id}`)}
-                        className="bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F1B2D] font-body font-medium text-xs sm:text-sm rounded-full px-5 py-2.5 transition-all cursor-pointer"
+                        className="bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F1B2D] font-heading font-semibold text-xs sm:text-sm rounded-full px-5 py-2.5 transition-all cursor-pointer"
                       >
                         Model specs & deep-dive →
                       </button>
                     )}
                     <button
                       onClick={onGetAccess}
-                      className="bg-[#3b82f6] text-white font-body font-medium text-xs sm:text-sm rounded-full px-5 py-2.5 hover:bg-[#1e40af] transition-all cursor-pointer"
+                      className="bg-[#3b82f6] text-white font-heading font-medium text-xs sm:text-sm rounded-full px-5 py-2.5 hover:bg-[#1e40af] transition-all cursor-pointer shadow-sm hover:shadow"
                     >
                       Get weights
                     </button>
@@ -216,6 +216,20 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
                 <p className="font-body text-[#5A6B7F] text-base mt-6 leading-relaxed max-w-3xl">
                   {model.description}
                 </p>
+
+                {/* Instant Pull Snippet Pill */}
+                <div className="mt-5 flex items-center gap-2 bg-[#F1F5F9] border border-[#E2E8F0] rounded-xl px-3.5 py-2 max-w-xl">
+                  <span className="font-mono text-xs text-[#64748B] select-none">$</span>
+                  <code className="font-mono text-xs text-[#0F1B2D] flex-1 truncate">
+                    {model.hfCommand}
+                  </code>
+                  <button
+                    onClick={() => handleCopy(model.id, model.hfCommand)}
+                    className="font-mono text-[11px] px-2.5 py-1 rounded-md bg-white border border-[#CBD5E1] text-[#334155] hover:text-[#2563eb] transition-all cursor-pointer shrink-0"
+                  >
+                    {copiedId === model.id ? "Copied ✓" : "Copy"}
+                  </button>
+                </div>
 
                 {/* Model Capabilities & Production Ready Badge Bar */}
                 <div className="mt-6 pt-4 flex flex-wrap items-center justify-between gap-4 bg-[#F8FAFE] rounded-2xl p-4 border border-[#E8EDF2]/60">
@@ -259,20 +273,31 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
         {/* Research Publications */}
         <div className="mt-28">
           <FadeIn>
-            <div className="text-center max-w-xl mx-auto mb-14">
-              <span className="font-body text-xs font-semibold uppercase tracking-widest text-[#3b82f6]">
-                Publications
-              </span>
-              <h2 className="font-heading font-bold text-3xl text-[#0F1B2D] mt-2">
-                Recent research
-              </h2>
+            <div className="flex flex-col sm:flex-row items-center justify-between mb-14 gap-4">
+              <div>
+                <span className="font-body text-xs font-semibold uppercase tracking-widest text-[#3b82f6]">
+                  Publications & Preprints
+                </span>
+                <h2 className="font-heading font-bold text-3xl text-[#0F1B2D] mt-2">
+                  Peer-Reviewed Research
+                </h2>
+              </div>
+              {onNavigate && (
+                <button
+                  onClick={() => onNavigate("research")}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#E2E8F0] text-xs font-heading font-semibold text-[#2563eb] hover:bg-[#F8FAFE] transition-all shadow-xs cursor-pointer"
+                >
+                  <span>Browse Full Research Archive (6 Papers)</span>
+                  <span>→</span>
+                </button>
+              )}
             </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {papers.map((paper, idx) => (
               <FadeIn key={paper.title} delay={idx * 120}>
-                <div className="h-full bg-white rounded-2xl p-8 border border-[#E8EDF2] shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+                <div className="card-premium h-full bg-white rounded-2xl p-8 border border-[#E8EDF2] shadow-sm flex flex-col justify-between hover:shadow-lg transition-all">
                   <div>
                     <div className="flex items-center justify-between text-xs font-body text-[#8A95A5]">
                       <span className="font-semibold text-[#3b82f6] uppercase tracking-wider">
@@ -287,18 +312,13 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
                       {paper.abstract}
                     </p>
                   </div>
-                  {/* Divider removed */}
                   <div className="mt-6 pt-2">
-                    <a
-                      href="#cta"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        onGetAccess();
-                      }}
-                      className="font-body text-xs font-medium text-[#3b82f6] hover:text-[#3A7FD1] flex items-center gap-1"
+                    <button
+                      onClick={() => onNavigate ? onNavigate("research") : onGetAccess()}
+                      className="font-heading text-xs font-semibold text-[#3b82f6] hover:text-[#1e40af] flex items-center gap-1 cursor-pointer"
                     >
-                      Read full paper (PDF) →
-                    </a>
+                      Read full paper & BibTeX citation →
+                    </button>
                   </div>
                 </div>
               </FadeIn>

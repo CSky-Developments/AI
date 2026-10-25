@@ -33,6 +33,30 @@ export const LOGO_THEMES: Record<string, LogoColors> = {
     bar3: "#60a5fa",
     bar4: "#93c5fd",
   },
+  pricing: {
+    bar1: "#0369a1",
+    bar2: "#0284c7",
+    bar3: "#38bdf8",
+    bar4: "#bae6fd",
+  },
+  research: {
+    bar1: "#1e40af",
+    bar2: "#3b82f6",
+    bar3: "#60a5fa",
+    bar4: "#bfdbfe",
+  },
+  docs: {
+    bar1: "#0e7490",
+    bar2: "#0891b2",
+    bar3: "#06b6d4",
+    bar4: "#a5f3fc",
+  },
+  "use-cases": {
+    bar1: "#3730a3",
+    bar2: "#4f46e5",
+    bar3: "#818cf8",
+    bar4: "#c7d2fe",
+  },
 
   // Soft Rose-Red for CSky-1 Ultra
   "csky-ultra": {

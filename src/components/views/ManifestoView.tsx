@@ -80,7 +80,7 @@ export function ManifestoView({ onGetAccess }: { onGetAccess: () => void }) {
           <div className="space-y-8">
             {principles.map((principle, index) => (
               <FadeIn key={principle.num} delay={index * 100}>
-                <div className="p-8 rounded-2xl bg-[#F8FAFE] border border-[#E8EDF2] flex flex-col md:flex-row gap-6 items-start">
+                <div className="card-premium p-8 rounded-2xl bg-white border border-[#E8EDF2] flex flex-col md:flex-row gap-6 items-start shadow-xs hover:shadow-md transition-all">
                   <span className="font-heading font-bold text-2xl text-[#3b82f6] shrink-0">
                     {principle.num}
                   </span>

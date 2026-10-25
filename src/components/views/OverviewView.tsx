@@ -17,7 +17,10 @@ export function OverviewView({ onNavigate }: OverviewViewProps) {
       <HowItWorks />
       <Proof />
       <Story onReadManifesto={() => onNavigate("manifesto")} />
-      <CallToAction onGetEarlyAccess={() => onNavigate("access")} />
+      <CallToAction
+        onGetEarlyAccess={() => onNavigate("access")}
+        onNavigate={onNavigate}
+      />
     </>
   );
 }

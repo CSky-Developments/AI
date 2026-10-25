@@ -109,7 +109,7 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {product.metrics.map((m, idx) => (
               <FadeIn key={m.label} delay={idx * 80}>
-                <div className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E8EDF2] text-center shadow-sm hover:shadow-md transition-all duration-300">
+                <div className="card-premium p-6 sm:p-7 rounded-3xl bg-white border border-[#E8EDF2] text-center shadow-sm hover:shadow-lg transition-all">
                   <div
                     className="font-heading font-bold text-3xl md:text-4xl tracking-tight"
                     style={{ color: product.colorScheme.primary }}
@@ -146,7 +146,7 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {product.highlights.map((h, idx) => (
               <FadeIn key={h.title} delay={idx * 120}>
-                <div className="h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-md transition-shadow">
+                <div className="card-premium h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center font-heading font-bold text-sm mb-6"
                     style={{

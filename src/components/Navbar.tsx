@@ -13,6 +13,10 @@ const BUTTON_THEMES: Record<string, { bg: string; hover: string }> = {
   models: { bg: "#2563eb", hover: "#1d4ed8" },
   manifesto: { bg: "#4f46e5", hover: "#4338ca" },
   access: { bg: "#0284c7", hover: "#0369a1" },
+  pricing: { bg: "#0284c7", hover: "#0369a1" },
+  research: { bg: "#2563eb", hover: "#1d4ed8" },
+  docs: { bg: "#0891b2", hover: "#0e7490" },
+  "use-cases": { bg: "#4f46e5", hover: "#4338ca" },
 
   // Akash (Warm Rose Red)
   "csky-ultra": { bg: "#e11d48", hover: "#be123c" },
@@ -175,9 +179,9 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
 
             {/* Direct Links */}
             <button
-              onClick={() => handleTabClick("overview")}
+              onClick={() => handleTabClick("pricing")}
               className={`px-3.5 py-1.5 rounded-full transition-colors cursor-pointer ${
-                activeTab === "overview" && !openDropdown
+                activeTab === "pricing" && !openDropdown
                   ? "text-[#0F1B2D] font-medium"
                   : "hover:bg-[#F8FAFC] text-[#374151]"
               }`}
@@ -541,7 +545,7 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
               </h2>
               <div className="mt-8">
                 <button
-                  onClick={() => handleTabClick("overview")}
+                  onClick={() => handleTabClick("use-cases")}
                   className="font-body text-xs sm:text-sm font-medium text-[#0F1B2D] bg-[#F8FAFC] border border-[#E2E8F0] rounded-full px-5 py-2.5 hover:bg-[#F1F5F9] transition-all cursor-pointer shadow-xs"
                 >
                   See customer stories
@@ -555,7 +559,7 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
               </span>
               <div className="space-y-4">
                 <button
-                  onClick={() => handleTabClick("overview")}
+                  onClick={() => handleTabClick("use-cases")}
                   className="w-full text-left p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
                   <div className="font-body text-sm font-medium text-[#1F2937]">
@@ -566,7 +570,7 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
                   </div>
                 </button>
                 <button
-                  onClick={() => handleTabClick("overview")}
+                  onClick={() => handleTabClick("use-cases")}
                   className="w-full text-left p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
                   <div className="font-body text-sm font-medium text-[#1F2937]">
@@ -577,7 +581,7 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
                   </div>
                 </button>
                 <button
-                  onClick={() => handleTabClick("overview")}
+                  onClick={() => handleTabClick("use-cases")}
                   className="w-full text-left p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
                   <div className="font-body text-sm font-medium text-[#1F2937]">
@@ -630,7 +634,7 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
                   </svg>
                 </button>
                 <button
-                  onClick={() => handleTabClick("models")}
+                  onClick={() => handleTabClick("research")}
                   className="w-full flex items-center justify-between text-left p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
                   <span className="font-body text-sm font-medium text-[#1F2937]">
@@ -638,7 +642,7 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
                   </span>
                 </button>
                 <button
-                  onClick={() => handleTabClick("access")}
+                  onClick={() => handleTabClick("docs")}
                   className="w-full flex items-center justify-between text-left p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
                   <span className="font-body text-sm font-medium text-[#1F2937]">
@@ -670,6 +674,38 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
               }`}
             >
               Products & Models
+            </button>
+            <button
+              onClick={() => handleTabClick("pricing")}
+              className={`block w-full text-left font-body text-base py-2 px-3 rounded-lg ${
+                activeTab === "pricing" ? "bg-[#F1F5F9] font-semibold text-[#0F1B2D]" : "text-[#4B5563]"
+              }`}
+            >
+              Pricing & Compute
+            </button>
+            <button
+              onClick={() => handleTabClick("research")}
+              className={`block w-full text-left font-body text-base py-2 px-3 rounded-lg ${
+                activeTab === "research" ? "bg-[#F1F5F9] font-semibold text-[#0F1B2D]" : "text-[#4B5563]"
+              }`}
+            >
+              Research & Papers
+            </button>
+            <button
+              onClick={() => handleTabClick("docs")}
+              className={`block w-full text-left font-body text-base py-2 px-3 rounded-lg ${
+                activeTab === "docs" ? "bg-[#F1F5F9] font-semibold text-[#0F1B2D]" : "text-[#4B5563]"
+              }`}
+            >
+              Developer Docs
+            </button>
+            <button
+              onClick={() => handleTabClick("use-cases")}
+              className={`block w-full text-left font-body text-base py-2 px-3 rounded-lg ${
+                activeTab === "use-cases" ? "bg-[#F1F5F9] font-semibold text-[#0F1B2D]" : "text-[#4B5563]"
+              }`}
+            >
+              Case Studies
             </button>
             <button
               onClick={() => handleTabClick("manifesto")}

@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import {
   SangamYantraSymbol,
@@ -6,68 +9,142 @@ import {
 } from "@/components/TraditionalSymbols";
 
 export function HowItWorks() {
+  const [activeStep, setActiveStep] = useState(0);
+
   const steps = [
     {
       num: "01",
       sanskrit: "संगम · Connect",
       title: "Connect",
-      description: "Link your existing tools and research pipelines in minutes. No complex setups or endless migrations.",
+      description: "Link your existing tools, data lakes, and developer pipelines in minutes with zero friction.",
       icon: <SangamYantraSymbol size={26} color="#2563eb" />,
+      codeTitle: "Step 1: Single-Line Installation & Client Init",
+      codeSnippet: `# 1. Install CSky high-performance inference runtime
+curl -fsSL https://csky.ai/install.sh | sh
+
+# 2. Or initialize local Python client
+import csky
+client = csky.Client(base_url="http://localhost:8000/v1")
+print("Connected to Sovereign Cluster: 6 Models Ready")`,
     },
     {
       num: "02",
       sanskrit: "अन्वेषण · Explore",
       title: "Explore",
-      description: "Ask questions in plain language. Get concise, grounded reasoning traces instead of endless opaque dashboards.",
-      icon: <DrishtiSymbol size={26} color="#2563eb" />,
+      description: "Ask complex multi-domain questions. Get auditable mathematical proof trees, not opaque guesses.",
+      codeTitle: "Step 2: Stream Verified Multi-Step Proofs",
+      codeSnippet: `# Query Akash 405B with formal theorem checking enabled
+stream = client.reasoning.stream(
+    model="akash-405b",
+    prompt="Audit distributed consensus algorithm for split-brain vulnerabilities",
+    verify_bounds=True
+)
+# Output: [Proof Node 01: Validated] [Proof Node 02: Consensus Bound Verified]`,
     },
     {
       num: "03",
       sanskrit: "क्रिया · Act",
       title: "Act",
-      description: "Share verified findings with your team and move directly from alignment to production execution.",
-      icon: <KriyaChakraSymbol size={26} color="#2563eb" />,
+      description: "Deploy verified models directly to production CI/CD, local edge devices, or air-gapped VPCs.",
+      codeTitle: "Step 3: Instant Production Deployment",
+      codeSnippet: `# Export optimized FP8 tensor kernels for deployment
+csky export --model drishti-70b --format vllm-fp8 --target ./deploy
+
+# Status: Container image ready at csky-drishti:70b-fp8 (Sub-40ms TTFT)
+# Serving endpoint live at: http://0.0.0.0:8000/v1`,
     },
   ];
 
   return (
-    <section id="how-it-works" className="py-24 md:py-32 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="how-it-works" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="text-center max-w-xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F8FAFE] border border-[#E8EDF2] text-xs font-heading font-medium text-[#2563eb] mb-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#F8FAFE] border border-[#E8EDF2] text-xs font-heading font-medium text-[#2563eb] mb-3 shadow-2xs">
             <span>✦</span>
-            <span>॥ संगम &middot; अन्वेषण &middot; क्रिया ॥</span>
+            <span>॥ संगम &middot; अन्वेषण &middot; क्रिया ॥ · Continuous Pipeline</span>
             <span>✦</span>
           </div>
-          <h2 className="font-heading font-semibold text-3xl md:text-4xl text-[#0F1B2D]">
-            Three simple steps
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-[#0F1B2D] tracking-tight">
+            Three simple steps to sovereignty
           </h2>
+          <p className="font-body text-sm sm:text-base text-[#64748B] mt-4 max-w-md mx-auto leading-relaxed">
+            Move seamlessly from raw model checkpoints to verified production inference.
+          </p>
         </div>
 
-        <div className="relative mt-20 max-w-5xl mx-auto">
-          {/* Note: Divider border line removed per user request */}
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 relative z-10">
-            {steps.map((step, index) => (
-              <FadeIn key={step.num} delay={index * 150}>
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-[#E8F0FE] flex items-center justify-center border border-[#E2E8F0] shadow-2xs">
-                    {step.icon}
+        {/* 3 Step Interactive Cards */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+          {steps.map((step, index) => {
+            const isSelected = activeStep === index;
+            return (
+              <FadeIn key={step.num} delay={index * 120}>
+                <div
+                  onClick={() => setActiveStep(index)}
+                  className={`card-premium rounded-3xl p-8 cursor-pointer transition-all duration-300 relative ${
+                    isSelected
+                      ? "border-2 border-[#2563eb] shadow-md bg-white"
+                      : "border border-[#E8EDF2] bg-white/70 hover:bg-white"
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="w-14 h-14 rounded-2xl bg-[#E8F0FE] flex items-center justify-center border border-[#E2E8F0] shadow-2xs">
+                      {step.icon}
+                    </div>
+                    <span
+                      className={`font-mono text-xs font-bold px-2.5 py-1 rounded-full ${
+                        isSelected
+                          ? "bg-[#2563eb] text-white"
+                          : "bg-[#F1F5F9] text-[#64748B]"
+                      }`}
+                    >
+                      {step.num}
+                    </span>
                   </div>
-                  <div className="text-xs font-heading font-medium text-[#2563eb] mt-5">
+
+                  <div className="text-xs font-heading font-semibold text-[#2563eb] mt-6 tracking-wide">
                     {step.sanskrit}
                   </div>
-                  <h3 className="font-heading text-xl font-semibold mt-1 text-[#0F1B2D]">
+
+                  <h3 className="font-heading text-xl font-bold mt-1 text-[#0F1B2D]">
                     {step.title}
                   </h3>
-                  <p className="font-body text-[#5A6B7F] mt-3 leading-relaxed text-sm md:text-base max-w-xs">
+
+                  <p className="font-body text-[#5A6B7F] mt-3 leading-relaxed text-sm">
                     {step.description}
                   </p>
+
+                  <div className="mt-6 flex items-center gap-1.5 text-xs font-heading font-semibold text-[#2563eb]">
+                    <span>{isSelected ? "Active Pipeline Stage" : "Click to Inspect"}</span>
+                    <span>→</span>
+                  </div>
                 </div>
               </FadeIn>
-            ))}
-          </div>
+            );
+          })}
         </div>
+
+        {/* Interactive Live Pipeline Stage Terminal Inspector */}
+        <FadeIn delay={150}>
+          <div className="mt-10 bg-[#0F1B2D] rounded-3xl border border-[#334155]/60 overflow-hidden shadow-xl">
+            <div className="px-6 py-3.5 bg-[#1E293B]/80 border-b border-white/10 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 rounded-full bg-[#EF4444]" />
+                <span className="w-3 h-3 rounded-full bg-[#F59E0B]" />
+                <span className="w-3 h-3 rounded-full bg-[#10B981]" />
+                <span className="ml-3 font-mono text-xs text-white/60">
+                  {steps[activeStep].codeTitle}
+                </span>
+              </div>
+              <span className="text-[11px] font-mono text-[#60a5fa] px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20">
+                Interactive Stage Inspector
+              </span>
+            </div>
+
+            <div className="p-6 md:p-8 font-mono text-xs sm:text-sm text-[#93c5fd] leading-relaxed overflow-x-auto">
+              <pre className="whitespace-pre">{steps[activeStep].codeSnippet}</pre>
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

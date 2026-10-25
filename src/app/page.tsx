@@ -7,6 +7,10 @@ import { ModelsView } from "@/components/views/ModelsView";
 import { ManifestoView } from "@/components/views/ManifestoView";
 import { EarlyAccessView } from "@/components/views/EarlyAccessView";
 import { ProductView } from "@/components/views/ProductView";
+import { PricingView } from "@/components/views/PricingView";
+import { ResearchView } from "@/components/views/ResearchView";
+import { DocsView } from "@/components/views/DocsView";
+import { UseCasesView } from "@/components/views/UseCasesView";
 import { PRODUCTS_DATA } from "@/data/products";
 import { Footer } from "@/components/Footer";
 
@@ -15,6 +19,10 @@ const KNOWN_TABS = [
   "models",
   "manifesto",
   "access",
+  "pricing",
+  "research",
+  "docs",
+  "use-cases",
   "csky-ultra",
   "csky-pro",
   "csky-nano",
@@ -84,6 +92,10 @@ export default function Home() {
           <ManifestoView onGetAccess={() => handleSelectTab("access")} />
         )}
         {activeTab === "access" && <EarlyAccessView />}
+        {activeTab === "pricing" && <PricingView onNavigate={handleSelectTab} />}
+        {activeTab === "research" && <ResearchView onNavigate={handleSelectTab} />}
+        {activeTab === "docs" && <DocsView onNavigate={handleSelectTab} />}
+        {activeTab === "use-cases" && <UseCasesView onNavigate={handleSelectTab} />}
 
         {/* Dedicated Product & Model Pages */}
         {PRODUCTS_DATA[activeTab] && (
