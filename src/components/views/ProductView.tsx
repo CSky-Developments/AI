@@ -8,7 +8,6 @@ import { getModelTraditionalSymbol } from "@/components/TraditionalSymbols";
 import { ModelArchitectureDiagram } from "@/components/ModelArchitectureDiagram";
 import { InteractiveReasoningDemo } from "@/components/InteractiveReasoningDemo";
 import { BenchmarkComparisonChart } from "@/components/BenchmarkComparisonChart";
-import { TraditionalMetricsMasterCard } from "@/components/TraditionalMetricsMasterCard";
 
 interface ProductViewProps {
   product: ProductConfig;
@@ -104,18 +103,26 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
         />
       </section>
 
-      {/* 2. SPECIFICATIONS & METRICS: TRADITIONAL MASTER CARTOUCHE PANEL */}
-      <section className="relative z-10 pt-16 pb-20 bg-[#F8FAFE]">
+      {/* 2. SPECIFICATIONS & METRICS GRID (Located below the fold, only visible on scroll) */}
+      <section className="relative z-10 pt-20 pb-20 bg-[#F8FAFE]">
         <div className="max-w-6xl mx-auto px-6">
-          <FadeIn>
-            <TraditionalMetricsMasterCard
-              metrics={product.metrics}
-              productName={product.name}
-              primaryColor={product.colorScheme.primary}
-              lightColor={product.colorScheme.light}
-              bgWash={product.colorScheme.bgWash}
-            />
-          </FadeIn>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+            {product.metrics.map((m, idx) => (
+              <FadeIn key={m.label} delay={idx * 80}>
+                <div className="card-premium p-6 sm:p-7 rounded-3xl bg-white border border-[#E8EDF2] text-center shadow-sm hover:shadow-lg transition-all">
+                  <div
+                    className="font-heading font-bold text-3xl md:text-4xl tracking-tight"
+                    style={{ color: product.colorScheme.primary }}
+                  >
+                    {m.value}
+                  </div>
+                  <div className="font-body text-xs sm:text-sm text-[#5A6B7F] mt-2 font-medium">
+                    {m.label}
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
 
