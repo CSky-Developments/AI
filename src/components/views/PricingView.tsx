@@ -132,7 +132,7 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
       {/* 2. THREE COMPREHENSIVE TIERS (With Scalloped Bento Hills like Reference 111614.png) */}
       <section className="relative z-10 max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch pt-4">
           {/* Tier 1: Open Weights Self-Hosted */}
           <FadeIn delay={50}>
             <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
@@ -203,9 +203,14 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
           {/* Tier 2: Managed Serverless Endpoints (Highlighted) */}
           <FadeIn delay={120}>
-            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border-2 border-[#0284c7] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
-              <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-sky-500/15 blur-xl pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity duration-500" />
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0284c7] text-white text-[10px] font-heading font-semibold uppercase tracking-wider px-3.5 py-0.5 rounded-full shadow-xs z-20">
+            <div className="card-premium group relative h-full bg-white rounded-[32px] p-8 border-2 border-[#0284c7] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+              {/* Contained glow bloom */}
+              <div className="absolute inset-0 rounded-[32px] overflow-hidden pointer-events-none">
+                <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-sky-500/15 blur-xl group-hover:opacity-100 opacity-50 transition-opacity duration-500" />
+              </div>
+
+              {/* Floating "Most Popular" Badge - Crisp, fully visible, unclipped */}
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-[#0284c7] text-white text-[11px] font-heading font-bold uppercase tracking-wider px-4 py-1 rounded-full shadow-md z-30 whitespace-nowrap">
                 Most Popular
               </div>
 
