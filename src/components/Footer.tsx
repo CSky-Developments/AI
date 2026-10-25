@@ -31,9 +31,9 @@ export function Footer({ onSelectTab, theme = "overview" }: FooterProps) {
 
   return (
     <footer className="bg-gradient-to-b from-[#F8FAFE] via-[#EFF5FD] to-[#E6F0FC] text-[#0F1B2D] border-t border-[#E2E8F0]/80 relative overflow-hidden">
-      {/* 1. Subtle Background Sacred Watermark in Gray */}
+      {/* 1. Subtle Background Sacred Watermark in Architectural Slate Gray */}
       <div className="absolute -bottom-28 -right-28 pointer-events-none opacity-[0.045] select-none filter blur-[0.5px]">
-        <SuryaMandalaWatermark size={680} color="#64748B" />
+        <SuryaMandalaWatermark size={680} color="#94A3B8" />
       </div>
 
       {/* 2. Main Footer Grid */}

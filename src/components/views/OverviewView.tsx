@@ -16,7 +16,7 @@ interface OverviewViewProps {
 export function OverviewView({ onNavigate }: OverviewViewProps) {
   return (
     <div className="relative overflow-hidden">
-      {/* Universal Page Background Sacred Geometry in Gray */}
+      {/* Traditional Sacred Geometric Watermarks in Soft Architectural Gray */}
       <PageBackgroundSymbols theme="overview" />
 
       {/* 1. Hero (Untouched, pristine) */}

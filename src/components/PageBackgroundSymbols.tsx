@@ -2,90 +2,128 @@
 
 import React from "react";
 import {
-  ThemeBackgroundWatermark,
-  SuryaMandalaWatermark,
+  AkashCosmosWatermark,
+  DrishtiYantraWatermark,
+  VayuMandalaWatermark,
+  AgniYantraWatermark,
+  PrithviYantraWatermark,
+  SomaMandalaWatermark,
   TriShaktiWatermark,
-  SriArchitectureWatermark,
   DharmaChakraWatermark,
   SahasraraGateWatermark,
-  AkashSymbol,
-  DrishtiSymbol,
-  BuddhiYantraSymbol,
-  KriyaChakraSymbol,
-  SrishtiPadmaSymbol,
-  AgniSymbol,
-  PrithviSymbol,
-  SomaSymbol,
-  VayuSymbol,
+  SriArchitectureWatermark,
+  SuryaMandalaWatermark,
 } from "@/components/TraditionalSymbols";
 
 interface PageBackgroundSymbolsProps {
   theme?: string;
-  className?: string;
+  variant?: "models" | "product" | "pricing" | "research" | "docs" | "use-cases" | "manifesto" | "access" | "default";
 }
 
 /**
- * Universal Page Background Watermarks
- * Renders serene, mathematically exact sacred geometry symbols in neutral gray
- * across all page backgrounds without interfering with foreground interactivity.
+ * PageBackgroundSymbols renders traditional sacred geometric watermarks in soft,
+ * muted architectural gray/slate in the background margins of the page.
+ * Creates an elegant, uniform, and sovereign presence across all pages without
+ * interfering with readability.
  */
 export function PageBackgroundSymbols({
-  theme = "overview",
-  className = "",
+  theme = "default",
+  variant = "default",
 }: PageBackgroundSymbolsProps) {
-  const norm = theme.toLowerCase();
+  const norm = (theme || variant).toLowerCase();
 
-  // Secondary symbol selection based on theme
-  const getSecondaryWatermark = () => {
-    if (norm.includes("model")) return <SuryaMandalaWatermark size={640} color="#64748B" />;
-    if (norm.includes("price") || norm.includes("doc")) return <TriShaktiWatermark size={640} color="#64748B" />;
-    if (norm.includes("research")) return <SriArchitectureWatermark size={640} color="#64748B" />;
-    if (norm.includes("use-case")) return <SriArchitectureWatermark size={640} color="#64748B" />;
-    if (norm.includes("manifesto")) return <SahasraraGateWatermark size={640} color="#64748B" />;
-    return <SriArchitectureWatermark size={640} color="#64748B" />;
-  };
+  // Select Primary (Top-Right), Secondary (Mid-Left), and Tertiary (Bottom-Right) symbols
+  let PrimaryWatermark = SuryaMandalaWatermark;
+  let SecondaryWatermark = TriShaktiWatermark;
+  let TertiaryWatermark = SahasraraGateWatermark;
+
+  if (norm.includes("ultra") || norm.includes("akash")) {
+    PrimaryWatermark = AkashCosmosWatermark;
+    SecondaryWatermark = TriShaktiWatermark;
+    TertiaryWatermark = SuryaMandalaWatermark;
+  } else if (norm.includes("pro") || norm.includes("drishti")) {
+    PrimaryWatermark = DrishtiYantraWatermark;
+    SecondaryWatermark = AkashCosmosWatermark;
+    TertiaryWatermark = TriShaktiWatermark;
+  } else if (norm.includes("nano") || norm.includes("vayu")) {
+    PrimaryWatermark = VayuMandalaWatermark;
+    SecondaryWatermark = SuryaMandalaWatermark;
+    TertiaryWatermark = SahasraraGateWatermark;
+  } else if (norm.includes("agni")) {
+    PrimaryWatermark = AgniYantraWatermark;
+    SecondaryWatermark = SriArchitectureWatermark;
+    TertiaryWatermark = TriShaktiWatermark;
+  } else if (norm.includes("prithvi")) {
+    PrimaryWatermark = PrithviYantraWatermark;
+    SecondaryWatermark = DrishtiYantraWatermark;
+    TertiaryWatermark = SuryaMandalaWatermark;
+  } else if (norm.includes("soma")) {
+    PrimaryWatermark = SomaMandalaWatermark;
+    SecondaryWatermark = AkashCosmosWatermark;
+    TertiaryWatermark = DharmaChakraWatermark;
+  } else if (norm.includes("model")) {
+    PrimaryWatermark = TriShaktiWatermark;
+    SecondaryWatermark = AkashCosmosWatermark;
+    TertiaryWatermark = DrishtiYantraWatermark;
+  } else if (norm.includes("pricing")) {
+    PrimaryWatermark = SriArchitectureWatermark;
+    SecondaryWatermark = SuryaMandalaWatermark;
+    TertiaryWatermark = TriShaktiWatermark;
+  } else if (norm.includes("research")) {
+    PrimaryWatermark = SomaMandalaWatermark;
+    SecondaryWatermark = DrishtiYantraWatermark;
+    TertiaryWatermark = DharmaChakraWatermark;
+  } else if (norm.includes("docs") || norm.includes("ide") || norm.includes("cli") || norm.includes("sdk") || norm.includes("app")) {
+    PrimaryWatermark = SriArchitectureWatermark;
+    SecondaryWatermark = AgniYantraWatermark;
+    TertiaryWatermark = SahasraraGateWatermark;
+  } else if (norm.includes("use-case")) {
+    PrimaryWatermark = DharmaChakraWatermark;
+    SecondaryWatermark = TriShaktiWatermark;
+    TertiaryWatermark = SriArchitectureWatermark;
+  } else if (norm.includes("manifesto")) {
+    PrimaryWatermark = DharmaChakraWatermark;
+    SecondaryWatermark = SuryaMandalaWatermark;
+    TertiaryWatermark = SahasraraGateWatermark;
+  } else if (norm.includes("access")) {
+    PrimaryWatermark = SahasraraGateWatermark;
+    SecondaryWatermark = TriShaktiWatermark;
+    TertiaryWatermark = SuryaMandalaWatermark;
+  }
+
+  // Consistent architectural slate gray for universal background watermark harmony
+  const slateGray = "#94A3B8";
 
   return (
     <div
       aria-hidden="true"
-      className={`absolute inset-0 pointer-events-none select-none overflow-hidden z-0 ${className}`}
+      className="pointer-events-none fixed inset-0 z-0 overflow-hidden select-none"
     >
-      {/* 1. Upper-Mid Primary Sacred Geometry Watermark in Neutral Gray */}
-      <div className="absolute top-[22%] left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.038] md:opacity-[0.045] transition-opacity duration-700">
-        <ThemeBackgroundWatermark theme={theme} color="#64748B" size={720} />
+      {/* 1. Subtle Radial Ambient Lighting Mesh */}
+      <div className="absolute top-0 right-0 w-[60vw] h-[60vh] bg-gradient-to-b from-[#94A3B8]/6 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-0 w-[45vw] h-[45vh] bg-gradient-to-r from-[#CBD5E1]/5 via-transparent to-transparent rounded-full blur-3xl pointer-events-none" />
+
+      {/* 2. Top-Right Primary Sacred Geometric Watermark (Large, stately, subtle) */}
+      <div className="absolute -top-24 -right-24 md:-top-20 md:-right-20 opacity-[0.045] text-[#94A3B8]">
+        <PrimaryWatermark size={640} color={slateGray} />
       </div>
 
-      {/* 2. Lower-Mid Secondary Sacred Geometry Watermark in Neutral Gray */}
-      <div className="absolute top-[68%] left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.032] md:opacity-[0.042] transition-opacity duration-700">
-        {getSecondaryWatermark()}
+      {/* 3. Mid-Left Complementary Watermark (Center-ground balance) */}
+      <div className="absolute top-[42%] -left-32 md:-left-24 opacity-[0.038] text-[#94A3B8]">
+        <SecondaryWatermark size={480} color={slateGray} />
       </div>
 
-      {/* 3. Margin Floating Motifs in Gray along Left & Right borders */}
-      <div className="absolute top-[38%] -left-12 opacity-[0.035] md:opacity-[0.048] transform -rotate-12">
-        <DrishtiSymbol size={160} color="#64748B" />
+      {/* 4. Lower-Right Grounding Watermark (Footer transition) */}
+      <div className="absolute -bottom-28 -right-28 md:-bottom-20 md:-right-20 opacity-[0.042] text-[#94A3B8]">
+        <TertiaryWatermark size={560} color={slateGray} />
       </div>
 
-      <div className="absolute top-[52%] -right-14 opacity-[0.035] md:opacity-[0.048] transform rotate-12">
-        <AkashSymbol size={180} color="#64748B" />
+      {/* 5. Minimal Mathematical Coordinate Vernier Crosshairs */}
+      <div className="absolute top-28 left-8 text-[#94A3B8]/20 font-mono text-[9px] hidden xl:block select-none tracking-widest">
+        + 12°58&apos;40&quot;N · 77°35&apos;38&quot;E [BLR]
       </div>
-
-      <div className="absolute top-[82%] -left-10 opacity-[0.032] md:opacity-[0.045] transform rotate-45">
-        <BuddhiYantraSymbol size={150} color="#64748B" />
-      </div>
-
-      <div className="absolute top-[90%] -right-10 opacity-[0.032] md:opacity-[0.045] transform -rotate-30">
-        <KriyaChakraSymbol size={150} color="#64748B" />
-      </div>
-
-      {/* 4. Subtle Micro Sanskrit Sutra Watermarks in Gray */}
-      <div className="absolute top-[28%] left-8 font-mono text-[11px] text-[#64748B] opacity-[0.08] tracking-widest hidden lg:block">
-        ॥ सत्यं ज्ञानमनन्तं ब्रह्म ॥
-      </div>
-      <div className="absolute top-[48%] right-8 font-mono text-[11px] text-[#64748B] opacity-[0.08] tracking-widest hidden lg:block">
-        ॥ प्रज्ञा प्रतिष्ठा सर्वस्य ॥
-      </div>
-      <div className="absolute top-[75%] left-8 font-mono text-[11px] text-[#64748B] opacity-[0.08] tracking-widest hidden lg:block">
-        ॥ स्वातन्त्र्यम् परमं सुखम् ॥
+      <div className="absolute top-28 right-8 text-[#94A3B8]/20 font-mono text-[9px] hidden xl:block select-none tracking-widest">
+        ॥ सार्वभौम प्रज्ञा मण्डलम् ॥
       </div>
     </div>
   );

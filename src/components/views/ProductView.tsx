@@ -31,7 +31,7 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
 
   return (
     <div className="min-h-screen bg-[#F8FAFE] text-[#0F1B2D] relative overflow-hidden">
-      {/* Universal Page Background Sacred Geometry in Gray */}
+      {/* Traditional Sacred Geometric Watermarks in Soft Architectural Gray */}
       <PageBackgroundSymbols theme={product.id} />
       {/* 1. DEDICATED FULL-VIEWPORT HERO (Clean, immersive, cards below the fold) */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-28 pb-20">
@@ -133,6 +133,72 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
         </div>
       </section>
 
+      {/* Quickstart Deployment Card (Inspired by Home Page Interactive Code Showcase) */}
+      {product.codeSnippet && (
+        <section className="relative z-10 pb-12 bg-[#F8FAFE]">
+          <div className="max-w-4xl mx-auto px-6">
+            <FadeIn delay={100}>
+              <div className="card-premium group relative overflow-hidden bg-white rounded-3xl p-6 sm:p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                <div
+                  className="absolute -top-16 -right-16 w-44 h-44 rounded-full blur-2xl pointer-events-none opacity-25 group-hover:opacity-50 transition-opacity duration-500"
+                  style={{ background: product.colorScheme.primary }}
+                />
+
+                <div className="relative z-10">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: product.colorScheme.primary }} />
+                      <span className="font-heading font-bold text-sm text-[#0F1B2D]">
+                        Quickstart Initialization
+                      </span>
+                      <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-full bg-[#F1F5F9] text-[#64748B]">
+                        {product.codeSnippet.language}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-2 text-xs font-mono text-emerald-600 font-semibold">
+                      <span>✓ Open Sovereign Weights</span>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl bg-[#0F1B2D] p-4 sm:p-5 font-mono text-xs text-white shadow-inner flex items-center justify-between gap-4 overflow-x-auto">
+                    <div className="flex items-center gap-3 truncate">
+                      <span className="text-[#94A3B8] select-none">$</span>
+                      <code className="text-[#E2E8F0] truncate font-medium">
+                        {product.codeSnippet.code}
+                      </code>
+                    </div>
+
+                    <button
+                      onClick={() => handleCopy(product.codeSnippet!.code)}
+                      className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-mono text-xs transition-all cursor-pointer shrink-0 font-medium active:scale-95 shadow-2xs"
+                    >
+                      {copied ? "Copied ✓" : "Copy"}
+                    </button>
+                  </div>
+
+                  <div className="mt-4 pt-3 border-t border-[#F1F5F9] flex flex-wrap items-center justify-between gap-3 text-xs font-body text-[#64748B]">
+                    <div className="flex items-center gap-4">
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                        FP8 / BF16 Verified
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: product.colorScheme.primary }} />
+                        Zero Telemetry Leakage
+                      </span>
+                    </div>
+                    <span className="font-heading text-xs font-medium text-[#0F1B2D]">
+                      Run locally or deploy to private VPC
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
       {/* 3. HIGHLIGHTS & ARCHITECTURE */}
       <section className="py-24 bg-[#F8FAFE]">
         <div className="max-w-6xl mx-auto px-6">
@@ -158,6 +224,9 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
                     className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl pointer-events-none opacity-20 group-hover:opacity-50 transition-opacity duration-500"
                     style={{ background: product.colorScheme.primary }}
                   />
+                  <div className="absolute right-3 -bottom-3 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] group-hover:scale-105 transition-all duration-500 select-none">
+                    {getModelTraditionalSymbol(product.name, 110, product.colorScheme.primary)}
+                  </div>
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center font-heading font-bold text-sm mb-6"
                     style={{
