@@ -4,10 +4,11 @@ import { useState } from "react";
 import { ProductConfig, PRODUCTS_DATA } from "@/data/products";
 import { AnimatedBarsBackground } from "@/components/AnimatedBarsBackground";
 import { FadeIn } from "@/components/FadeIn";
-import { getModelTraditionalSymbol, ThemeBackgroundWatermark } from "@/components/TraditionalSymbols";
+import { getModelTraditionalSymbol } from "@/components/TraditionalSymbols";
 import { ModelArchitectureDiagram } from "@/components/ModelArchitectureDiagram";
 import { InteractiveReasoningDemo } from "@/components/InteractiveReasoningDemo";
 import { BenchmarkComparisonChart } from "@/components/BenchmarkComparisonChart";
+import { TraditionalMetricsMasterCard } from "@/components/TraditionalMetricsMasterCard";
 
 interface ProductViewProps {
   product: ProductConfig;
@@ -103,100 +104,17 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
         />
       </section>
 
-      {/* 2. SPECIFICATIONS & METRICS GRID (Big traditional plinth card with carved niche cards) */}
+      {/* 2. SPECIFICATIONS & METRICS: TRADITIONAL MASTER CARTOUCHE PANEL */}
       <section className="relative z-10 pt-16 pb-20 bg-[#F8FAFE]">
         <div className="max-w-6xl mx-auto px-6">
           <FadeIn>
-            {/* The Big Traditional Plinth Card with Gradient & Sacred Motifs */}
-            <div
-              className="relative rounded-3xl md:rounded-[36px] p-7 sm:p-11 border shadow-lg overflow-hidden transition-all"
-              style={{
-                background: `linear-gradient(145deg, #FFFFFF 0%, ${product.colorScheme.bgWash} 50%, #FFFFFF 100%)`,
-                borderColor: `${product.colorScheme.light}90`,
-                boxShadow: `0 10px 30px -10px rgba(15, 27, 45, 0.06), 0 0 0 1px ${product.colorScheme.light}40`,
-              }}
-            >
-              {/* Subtle Central Traditional Watermark inside the Big Card */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.035] select-none">
-                <ThemeBackgroundWatermark theme={product.id} color={product.colorScheme.primary} size={480} />
-              </div>
-
-              {/* Traditional Stepped Chaturasra Corner Brackets */}
-              <svg className="absolute top-4 left-4 w-6 h-6 pointer-events-none opacity-40" viewBox="0 0 24 24" fill="none" stroke={product.colorScheme.primary} strokeWidth="1.8">
-                <path d="M 0 18 V 4 C 0 1.79 1.79 0 4 0 H 18 M 0 8 H 8 V 0" />
-              </svg>
-              <svg className="absolute top-4 right-4 w-6 h-6 pointer-events-none opacity-40" viewBox="0 0 24 24" fill="none" stroke={product.colorScheme.primary} strokeWidth="1.8">
-                <path d="M 24 18 V 4 C 24 1.79 22.21 0 20 0 H 6 M 24 8 H 16 V 0" />
-              </svg>
-              <svg className="absolute bottom-4 left-4 w-6 h-6 pointer-events-none opacity-40" viewBox="0 0 24 24" fill="none" stroke={product.colorScheme.primary} strokeWidth="1.8">
-                <path d="M 0 6 V 20 C 0 22.21 1.79 24 4 24 H 18 M 0 16 H 8 V 24" />
-              </svg>
-              <svg className="absolute bottom-4 right-4 w-6 h-6 pointer-events-none opacity-40" viewBox="0 0 24 24" fill="none" stroke={product.colorScheme.primary} strokeWidth="1.8">
-                <path d="M 24 6 V 20 C 24 22.21 22.21 24 20 24 H 6 M 24 16 H 16 V 24" />
-              </svg>
-
-              {/* Big Card Header Pill */}
-              <div className="relative z-10 text-center mb-9">
-                <div
-                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border shadow-2xs text-xs font-heading font-semibold"
-                  style={{
-                    borderColor: `${product.colorScheme.light}`,
-                    color: product.colorScheme.primary,
-                  }}
-                >
-                  <span>✦</span>
-                  <span>॥ मानदण्ड पीठ ॥ · Verified Specifications & Metrics</span>
-                  <span>✦</span>
-                </div>
-              </div>
-
-              {/* 4 Carved-Out Niche Cards with Torana Arch Crest & Page Scheme Gradient */}
-              <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                {product.metrics.map((m, idx) => (
-                  <div
-                    key={m.label}
-                    className="card-premium relative pt-6 pb-6 px-4 sm:px-6 rounded-2xl md:rounded-3xl text-center transition-all duration-300 group hover:-translate-y-1"
-                    style={{
-                      background: `linear-gradient(165deg, #FFFFFF 0%, ${product.colorScheme.light}25 55%, ${product.colorScheme.bgWash} 100%)`,
-                      border: `1px solid ${product.colorScheme.light}90`,
-                      boxShadow: `0 4px 16px -2px rgba(15, 27, 45, 0.05), inset 0 2px 4px 0 rgba(255, 255, 255, 0.95), inset 0 -3px 8px 0 ${product.colorScheme.light}25`,
-                    }}
-                  >
-                    {/* Carved Torana Arch Crown Header */}
-                    <svg viewBox="0 0 120 20" className="w-20 h-3.5 mx-auto mb-3" fill="none">
-                      <path
-                        d="M 0 18 C 15 18, 25 10, 38 6 C 48 2, 56 0, 60 0 C 64 0, 72 2, 82 6 C 95 10, 105 18, 120 18"
-                        stroke={product.colorScheme.primary}
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        opacity="0.55"
-                      />
-                      <circle cx="60" cy="1" r="2" fill={product.colorScheme.primary} opacity="0.8" />
-                    </svg>
-
-                    {/* Metric Value */}
-                    <div
-                      className="font-heading font-bold text-2xl sm:text-3xl md:text-4xl tracking-tight leading-tight"
-                      style={{ color: product.colorScheme.primary }}
-                    >
-                      {m.value}
-                    </div>
-
-                    {/* Metric Label */}
-                    <div className="font-body text-xs sm:text-sm text-[#475569] mt-2 font-medium">
-                      {m.label}
-                    </div>
-
-                    {/* Traditional Stepped Pedestal Base */}
-                    <div className="mt-4 flex items-center justify-center gap-1.5 opacity-35 group-hover:opacity-60 transition-opacity">
-                      <div className="w-5 h-0.5 rounded-full" style={{ background: product.colorScheme.primary }} />
-                      <div className="w-1.5 h-1.5 rounded-full" style={{ background: product.colorScheme.primary }} />
-                      <div className="w-5 h-0.5 rounded-full" style={{ background: product.colorScheme.primary }} />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <TraditionalMetricsMasterCard
+              metrics={product.metrics}
+              productName={product.name}
+              primaryColor={product.colorScheme.primary}
+              lightColor={product.colorScheme.light}
+              bgWash={product.colorScheme.bgWash}
+            />
           </FadeIn>
         </div>
       </section>
