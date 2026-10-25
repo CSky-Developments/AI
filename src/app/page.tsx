@@ -78,7 +78,7 @@ export default function Home() {
 
       <main
         className={`flex-1 transition-opacity duration-200 ease-in-out ${
-          animating ? "opacity-0 translate-y-1" : "opacity-100 translate-y-0"
+          animating ? "opacity-0" : "opacity-100"
         }`}
       >
         {activeTab === "overview" && <OverviewView onNavigate={handleSelectTab} />}

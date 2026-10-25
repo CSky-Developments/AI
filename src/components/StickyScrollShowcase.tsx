@@ -144,12 +144,26 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
   return (
     <section className="py-24 md:py-32 bg-white relative">
       <div className="max-w-6xl mx-auto px-6 relative z-10">
+        {/* Mobile Header (visible only on mobile) */}
+        <div className="lg:hidden mb-12 text-center max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F8FAFE] border border-[#E8EDF2] text-xs font-heading font-semibold text-[#EA580C] mb-3 shadow-2xs">
+            <span>✦</span>
+            <span>॥ क्रिया स्तम्भ ॥ · Enterprise Execution Flow</span>
+          </div>
+          <h2 className="font-heading font-bold text-2xl sm:text-3xl text-[#0F1B2D] tracking-tight leading-tight">
+            Architecture built for mission-critical reliability
+          </h2>
+          <p className="font-body text-sm text-[#5A6B7F] mt-2.5 leading-relaxed">
+            While you scroll through our modular execution phases, see how every layer maintains deterministic guarantees and zero telemetry leaks.
+          </p>
+        </div>
+
         {/* 
           SPLIT SCREEN PINNED SCROLL:
-          - RIGHT SIDE: STATIC / PINNED in place (sticky top-28 self-start)
+          - RIGHT SIDE: STATIC / PINNED in place for entire section scroll
           - LEFT SIDE: CARDS SCROLLING smoothly past the stationary text
         */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
           {/* 1. LEFT COLUMN: MOVING CARDS SCROLLING (col-span-7) */}
           <div className="lg:col-span-7 space-y-20 py-4 order-2 lg:order-1">
             {sections.map((s, idx) => (
@@ -315,62 +329,64 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
           </div>
 
           {/* 2. RIGHT COLUMN: STATIC / PINNED TEXT & INTERACTIVE STEP NAV (col-span-5) */}
-          <div className="lg:col-span-5 hidden lg:block sticky top-28 self-start pt-6 order-1 lg:order-2">
-            <div className="bg-[#F8FAFE] rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm space-y-6">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8EDF2] text-xs font-heading font-semibold text-[#EA580C] mb-3 shadow-2xs">
-                  <span>✦</span>
-                  <span>॥ क्रिया स्तम्भ ॥ · Enterprise Execution Flow</span>
+          <div className="lg:col-span-5 hidden lg:block order-1 lg:order-2">
+            <div className="sticky top-28 pt-4">
+              <div className="bg-[#F8FAFE] rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm space-y-6">
+                <div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8EDF2] text-xs font-heading font-semibold text-[#EA580C] mb-3 shadow-2xs">
+                    <span>✦</span>
+                    <span>॥ क्रिया स्तम्भ ॥ · Enterprise Execution Flow</span>
+                  </div>
+                  <h2 className="font-heading font-bold text-3xl text-[#0F1B2D] tracking-tight leading-tight">
+                    Architecture built for mission-critical reliability
+                  </h2>
+                  <p className="font-body text-sm text-[#5A6B7F] mt-2.5 leading-relaxed">
+                    While you scroll through our modular execution phases, see how every layer maintains deterministic guarantees and zero telemetry leaks.
+                  </p>
                 </div>
-                <h2 className="font-heading font-bold text-3xl text-[#0F1B2D] tracking-tight leading-tight">
-                  Architecture built for mission-critical reliability
-                </h2>
-                <p className="font-body text-sm text-[#5A6B7F] mt-2.5 leading-relaxed">
-                  While you scroll through our modular execution phases, see how every layer maintains deterministic guarantees and zero telemetry leaks.
-                </p>
-              </div>
 
-              {/* Interactive Step Navigator */}
-              <div className="space-y-1.5 pt-2 border-t border-[#E8EDF2]">
-                <div className="text-[11px] font-heading font-semibold text-[#94A3B8] uppercase tracking-wider px-2 pb-1">
-                  Active Execution Stage
+                {/* Interactive Step Navigator */}
+                <div className="space-y-1.5 pt-2 border-t border-[#E8EDF2]">
+                  <div className="text-[11px] font-heading font-semibold text-[#94A3B8] uppercase tracking-wider px-2 pb-1">
+                    Active Execution Stage
+                  </div>
+                  {sections.map((s) => {
+                    const isActive = activeId === s.id;
+                    return (
+                      <button
+                        key={s.id}
+                        onClick={() => scrollToCard(s.id)}
+                        className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left transition-all duration-300 cursor-pointer ${
+                          isActive
+                            ? "bg-white text-[#EA580C] shadow-sm font-semibold border border-[#E8EDF2] translate-x-1"
+                            : "text-[#475569] hover:bg-white/60 hover:text-[#0F1B2D]"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <span className={`text-sm ${isActive ? "text-[#EA580C]" : "text-[#94A3B8]"}`}>
+                            {s.icon}
+                          </span>
+                          <span className="font-heading text-xs sm:text-sm">
+                            {s.stepNumber} &middot; {s.tabLabel}
+                          </span>
+                        </div>
+                        {isActive && (
+                          <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
-                {sections.map((s) => {
-                  const isActive = activeId === s.id;
-                  return (
-                    <button
-                      key={s.id}
-                      onClick={() => scrollToCard(s.id)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left transition-all duration-300 cursor-pointer ${
-                        isActive
-                          ? "bg-white text-[#EA580C] shadow-sm font-semibold border border-[#E8EDF2] translate-x-1"
-                          : "text-[#475569] hover:bg-white/60 hover:text-[#0F1B2D]"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className={`text-sm ${isActive ? "text-[#EA580C]" : "text-[#94A3B8]"}`}>
-                          {s.icon}
-                        </span>
-                        <span className="font-heading text-xs sm:text-sm">
-                          {s.stepNumber} &middot; {s.tabLabel}
-                        </span>
-                      </div>
-                      {isActive && (
-                        <span className="w-2 h-2 rounded-full bg-[#EA580C] animate-pulse" />
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
 
-              {/* CTA */}
-              <div className="pt-2">
-                <button
-                  onClick={() => onNavigate?.("access")}
-                  className="w-full py-3 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer"
-                >
-                  Deploy Sovereign Cluster →
-                </button>
+                {/* CTA */}
+                <div className="pt-2">
+                  <button
+                    onClick={() => onNavigate?.("access")}
+                    className="w-full py-3 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer"
+                  >
+                    Deploy Sovereign Cluster →
+                  </button>
+                </div>
               </div>
             </div>
           </div>
