@@ -40,11 +40,11 @@ export function StickyStackingCards({ onNavigate }: { onNavigate?: (tab: string)
         {/* 
           STACKING OVERLAPPING CARDS CONTAINER:
           Matches reference "Card Overlap scroll animation" (Screenshot 2026-10-25 111642.png -> 111656.png)
-          Each card uses `sticky top-28` with progressive stacking and rich visual preview stage.
+          Each card uses `sticky` with progressive stacking and rich visual preview stage.
         */}
-        <div className="space-y-24 pb-32 md:space-y-32 md:pb-40">
+        <div className="space-y-12 pb-24 md:space-y-16 md:pb-32">
           {/* Card 1: Multilingual Reasoning (Saffron / Amber Canvas) */}
-          <div className="sticky top-28 z-10 bg-white rounded-[36px] p-8 md:p-12 border border-[#E8EDF2] shadow-[0_15px_40px_rgba(15,27,45,0.06)] transition-all duration-300">
+          <div className="sticky top-20 z-10 bg-white rounded-[36px] p-7 md:p-10 border border-[#E8EDF2] shadow-[0_10px_30px_rgba(15,27,45,0.06)] transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Text & CTA */}
               <div className="lg:col-span-6 flex flex-col justify-between">
@@ -144,7 +144,7 @@ export function StickyStackingCards({ onNavigate }: { onNavigate?: (tab: string)
           </div>
 
           {/* Card 2: Autonomous Multi-Agent Swarms (Lavender / Violet Canvas) */}
-          <div className="sticky top-32 z-20 bg-white rounded-[36px] p-8 md:p-12 border border-[#E8EDF2] shadow-[0_20px_50px_rgba(15,27,45,0.09)] transition-all duration-300">
+          <div className="sticky top-28 z-20 bg-white rounded-[36px] p-7 md:p-10 border border-[#E8EDF2] shadow-[0_20px_50px_rgba(15,27,45,0.12)] transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Text & CTA */}
               <div className="lg:col-span-6 flex flex-col justify-between">
@@ -247,7 +247,7 @@ export function StickyStackingCards({ onNavigate }: { onNavigate?: (tab: string)
           </div>
 
           {/* Card 3: Air-Gapped Sovereign Deployment (Emerald / Mint Canvas) */}
-          <div className="sticky top-36 z-30 bg-white rounded-[36px] p-8 md:p-12 border border-[#E8EDF2] shadow-[0_25px_60px_rgba(15,27,45,0.12)] transition-all duration-300">
+          <div className="sticky top-36 z-30 bg-white rounded-[36px] p-7 md:p-10 border border-[#E8EDF2] shadow-[0_30px_70px_rgba(15,27,45,0.18)] transition-all duration-300">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Text & CTA */}
               <div className="lg:col-span-6 flex flex-col justify-between">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { FadeIn } from "@/components/FadeIn";
 
 interface ShowcaseSection {
   id: string;
@@ -111,7 +110,7 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
     },
   ];
 
-  // Set up scroll observer to update active section in static right panel
+  // Set up scroll observer to update active section in static left panel
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -159,178 +158,14 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
         </div>
 
         {/* 
-          SPLIT SCREEN PINNED SCROLL:
-          - RIGHT SIDE: STATIC / PINNED in place for entire section scroll
-          - LEFT SIDE: CARDS SCROLLING smoothly past the stationary text
+          SPLIT SCREEN PINNED SCROLL (Matches reference screenshot 111511.png):
+          - LEFT SIDE: STATIC / PINNED in place for entire section scroll
+          - RIGHT SIDE: CARDS SCROLLING smoothly past the stationary text
         */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 relative">
-          {/* 1. LEFT COLUMN: MOVING CARDS SCROLLING (col-span-7) */}
-          <div className="lg:col-span-7 space-y-20 py-4 order-2 lg:order-1">
-            {sections.map((s, idx) => (
-              <div
-                key={s.id}
-                id={s.id}
-                ref={(el) => {
-                  cardRefs.current[s.id] = el;
-                }}
-                className="card-premium group relative overflow-hidden bg-[#F8FAFE] rounded-[32px] p-7 sm:p-9 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] scroll-mt-36"
-              >
-                {/* Subtle top corner gradient bloom */}
-                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-orange-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
-                <div className="relative z-10">
-                {/* Micro Step Tag */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="font-mono text-xs font-bold px-3 py-1 rounded-full bg-white border border-[#E2E8F0] text-[#2563eb]">
-                    Phase {s.stepNumber}
-                  </span>
-                  <span className="font-heading font-semibold text-xs text-[#64748B]">
-                    {s.tabLabel}
-                  </span>
-                </div>
-
-                {/* Card Title & Description */}
-                <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#0F1B2D] tracking-tight leading-snug">
-                  {s.title}
-                </h3>
-                <p className="font-body text-sm sm:text-base text-[#5A6B7F] mt-3 leading-relaxed">
-                  {s.description}
-                </p>
-
-                {/* Card Mockup Visual Stage */}
-                <div className="mt-8 rounded-2xl bg-white border border-[#E8EDF2] p-5 sm:p-6 shadow-inner min-h-[250px] flex items-center justify-center">
-                  {s.mockupType === "quickstart" && (
-                    <div className="w-full bg-[#0F1B2D] rounded-xl p-4 font-mono text-xs text-white space-y-2 shadow-md">
-                      <div className="flex items-center gap-2 text-[#94A3B8] border-b border-white/10 pb-2">
-                        <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-                        <span className="ml-2 text-[11px] text-[#94A3B8]">csky-quickstart.sh</span>
-                      </div>
-                      <div className="text-emerald-400">$ csky init --cluster sovereign-blr-01</div>
-                      <div className="text-[#94A3B8]">✓ Detected 8x NVIDIA H100 SXM5 80GB</div>
-                      <div className="text-[#94A3B8]">✓ Allocated FP8 Tensor Cache (Zero Telemetry Mode)</div>
-                      <div className="text-white">🚀 Cluster live: 14.8M tok/sec ready at http://localhost:8000</div>
-                    </div>
-                  )}
-
-                  {s.mockupType === "workflow" && (
-                    <div className="w-full bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 rounded-xl p-5 border border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs">
-                      <div className="bg-white p-3 rounded-xl border border-emerald-200 shadow-2xs font-body text-xs font-semibold text-[#0F1B2D]">
-                        Node 01: Ingest Context
-                      </div>
-                      <div className="text-emerald-500 font-mono text-xs font-bold">───►</div>
-                      <div className="bg-white p-3 rounded-xl border border-emerald-200 shadow-2xs font-body text-xs font-semibold text-[#0F1B2D]">
-                        Node 02: Formal Guard
-                      </div>
-                      <div className="text-emerald-500 font-mono text-xs font-bold">───►</div>
-                      <div className="bg-emerald-600 text-white p-3 rounded-xl shadow-xs font-body text-xs font-semibold">
-                        Node 03: Q.E.D. Commit
-                      </div>
-                    </div>
-                  )}
-
-                  {s.mockupType === "goals" && (
-                    <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      {[
-                        { step: "1", title: "Axiom Parse", desc: "Extract formal assertions" },
-                        { step: "2", title: "Lemma Proof", desc: "Lean 4 automated synthesis" },
-                        { step: "3", title: "Bitwise Close", desc: "Zero-hallucination signoff" },
-                      ].map((g) => (
-                        <div key={g.step} className="bg-[#F8FAFE] p-3.5 rounded-xl border border-[#E2E8F0] text-center shadow-2xs">
-                          <div className="w-6 h-6 rounded-full bg-[#2563eb] text-white font-mono text-xs font-bold mx-auto mb-2 flex items-center justify-center">
-                            {g.step}
-                          </div>
-                          <div className="font-heading font-bold text-xs text-[#0F1B2D]">{g.title}</div>
-                          <div className="font-body text-[11px] text-[#64748B] mt-1">{g.desc}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {s.mockupType === "voice" && (
-                    <div className="w-full flex flex-col items-center justify-center text-center p-3">
-                      <div className="font-body text-sm font-semibold text-[#0F1B2D] mb-4">
-                        Sub-18ms Indic Voice &amp; Reasoning Stream
-                      </div>
-                      <div className="flex items-center gap-1.5 h-12">
-                        {[40, 75, 30, 90, 60, 100, 45, 80, 20, 95, 65, 85, 35, 70, 50].map((h, i) => (
-                          <div
-                            key={i}
-                            className="w-1.5 bg-[#EA580C] rounded-full transition-all duration-300"
-                            style={{ height: `${h}%` }}
-                          />
-                        ))}
-                      </div>
-                      <div className="mt-4 font-mono text-xs text-emerald-600 font-semibold">
-                        ● Live Latency: 14.8ms | Bitrate: 48kHz Uncompressed
-                      </div>
-                    </div>
-                  )}
-
-                  {s.mockupType === "connectors" && (
-                    <div className="w-full flex flex-wrap gap-2 items-center justify-center p-2">
-                      {[
-                        "PostgreSQL",
-                        "Slack",
-                        "GitHub",
-                        "Linear",
-                        "Kafka",
-                        "Kubernetes",
-                        "Redis",
-                        "Elasticsearch",
-                        "HuggingFace",
-                      ].map((conn) => (
-                        <span
-                          key={conn}
-                          className="px-3.5 py-1.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] font-heading font-semibold text-xs text-[#334155] shadow-2xs hover:border-[#2563eb] transition-colors cursor-default"
-                        >
-                          ✦ {conn}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {s.mockupType === "insights" && (
-                    <div className="w-full font-mono text-xs space-y-3">
-                      <div className="flex justify-between items-center text-[#64748B]">
-                        <span>Deductive Confidence Score</span>
-                        <span className="font-bold text-emerald-600">99.8%</span>
-                      </div>
-                      <div className="w-full h-2 rounded-full bg-[#E2E8F0] overflow-hidden">
-                        <div className="h-full bg-emerald-500 rounded-full" style={{ width: "99.8%" }} />
-                      </div>
-                      <div className="flex justify-between items-center text-[#64748B]">
-                        <span>Air-Gapped Telemetry Check</span>
-                        <span className="font-bold text-[#2563eb]">100% On-Premise</span>
-                      </div>
-                      <div className="w-full h-2 rounded-full bg-[#E2E8F0] overflow-hidden">
-                        <div className="h-full bg-[#2563eb] rounded-full" style={{ width: "100%" }} />
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* 3 Verification Checkmarks */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-7 pt-5 border-t border-[#E8EDF2]">
-                  {s.features.map((feat) => (
-                    <div key={feat} className="flex items-start gap-2">
-                      <div className="w-4 h-4 rounded-full bg-[#EA580C] text-white flex items-center justify-center text-[9px] shrink-0 font-bold mt-0.5">
-                        ✓
-                      </div>
-                      <span className="font-body text-xs text-[#475569] leading-snug">
-                        {feat}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* 2. RIGHT COLUMN: STATIC / PINNED TEXT & INTERACTIVE STEP NAV (col-span-5) */}
-          <div className="lg:col-span-5 hidden lg:block order-1 lg:order-2">
-            <div className="sticky top-28 pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 relative">
+          {/* 1. LEFT COLUMN: STATIC / PINNED TEXT & INTERACTIVE STEP NAV (col-span-5) */}
+          <div className="lg:col-span-5 hidden lg:block">
+            <div className="sticky top-24 pt-2">
               <div className="bg-[#F8FAFE] rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm space-y-6">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#E8EDF2] text-xs font-heading font-semibold text-[#EA580C] mb-3 shadow-2xs">
@@ -389,6 +224,161 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* 2. RIGHT COLUMN: MOVING CARDS SCROLLING (col-span-7) */}
+          <div className="lg:col-span-7 space-y-16 sm:space-y-20 py-2">
+            {sections.map((s) => (
+              <div
+                key={s.id}
+                id={s.id}
+                ref={(el) => {
+                  cardRefs.current[s.id] = el;
+                }}
+                className="card-premium group relative overflow-hidden bg-[#F8FAFE] rounded-[32px] p-7 sm:p-9 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] scroll-mt-28"
+              >
+                {/* Subtle top corner gradient bloom */}
+                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-orange-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  {/* Micro Step Tag */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="font-mono text-xs font-bold px-3 py-1 rounded-full bg-white border border-[#E2E8F0] text-[#2563eb]">
+                      Phase {s.stepNumber}
+                    </span>
+                    <span className="font-heading font-semibold text-xs text-[#64748B]">
+                      {s.tabLabel}
+                    </span>
+                  </div>
+
+                  {/* Card Title & Description */}
+                  <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#0F1B2D] tracking-tight leading-snug">
+                    {s.title}
+                  </h3>
+                  <p className="font-body text-sm sm:text-base text-[#5A6B7F] mt-3 leading-relaxed">
+                    {s.description}
+                  </p>
+
+                  {/* Card Mockup Visual Stage */}
+                  <div className="mt-8 rounded-2xl bg-white border border-[#E8EDF2] p-5 sm:p-6 shadow-inner min-h-[250px] flex items-center justify-center">
+                    {s.mockupType === "quickstart" && (
+                      <div className="w-full bg-[#0F1B2D] rounded-xl p-4 font-mono text-xs text-white space-y-2 shadow-md">
+                        <div className="flex items-center gap-2 text-[#94A3B8] border-b border-white/10 pb-2">
+                          <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+                          <span className="ml-2 text-[11px] text-[#94A3B8]">csky-quickstart.sh</span>
+                        </div>
+                        <div className="text-emerald-400">$ csky init --cluster sovereign-blr-01</div>
+                        <div className="text-[#94A3B8]">✓ Detected 8x NVIDIA H100 SXM5 80GB</div>
+                        <div className="text-[#94A3B8]">✓ Allocated FP8 Tensor Cache (Zero Telemetry Mode)</div>
+                        <div className="text-white">🚀 Cluster live: 14.8M tok/sec ready at http://localhost:8000</div>
+                      </div>
+                    )}
+
+                    {s.mockupType === "workflow" && (
+                      <div className="w-full bg-gradient-to-r from-emerald-50 via-teal-50 to-emerald-50 rounded-xl p-5 border border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-xs">
+                        <div className="bg-white p-3 rounded-xl border border-emerald-200 shadow-2xs font-body text-xs font-semibold text-[#0F1B2D]">
+                          Node 01: Ingest Context
+                        </div>
+                        <div className="text-emerald-500 font-mono text-xs font-bold">───►</div>
+                        <div className="bg-white p-3 rounded-xl border border-emerald-200 shadow-2xs font-body text-xs font-semibold text-[#0F1B2D]">
+                          Node 02: Formal Guard
+                        </div>
+                        <div className="text-emerald-500 font-mono text-xs font-bold">───►</div>
+                        <div className="bg-emerald-600 text-white p-3 rounded-xl shadow-xs font-body text-xs font-semibold">
+                          Node 03: Q.E.D. Commit
+                        </div>
+                      </div>
+                    )}
+
+                    {s.mockupType === "goals" && (
+                      <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        {[
+                          { step: "1", title: "Axiom Parse", desc: "Extract formal assertions" },
+                          { step: "2", title: "Lemma Proof", desc: "Lean 4 automated synthesis" },
+                          { step: "3", title: "Bitwise Close", desc: "Zero-hallucination signoff" },
+                        ].map((g) => (
+                          <div key={g.step} className="bg-[#F8FAFE] p-3.5 rounded-xl border border-[#E2E8F0] text-center shadow-2xs">
+                            <div className="w-6 h-6 rounded-full bg-[#2563eb] text-white font-mono text-xs font-bold mx-auto mb-2 flex items-center justify-center">
+                              {g.step}
+                            </div>
+                            <div className="font-heading font-bold text-xs text-[#0F1B2D]">{g.title}</div>
+                            <div className="font-body text-[11px] text-[#64748B] mt-1">{g.desc}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {s.mockupType === "voice" && (
+                      <div className="w-full space-y-3 font-mono text-xs">
+                        <div className="flex items-center justify-between p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                          <span className="text-[#64748B]">Execution Kernel:</span>
+                          <span className="text-[#0F1B2D] font-bold">Akash-Flash FP8 Matrix</span>
+                        </div>
+                        <div className="flex items-center justify-between p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
+                          <span className="text-[#64748B]">Audited Dialects:</span>
+                          <span className="text-[#2563eb] font-bold">22 Scheduled Languages</span>
+                        </div>
+                        <div className="flex items-center justify-between p-3 rounded-xl bg-emerald-50 border border-emerald-200">
+                          <span className="text-emerald-700">Formal Verification:</span>
+                          <span className="text-emerald-700 font-bold">100% Lean 4 Certified</span>
+                        </div>
+                      </div>
+                    )}
+
+                    {s.mockupType === "connectors" && (
+                      <div className="w-full p-4 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-3">
+                        <div className="flex items-center justify-between text-xs">
+                          <span className="font-heading font-bold text-[#0F1B2D]">Autonomous Tool Protocol</span>
+                          <span className="font-mono text-[11px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md font-semibold">Active Mesh</span>
+                        </div>
+                        <div className="flex flex-wrap gap-2 pt-1">
+                          {["vLLM Driver", "PostgreSQL Adapter", "Ollama Runner", "TensorRT-LLM", "Local Air-Gap"].map((tool) => (
+                            <span
+                              key={tool}
+                              className="px-3 py-1 rounded-lg bg-white border border-[#E2E8F0] font-mono text-[11px] text-[#334155] shadow-2xs"
+                            >
+                              ✓ {tool}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {s.mockupType === "insights" && (
+                      <div className="w-full space-y-3 font-mono text-xs">
+                        <div className="p-3 rounded-xl bg-[#0F1B2D] text-white space-y-2">
+                          <div className="flex items-center justify-between text-[#94A3B8] text-[11px]">
+                            <span>BITWISE EXECUTION TELEMETRY</span>
+                            <span className="text-emerald-400">● LIVE</span>
+                          </div>
+                          <div className="text-emerald-300 font-bold text-sm">
+                            14,820,192 tok/sec throughput
+                          </div>
+                          <div className="text-[#94A3B8] text-[11px]">
+                            0 byte outbound telemetry | 100% On-Premise Sovereign Execution
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* 3 Checkmarks */}
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-7 pt-5 border-t border-[#E8EDF2]">
+                    {s.features.map((feat) => (
+                      <div key={feat} className="flex items-start gap-2">
+                        <div className="w-4 h-4 rounded-full bg-[#EA580C] text-white flex items-center justify-center text-[9px] shrink-0 font-bold mt-0.5">
+                          ✓
+                        </div>
+                        <span className="font-body text-xs text-[#475569] leading-snug">
+                          {feat}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
