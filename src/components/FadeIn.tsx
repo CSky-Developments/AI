@@ -33,7 +33,7 @@ export function FadeIn({ children, delay = 0, className = "" }: FadeInProps) {
   return (
     <div
       ref={ref}
-      className={`transform-gpu transition-all duration-800 ${
+      className={`transform-gpu transition-all duration-[800ms] ${
         isVisible
           ? "opacity-100 translate-y-0 scale-100"
           : "opacity-0 translate-y-6 scale-[0.985]"

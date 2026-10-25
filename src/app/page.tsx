@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import gsap from "gsap";
 import { Navbar } from "@/components/Navbar";
 import { OverviewView } from "@/components/views/OverviewView";
 import { ModelsView } from "@/components/views/ModelsView";
@@ -39,7 +40,7 @@ const KNOWN_TABS = [
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<string>("overview");
-  const [animating, setAnimating] = useState(false);
+  const mainRef = useRef<HTMLElement>(null);
 
   // Sync with URL hash for browser history / back / forward button support
   useEffect(() => {
@@ -62,15 +63,22 @@ export default function Home() {
     };
   }, []);
 
+  // Butter-smooth GSAP page entrance on tab change
+  useEffect(() => {
+    if (mainRef.current) {
+      gsap.fromTo(
+        mainRef.current,
+        { opacity: 0.7, y: 8 },
+        { opacity: 1, y: 0, duration: 0.32, ease: "power2.out" }
+      );
+    }
+  }, [activeTab]);
+
   const handleSelectTab = (tabId: string) => {
     if (tabId === activeTab) return;
-    setAnimating(true);
-    setTimeout(() => {
-      setActiveTab(tabId);
-      window.history.pushState(null, "", `#${tabId}`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setAnimating(false);
-    }, 120);
+    setActiveTab(tabId);
+    window.history.pushState(null, "", `#${tabId}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -78,11 +86,7 @@ export default function Home() {
       <InteractiveMotionController />
       <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
 
-      <main
-        className={`flex-1 transition-opacity duration-200 ease-in-out ${
-          animating ? "opacity-0" : "opacity-100"
-        }`}
-      >
+      <main ref={mainRef} className="flex-1">
         {activeTab === "overview" && <OverviewView onNavigate={handleSelectTab} />}
         {activeTab === "models" && (
           <ModelsView

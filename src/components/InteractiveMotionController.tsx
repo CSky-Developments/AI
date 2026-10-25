@@ -5,6 +5,8 @@ import gsap from "gsap";
 
 export function InteractiveMotionController() {
   useEffect(() => {
+    const supportsHover = window.matchMedia("(hover: hover)").matches;
+
     // 1. Passive Cursor Spotlight on .card-premium and .card-spotlight
     const handlePointerMove = (e: PointerEvent) => {
       const target = (e.target as HTMLElement | null)?.closest?.(
@@ -27,7 +29,7 @@ export function InteractiveMotionController() {
     const activeMagneticElements = new Set<HTMLElement>();
 
     const bindMagneticElement = (el: HTMLElement) => {
-      if (activeMagneticElements.has(el)) return;
+      if (!supportsHover || activeMagneticElements.has(el)) return;
       activeMagneticElements.add(el);
 
       const onMouseMove = (e: MouseEvent) => {
@@ -59,7 +61,6 @@ export function InteractiveMotionController() {
       el.addEventListener("mousemove", onMouseMove);
       el.addEventListener("mouseleave", onMouseLeave);
 
-      // Store unbind handler on element
       (el as unknown as { _unbindMagnetic?: () => void })._unbindMagnetic = () => {
         el.removeEventListener("mousemove", onMouseMove);
         el.removeEventListener("mouseleave", onMouseLeave);
