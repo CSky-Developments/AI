@@ -167,6 +167,7 @@ export function ManifestoView({ onGetAccess }: { onGetAccess: () => void }) {
               Our research papers, model checkpoints, and developer SDKs are available now with zero gatekeeping.
             </p>
             <button
+              data-magnetic
               onClick={onGetAccess}
               className="mt-6 bg-[#4F46E5] hover:bg-[#4338CA] text-white font-body font-medium text-sm rounded-full px-8 py-3.5 transition-all shadow-md hover:shadow-lg cursor-pointer"
             >

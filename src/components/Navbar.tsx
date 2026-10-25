@@ -233,6 +233,7 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
         {/* Right Action Button (Dynamic page color-adaptive) */}
         <div className="hidden lg:flex items-center gap-3">
           <button
+            data-magnetic
             onClick={() => handleTabClick("access")}
             className="text-white font-body font-medium text-xs sm:text-sm rounded-full px-5 py-2 transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
             style={{ backgroundColor: currentBtnColor.bg }}

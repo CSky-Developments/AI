@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import {
   DrishtiSymbol,
@@ -8,6 +8,88 @@ import {
   AgniSymbol,
   PrithviSymbol,
 } from "@/components/TraditionalSymbols";
+
+// Helper function to tokenize and render code with syntax highlighting
+function renderHighlightedLine(line: string, lang: "python" | "javascript" | "curl") {
+  if (!line) {
+    return <span>&nbsp;</span>;
+  }
+
+  const trimmed = line.trim();
+  if (
+    (lang === "python" && trimmed.startsWith("#")) ||
+    (lang === "javascript" && trimmed.startsWith("//")) ||
+    (lang === "curl" && trimmed.startsWith("#"))
+  ) {
+    return <span className="text-[#64748B] italic">{line}</span>;
+  }
+
+  const regex =
+    lang === "python"
+      ? /(#.*$)|("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(\b(?:import|from|as|def|return|for|in|if|else|True|False|None)\b)|(\b[a-zA-Z_][a-zA-Z0-9_]*(?=\())|(\b\d+\b)/g
+      : lang === "javascript"
+      ? /(\/\/.*$)|("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`)|(\b(?:import|from|const|let|var|await|async|for|of|new|return|true|false)\b)|(\b[a-zA-Z_][a-zA-Z0-9_]*(?=\())|(\b\d+\b)/g
+      : /(#.*$)|("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(\bcurl\b)|(-[a-zA-Z0-9]+)|(https?:\/\/[^\s"']+)/g;
+
+  const elements: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(line)) !== null) {
+    if (match.index > lastIndex) {
+      elements.push(
+        <span key={`txt-${lastIndex}`} className="text-[#E2E8F0]">
+          {line.slice(lastIndex, match.index)}
+        </span>
+      );
+    }
+
+    const matchedText = match[0];
+    const matchKey = `m-${match.index}`;
+
+    if (lang === "curl") {
+      if (match[1]) {
+        elements.push(<span key={matchKey} className="text-[#64748B] italic">{matchedText}</span>);
+      } else if (match[2]) {
+        elements.push(<span key={matchKey} className="text-[#86EFAC]">{matchedText}</span>);
+      } else if (match[3]) {
+        elements.push(<span key={matchKey} className="text-[#93C5FD] font-semibold">{matchedText}</span>);
+      } else if (match[4]) {
+        elements.push(<span key={matchKey} className="text-[#F472B6]">{matchedText}</span>);
+      } else if (match[5]) {
+        elements.push(<span key={matchKey} className="text-[#38BDF8] underline decoration-white/20 underline-offset-2">{matchedText}</span>);
+      } else {
+        elements.push(<span key={matchKey} className="text-[#E2E8F0]">{matchedText}</span>);
+      }
+    } else {
+      if (match[1]) {
+        elements.push(<span key={matchKey} className="text-[#64748B] italic">{matchedText}</span>);
+      } else if (match[2]) {
+        elements.push(<span key={matchKey} className="text-[#86EFAC]">{matchedText}</span>);
+      } else if (match[3]) {
+        elements.push(<span key={matchKey} className="text-[#93C5FD] font-semibold">{matchedText}</span>);
+      } else if (match[4]) {
+        elements.push(<span key={matchKey} className="text-[#FDE047]">{matchedText}</span>);
+      } else if (match[5]) {
+        elements.push(<span key={matchKey} className="text-[#FDBA74]">{matchedText}</span>);
+      } else {
+        elements.push(<span key={matchKey} className="text-[#E2E8F0]">{matchedText}</span>);
+      }
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < line.length) {
+    elements.push(
+      <span key={`tail-${lastIndex}`} className="text-[#E2E8F0]">
+        {line.slice(lastIndex)}
+      </span>
+    );
+  }
+
+  return <>{elements}</>;
+}
 
 export function InteractiveCodeSection({ onGetStarted }: { onGetStarted?: () => void }) {
   const [activeLang, setActiveLang] = useState<"python" | "javascript" | "curl">("python");
@@ -82,7 +164,7 @@ for await (const chunk of stream) {
                 </h2>
 
                 {/* Multi-Tab Code Header */}
-                <div className="mt-8 rounded-2xl bg-[#0F1B2D] overflow-hidden shadow-inner">
+                <div className="mt-8 rounded-2xl bg-[#0F1B2D] overflow-hidden shadow-inner border border-white/10">
                   <div className="flex items-center justify-between px-4 py-3 bg-[#17253D] border-b border-white/10">
                     <div className="flex items-center gap-2">
                       {(["python", "javascript", "curl"] as const).map((lang) => (
@@ -108,16 +190,26 @@ for await (const chunk of stream) {
                     </button>
                   </div>
 
-                  {/* Code Body */}
-                  <div className="p-5 font-mono text-xs sm:text-sm text-[#E2E8F0] overflow-x-auto leading-relaxed">
-                    <pre className="whitespace-pre">
-                      <code>{snippets[activeLang]}</code>
-                    </pre>
+                  {/* Syntax Highlighted Code Body with Line Numbers */}
+                  <div className="p-5 font-mono text-xs sm:text-sm text-[#E2E8F0] overflow-x-auto leading-relaxed select-text">
+                    <div className="table w-full">
+                      {snippets[activeLang].split("\n").map((line, idx) => (
+                        <div key={idx} className="table-row hover:bg-white/[0.03]">
+                          <span className="table-cell pr-4 text-right select-none text-[#475569] text-xs font-mono w-6">
+                            {idx + 1}
+                          </span>
+                          <span className="table-cell whitespace-pre font-mono">
+                            {renderHighlightedLine(line, activeLang)}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Dark Pill CTA */}
+                {/* Dark Pill CTA with Magnetic physics */}
                 <button
+                  data-magnetic
                   onClick={onGetStarted}
                   className="mt-6 w-full py-4 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-sm sm:text-base transition-all shadow-md hover:shadow-lg cursor-pointer"
                 >

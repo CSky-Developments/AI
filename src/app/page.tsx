@@ -13,6 +13,7 @@ import { DocsView } from "@/components/views/DocsView";
 import { UseCasesView } from "@/components/views/UseCasesView";
 import { PRODUCTS_DATA } from "@/data/products";
 import { Footer } from "@/components/Footer";
+import { InteractiveMotionController } from "@/components/InteractiveMotionController";
 
 const KNOWN_TABS = [
   "overview",
@@ -74,6 +75,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F8FAFE] text-[#0F1B2D]">
+      <InteractiveMotionController />
       <Navbar activeTab={activeTab} onSelectTab={handleSelectTab} />
 
       <main

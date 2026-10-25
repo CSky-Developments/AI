@@ -247,6 +247,7 @@ ollama run csky/soma:14b-q8`,
                     pip install csky &middot; npm i @csky/ai
                   </div>
                   <button
+                    data-magnetic
                     onClick={() => onNavigate("access")}
                     className="w-full sm:w-auto py-3 px-6 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer"
                   >

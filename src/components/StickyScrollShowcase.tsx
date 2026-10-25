@@ -248,6 +248,7 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
                 {/* CTA */}
                 <div className="pt-2">
                   <button
+                    data-magnetic
                     onClick={() => onNavigate?.("access")}
                     className="w-full py-3 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-xs sm:text-sm transition-all shadow-md hover:shadow-lg cursor-pointer"
                   >

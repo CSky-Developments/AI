@@ -192,6 +192,7 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
               <div className="mt-8 pt-4 border-t border-[#F1F5F9] relative z-10">
                 <button
+                  data-magnetic
                   onClick={() => onNavigate("models")}
                   className="w-full bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F1B2D] font-body font-medium text-xs sm:text-sm rounded-full py-3.5 transition-colors cursor-pointer"
                 >
@@ -268,6 +269,7 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
               <div className="mt-8 pt-4 border-t border-[#F1F5F9] relative z-10">
                 <button
+                  data-magnetic
                   onClick={() => onNavigate("access")}
                   className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-body font-medium text-xs sm:text-sm rounded-full py-3.5 transition-colors shadow-md hover:shadow-lg cursor-pointer"
                 >
@@ -336,6 +338,7 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
               <div className="mt-8 pt-4 border-t border-[#F1F5F9] relative z-10">
                 <button
+                  data-magnetic
                   onClick={() => onNavigate("manifesto")}
                   className="w-full bg-[#0F1B2D] hover:bg-[#1E293B] text-white font-body font-medium text-xs sm:text-sm rounded-full py-3.5 transition-colors cursor-pointer shadow-md hover:shadow-lg"
                 >

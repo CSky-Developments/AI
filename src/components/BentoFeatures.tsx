@@ -131,40 +131,40 @@ export function BentoFeatures() {
               <div className="lg:col-span-5 flex items-center justify-center relative min-h-[260px]">
                 <div className="grid grid-cols-4 gap-4 p-4 relative z-10">
                   {/* Row 1 */}
-                  <div className="col-start-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <SrishtiPadmaSymbol size={28} color="#FFFFFF" />
                   </div>
 
                   {/* Row 2 */}
-                  <div className="col-start-3 w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-3 w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <KriyaChakraSymbol size={28} color="#FFFFFF" />
                   </div>
-                  <div className="col-start-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-400 to-indigo-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <DrishtiSymbol size={28} color="#FFFFFF" />
                   </div>
 
                   {/* Row 3 */}
-                  <div className="col-start-2 w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-2 w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <BuddhiYantraSymbol size={28} color="#FFFFFF" />
                   </div>
-                  <div className="col-start-3 w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-400 to-violet-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-3 w-12 h-12 rounded-2xl bg-gradient-to-br from-purple-400 to-violet-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <AkashSymbol size={28} color="#FFFFFF" />
                   </div>
-                  <div className="col-start-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-400 to-red-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-400 to-red-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <SrishtiPadmaSymbol size={28} color="#FFFFFF" />
                   </div>
 
                   {/* Row 4 */}
-                  <div className="col-start-1 w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-cyan-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-1 w-12 h-12 rounded-2xl bg-gradient-to-br from-teal-400 to-cyan-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <DrishtiSymbol size={28} color="#FFFFFF" />
                   </div>
-                  <div className="col-start-2 w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-2 w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <BuddhiYantraSymbol size={28} color="#FFFFFF" />
                   </div>
-                  <div className="col-start-3 w-12 h-12 rounded-2xl bg-gradient-to-br from-lime-400 to-emerald-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-3 w-12 h-12 rounded-2xl bg-gradient-to-br from-lime-400 to-emerald-600 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <KriyaChakraSymbol size={28} color="#FFFFFF" />
                   </div>
-                  <div className="col-start-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-blue-700 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform">
+                  <div className="constellation-tile col-start-4 w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-blue-700 shadow-md flex items-center justify-center p-2.5 transform hover:scale-110 transition-transform cursor-pointer">
                     <AkashSymbol size={28} color="#FFFFFF" />
                   </div>
                 </div>

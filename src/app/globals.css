@@ -278,3 +278,77 @@ body {
 .pulse-radar-emerald {
   animation: live-radar 2.4s infinite var(--ease-soft);
 }
+
+/* =========================================================================
+   CURSOR-FOLLOWING SPOTLIGHT & SPECULAR BORDER GLARE
+   ========================================================================= */
+
+.card-spotlight,
+.card-premium {
+  position: relative;
+}
+
+.card-spotlight::before,
+.card-premium::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(59, 130, 246, 0.07),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.card-spotlight:hover::before,
+.card-premium:hover::before {
+  opacity: 1;
+}
+
+.card-spotlight::after,
+.card-premium::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    280px circle at var(--mouse-x, -999px) var(--mouse-y, -999px),
+    rgba(59, 130, 246, 0.4),
+    transparent 65%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-spotlight:hover::after,
+.card-premium:hover::after {
+  opacity: 1;
+}
+
+/* Ensure card children stay above spotlight overlays */
+.card-spotlight > *,
+.card-premium > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* =========================================================================
+   GSAP MAGNETIC INTERACTION FOUNDATION
+   ========================================================================= */
+
+[data-magnetic] {
+  display: inline-block;
+  will-change: transform;
+}
+

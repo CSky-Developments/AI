@@ -67,6 +67,7 @@ export function CallToAction({
                   className="w-full px-5 py-3.5 rounded-full bg-white text-sm font-body text-[#0F1B2D] border border-[#CBD5E1] placeholder:text-[#94A3B8] focus:outline-hidden focus:ring-2 focus:ring-[#2563eb] shadow-xs"
                 />
                 <button
+                  data-magnetic
                   type="submit"
                   disabled={status === "submitting" || status === "success"}
                   className="w-full sm:w-auto shrink-0 inline-flex items-center justify-center bg-[#2563eb] text-white font-body font-medium rounded-full px-8 py-3.5 hover:bg-[#1d4ed8] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer disabled:opacity-80"

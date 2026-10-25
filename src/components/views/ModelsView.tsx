@@ -306,6 +306,7 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
                     </button>
                   )}
                   <button
+                    data-magnetic
                     onClick={onGetAccess}
                     className="text-white font-heading font-medium text-xs rounded-full px-5 py-2 transition-all shadow-xs hover:shadow-md cursor-pointer"
                     style={{ backgroundColor: m.accentColor }}

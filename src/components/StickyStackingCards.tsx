@@ -60,6 +60,7 @@ export function StickyStackingCards({ onNavigate }: { onNavigate?: (tab: string)
 
                   <div className="mt-7">
                     <button
+                      data-magnetic
                       onClick={() => onNavigate?.("csky-ultra")}
                       className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-sm transition-all shadow-md hover:shadow-lg cursor-pointer"
                     >
@@ -160,6 +161,7 @@ export function StickyStackingCards({ onNavigate }: { onNavigate?: (tab: string)
 
                   <div className="mt-7">
                     <button
+                      data-magnetic
                       onClick={() => onNavigate?.("csky-agni")}
                       className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-sm transition-all shadow-md hover:shadow-lg cursor-pointer"
                     >
@@ -263,6 +265,7 @@ export function StickyStackingCards({ onNavigate }: { onNavigate?: (tab: string)
 
                   <div className="mt-7">
                     <button
+                      data-magnetic
                       onClick={() => onNavigate?.("pricing")}
                       className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-sm transition-all shadow-md hover:shadow-lg cursor-pointer"
                     >

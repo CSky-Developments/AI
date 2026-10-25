@@ -216,6 +216,7 @@ export function EarlyAccessView() {
 
                     <div className="pt-2">
                       <button
+                        data-magnetic
                         type="submit"
                         className="w-full py-4 rounded-full bg-[#0F1B2D] hover:bg-black text-white font-body font-medium text-sm sm:text-base transition-all shadow-md hover:shadow-lg cursor-pointer"
                       >

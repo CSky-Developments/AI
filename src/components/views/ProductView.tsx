@@ -72,6 +72,7 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
           {/* Action Buttons */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
             <button
+              data-magnetic
               onClick={() => onNavigate("access")}
               className="w-full sm:w-auto inline-flex items-center justify-center text-white font-body font-medium text-base rounded-full px-9 py-4 transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer"
               style={{

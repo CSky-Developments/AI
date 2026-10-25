@@ -335,6 +335,7 @@ export function UseCasesView({ onNavigate }: UseCasesViewProps) {
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <button
+                data-magnetic
                 onClick={() => onNavigate("access")}
                 className="bg-[#4F46E5] hover:bg-[#4338CA] text-white font-body font-medium text-xs sm:text-sm rounded-full px-8 py-3.5 transition-colors shadow-md hover:shadow-lg cursor-pointer"
               >
