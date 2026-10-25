@@ -7,6 +7,7 @@ import { BentoFeatures } from "@/components/BentoFeatures";
 import { Proof } from "@/components/Proof";
 import { Story } from "@/components/Story";
 import { CallToAction } from "@/components/CallToAction";
+import { PageBackgroundSymbols } from "@/components/PageBackgroundSymbols";
 
 interface OverviewViewProps {
   onNavigate: (tab: string) => void;
@@ -14,7 +15,10 @@ interface OverviewViewProps {
 
 export function OverviewView({ onNavigate }: OverviewViewProps) {
   return (
-    <>
+    <div className="relative overflow-hidden">
+      {/* Universal Page Background Sacred Geometry in Gray */}
+      <PageBackgroundSymbols theme="overview" />
+
       {/* 1. Hero (Untouched, pristine) */}
       <Hero onGetStarted={() => onNavigate("access")} />
 
@@ -44,6 +48,6 @@ export function OverviewView({ onNavigate }: OverviewViewProps) {
         onGetEarlyAccess={() => onNavigate("access")}
         onNavigate={onNavigate}
       />
-    </>
+    </div>
   );
 }

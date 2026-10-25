@@ -3,6 +3,16 @@
 import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { AnimatedBarsBackground } from "@/components/AnimatedBarsBackground";
+import { PageBackgroundSymbols } from "@/components/PageBackgroundSymbols";
+import {
+  AkashSymbol,
+  AgniSymbol,
+  DrishtiSymbol,
+  PrithviSymbol,
+  SomaSymbol,
+  VayuSymbol,
+  SriArchitectureWatermark,
+} from "@/components/TraditionalSymbols";
 
 interface PricingViewProps {
   onNavigate: (tab: string) => void;
@@ -95,8 +105,11 @@ export function PricingView({ onNavigate }: PricingViewProps) {
   ];
 
   return (
-    <div className="bg-[#F8FAFE] min-h-screen text-[#0F1B2D]">
-      {/* 1. HERO (Full viewport, content below fold) */}
+    <div className="bg-[#F8FAFE] min-h-screen relative overflow-hidden text-[#0F1B2D]">
+      {/* Universal Page Background Sacred Geometry in Gray */}
+      <PageBackgroundSymbols theme="pricing" />
+
+      {/* 1. HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-28 pb-20">
         <AnimatedBarsBackground theme="access" />
 
@@ -117,15 +130,16 @@ export function PricingView({ onNavigate }: PricingViewProps) {
         </div>
       </section>
 
-      {/* 2. THREE COMPREHENSIVE TIERS */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      {/* 2. THREE COMPREHENSIVE TIERS (With Scalloped Bento Hills like Reference 111614.png) */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {/* Tier 1: Open Weights Self-Hosted */}
           <FadeIn delay={50}>
-            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-emerald-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+              <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-emerald-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              
               <div className="relative z-10">
-                <div className="inline-block px-3 py-1 rounded-full bg-[#F1F5F9] text-[#475569] text-xs font-heading font-semibold mb-4">
+                <div className="inline-block px-3 py-1 rounded-full bg-[#ECFDF5] text-[#059669] text-xs font-heading font-semibold mb-4 border border-emerald-100 shadow-2xs">
                   Self-Hosted Sovereign
                 </div>
                 <h3 className="font-heading font-bold text-2xl text-[#0F1B2D]">
@@ -144,7 +158,19 @@ export function PricingView({ onNavigate }: PricingViewProps) {
                   </span>
                 </div>
 
-                <ul className="mt-8 space-y-3.5 text-xs font-body text-[#334155]">
+                {/* Scalloped Hill with Floating Runtime Badges (From Reference Screenshot 111614.png) */}
+                <div className="mt-6 rounded-2xl bg-gradient-to-t from-emerald-100/70 via-emerald-50/40 to-transparent p-3.5 border border-emerald-100 flex flex-wrap gap-2 items-center justify-center">
+                  {["vLLM Native", "Ollama GGUF", "TensorRT-LLM", "HuggingFace FP8"].map((badge) => (
+                    <span
+                      key={badge}
+                      className="px-2.5 py-1 rounded-xl bg-white border border-emerald-200/60 shadow-2xs text-[11px] font-heading font-semibold text-[#065F46]"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                <ul className="mt-6 space-y-3 text-xs font-body text-[#334155]">
                   <li className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                     <span>Download full FP8, BF16 & GGUF weights</span>
@@ -159,19 +185,15 @@ export function PricingView({ onNavigate }: PricingViewProps) {
                   </li>
                   <li className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                    <span>Ollama, vLLM & TensorRT-LLM kernels</span>
-                  </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                     <span>Zero telemetry & zero data leakage</span>
                   </li>
                 </ul>
               </div>
 
-              <div className="mt-10">
+              <div className="mt-8 pt-4 border-t border-[#F1F5F9] relative z-10">
                 <button
                   onClick={() => onNavigate("models")}
-                  className="w-full bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F1B2D] font-body font-medium text-xs sm:text-sm rounded-full py-3 transition-colors cursor-pointer"
+                  className="w-full bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F1B2D] font-body font-medium text-xs sm:text-sm rounded-full py-3.5 transition-colors cursor-pointer"
                 >
                   Explore Models & Weights →
                 </button>
@@ -181,14 +203,14 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
           {/* Tier 2: Managed Serverless Endpoints (Highlighted) */}
           <FadeIn delay={120}>
-            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border-2 border-[#0284c7] shadow-md hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
-              <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-sky-500/15 blur-xl pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity duration-500" />
+            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border-2 border-[#0284c7] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+              <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-sky-500/15 blur-xl pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity duration-500" />
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0284c7] text-white text-[10px] font-heading font-semibold uppercase tracking-wider px-3.5 py-0.5 rounded-full shadow-xs z-20">
                 Most Popular
               </div>
 
               <div className="relative z-10">
-                <div className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0284c7] text-xs font-heading font-semibold mb-4">
+                <div className="inline-block px-3 py-1 rounded-full bg-[#E0F2FE] text-[#0284c7] text-xs font-heading font-semibold mb-4 border border-sky-100 shadow-2xs">
                   Pay-As-You-Go API
                 </div>
                 <h3 className="font-heading font-bold text-2xl text-[#0F1B2D]">
@@ -207,7 +229,19 @@ export function PricingView({ onNavigate }: PricingViewProps) {
                   </span>
                 </div>
 
-                <ul className="mt-8 space-y-3.5 text-xs font-body text-[#334155]">
+                {/* Scalloped Hill with Floating Runtime Badges (From Reference Screenshot 111614.png) */}
+                <div className="mt-6 rounded-2xl bg-gradient-to-t from-sky-100/70 via-sky-50/40 to-transparent p-3.5 border border-sky-100 flex flex-wrap gap-2 items-center justify-center">
+                  {["OpenAI SDK Drop-In", "Sub-40ms P99", "Zero Data Retention", "$50 Free Credit"].map((badge) => (
+                    <span
+                      key={badge}
+                      className="px-2.5 py-1 rounded-xl bg-white border border-sky-200/60 shadow-2xs text-[11px] font-heading font-semibold text-[#0369A1]"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                <ul className="mt-6 space-y-3 text-xs font-body text-[#334155]">
                   <li className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] shrink-0" />
                     <span>Instant access to all 6 celestial models</span>
@@ -218,23 +252,19 @@ export function PricingView({ onNavigate }: PricingViewProps) {
                   </li>
                   <li className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] shrink-0" />
-                    <span>Zero Data Retention agreement</span>
+                    <span>Zero Data Retention formal agreement</span>
                   </li>
                   <li className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] shrink-0" />
                     <span>140 tokens/sec high-throughput streaming</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0284c7] shrink-0" />
-                    <span>$50 free starter development credits</span>
-                  </li>
                 </ul>
               </div>
 
-              <div className="mt-10">
+              <div className="mt-8 pt-4 border-t border-[#F1F5F9] relative z-10">
                 <button
                   onClick={() => onNavigate("access")}
-                  className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-body font-medium text-xs sm:text-sm rounded-full py-3 transition-colors shadow-sm cursor-pointer"
+                  className="w-full bg-[#0284c7] hover:bg-[#0369a1] text-white font-body font-medium text-xs sm:text-sm rounded-full py-3.5 transition-colors shadow-md hover:shadow-lg cursor-pointer"
                 >
                   Get API Access Key →
                 </button>
@@ -244,10 +274,11 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
           {/* Tier 3: Dedicated Sovereign GPU Cluster */}
           <FadeIn delay={180}>
-            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-indigo-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+              <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-indigo-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              
               <div className="relative z-10">
-                <div className="inline-block px-3 py-1 rounded-full bg-[#EEF2FF] text-[#4F46E5] text-xs font-heading font-semibold mb-4">
+                <div className="inline-block px-3 py-1 rounded-full bg-[#EEF2FF] text-[#4F46E5] text-xs font-heading font-semibold mb-4 border border-indigo-100 shadow-2xs">
                   Enterprise Sovereign
                 </div>
                 <h3 className="font-heading font-bold text-2xl text-[#0F1B2D]">
@@ -266,7 +297,19 @@ export function PricingView({ onNavigate }: PricingViewProps) {
                   </span>
                 </div>
 
-                <ul className="mt-8 space-y-3.5 text-xs font-body text-[#334155]">
+                {/* Scalloped Hill with Floating Runtime Badges (From Reference Screenshot 111614.png) */}
+                <div className="mt-6 rounded-2xl bg-gradient-to-t from-indigo-100/70 via-indigo-50/40 to-transparent p-3.5 border border-indigo-100 flex flex-wrap gap-2 items-center justify-center">
+                  {["8x H100 SXM5", "Isolated Tenant", "Custom LoRA", "99.99% SLA"].map((badge) => (
+                    <span
+                      key={badge}
+                      className="px-2.5 py-1 rounded-xl bg-white border border-indigo-200/60 shadow-2xs text-[11px] font-heading font-semibold text-[#4338CA]"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                <ul className="mt-6 space-y-3 text-xs font-body text-[#334155]">
                   <li className="flex items-center gap-2.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#4F46E5] shrink-0" />
                     <span>Dedicated unshared H100 SXM5 hardware</span>
@@ -283,17 +326,13 @@ export function PricingView({ onNavigate }: PricingViewProps) {
                     <span className="w-1.5 h-1.5 rounded-full bg-[#4F46E5] shrink-0" />
                     <span>99.99% contractual uptime SLA</span>
                   </li>
-                  <li className="flex items-center gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#4F46E5] shrink-0" />
-                    <span>Dedicated solutions engineering support</span>
-                  </li>
                 </ul>
               </div>
 
-              <div className="mt-10">
+              <div className="mt-8 pt-4 border-t border-[#F1F5F9] relative z-10">
                 <button
                   onClick={() => onNavigate("manifesto")}
-                  className="w-full bg-[#0F1B2D] hover:bg-[#1E293B] text-white font-body font-medium text-xs sm:text-sm rounded-full py-3 transition-colors cursor-pointer"
+                  className="w-full bg-[#0F1B2D] hover:bg-[#1E293B] text-white font-body font-medium text-xs sm:text-sm rounded-full py-3.5 transition-colors cursor-pointer shadow-md hover:shadow-lg"
                 >
                   Contact Sovereign Enterprise →
                 </button>
@@ -303,113 +342,181 @@ export function PricingView({ onNavigate }: PricingViewProps) {
         </div>
       </section>
 
-      {/* 3. INTERACTIVE TOKEN & COMPUTE SAVINGS CALCULATOR */}
-      <section className="max-w-6xl mx-auto px-6 py-12">
-        <FadeIn delay={100}>
-          <div className="bg-white rounded-3xl p-8 md:p-12 border border-[#E8EDF2] shadow-sm">
-            <div className="max-w-xl">
-              <span className="text-xs font-heading font-semibold text-[#0284c7] uppercase tracking-wider">
-                Compute Economics
-              </span>
-              <h2 className="font-heading font-bold text-2xl md:text-3xl text-[#0F1B2D] mt-2">
-                Interactive token savings calculator
-              </h2>
-              <p className="font-body text-xs md:text-sm text-[#64748B] mt-2">
-                Compare CSky open foundation model compute economics against closed proprietary cloud APIs.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-10 items-center">
-              {/* Left: Sliders & Selectors */}
-              <div className="lg:col-span-7 space-y-6">
+      {/* 3. INTERACTIVE TOKEN ECONOMICS & 2x2 MATRIX (From Reference Screenshot 111339.png) */}
+      <section className="relative z-10 max-w-6xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left: Interactive ROI & Slider Card */}
+          <div className="lg:col-span-7">
+            <FadeIn delay={100}>
+              <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-8 md:p-10 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
                 <div>
-                  <div className="flex items-center justify-between text-xs font-body text-[#334155] mb-2 font-medium">
-                    <span>Monthly Token Volume</span>
-                    <span className="font-heading font-bold text-base text-[#0284c7]">
-                      {tokenVolume} Million Tokens
-                    </span>
-                  </div>
-                  <input
-                    type="range"
-                    min="10"
-                    max="500"
-                    step="10"
-                    value={tokenVolume}
-                    onChange={(e) => setTokenVolume(Number(e.target.value))}
-                    className="w-full h-2 bg-[#E2E8F0] rounded-lg appearance-none cursor-pointer accent-[#0284c7]"
-                  />
-                  <div className="flex justify-between text-[11px] text-[#94A3B8] mt-1 font-mono">
-                    <span>10M tokens</span>
-                    <span>100M tokens</span>
-                    <span>250M tokens</span>
-                    <span>500M tokens</span>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-body font-medium text-[#334155] mb-2.5">
-                    Select Model Tier
-                  </label>
-                  <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
-                    {Object.entries(MODEL_RATES).map(([key, m]) => (
-                      <button
-                        key={key}
-                        onClick={() => setSelectedModel(key)}
-                        className={`p-2.5 rounded-xl text-center border text-xs font-body transition-all cursor-pointer ${
-                          selectedModel === key
-                            ? "bg-[#E0F2FE] border-[#0284c7] text-[#0284c7] font-semibold shadow-2xs"
-                            : "bg-[#F8FAFC] border-[#E2E8F0] text-[#475569] hover:bg-[#F1F5F9]"
-                        }`}
-                      >
-                        <div className="font-heading font-medium">{m.name}</div>
-                        <div className="text-[10px] text-[#94A3B8]">{m.params}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Savings Highlight Tile */}
-              <div className="lg:col-span-5 bg-[#F8FAFC] rounded-2xl p-6 border border-[#E2E8F0] flex flex-col justify-between">
-                <div>
-                  <div className="text-xs font-body text-[#64748B] flex items-center justify-between">
-                    <span>CSky {currentRate.name} Cost</span>
-                    <span className="font-heading font-bold text-base text-[#0F1B2D]">
-                      ${monthlyCost.toLocaleString()} / mo
-                    </span>
-                  </div>
-                  <div className="text-xs font-body text-[#64748B] flex items-center justify-between mt-2.5">
-                    <span>{currentRate.competitor}</span>
-                    <span className="font-mono text-sm line-through text-[#94A3B8]">
-                      ${competitorMonthlyCost.toLocaleString()} / mo
-                    </span>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-5 border-t border-[#E2E8F0]">
-                  <div className="text-xs font-body text-[#059669] font-medium">
-                    Estimated Monthly Savings
-                  </div>
-                  <div className="flex items-baseline gap-2 mt-1">
-                    <span className="font-heading font-bold text-3xl md:text-4xl text-[#059669]">
-                      ${savings.toLocaleString()}
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-heading font-semibold">
-                      {savingsPercent}% Lower
-                    </span>
-                  </div>
-                  <p className="text-[11px] text-[#64748B] mt-2">
-                    Plus 100% data sovereignty and freedom from proprietary lock-in.
+                  <span className="text-xs font-heading font-semibold text-[#0284c7] uppercase tracking-wider">
+                    Compute Economics
+                  </span>
+                  <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#0F1B2D] mt-2 tracking-tight">
+                    Interactive token savings calculator
+                  </h3>
+                  <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2">
+                    Compare CSky open foundation compute against proprietary closed cloud APIs.
                   </p>
                 </div>
+
+                <div className="space-y-6 mt-8">
+                  <div>
+                    <div className="flex items-center justify-between text-xs font-body text-[#334155] mb-2 font-medium">
+                      <span>Monthly Inference Volume</span>
+                      <span className="font-heading font-bold text-base text-[#0284c7]">
+                        {tokenVolume} Million Tokens
+                      </span>
+                    </div>
+                    <input
+                      type="range"
+                      min="10"
+                      max="500"
+                      step="10"
+                      value={tokenVolume}
+                      onChange={(e) => setTokenVolume(Number(e.target.value))}
+                      className="w-full h-2 bg-[#E2E8F0] rounded-lg appearance-none cursor-pointer accent-[#0284c7]"
+                    />
+                    <div className="flex justify-between text-[11px] text-[#94A3B8] mt-1 font-mono">
+                      <span>10M</span>
+                      <span>100M</span>
+                      <span>250M</span>
+                      <span>500M tokens</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-body font-medium text-[#334155] mb-2.5">
+                      Select Model Architecture
+                    </label>
+                    <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                      {Object.entries(MODEL_RATES).map(([key, m]) => (
+                        <button
+                          key={key}
+                          onClick={() => setSelectedModel(key)}
+                          className={`p-2.5 rounded-xl text-center border text-xs font-body transition-all cursor-pointer ${
+                            selectedModel === key
+                              ? "bg-[#E0F2FE] border-[#0284c7] text-[#0284c7] font-semibold shadow-2xs"
+                              : "bg-[#F8FAFC] border-[#E2E8F0] text-[#475569] hover:bg-[#F1F5F9]"
+                          }`}
+                        >
+                          <div className="font-heading font-medium">{m.name}</div>
+                          <div className="text-[10px] text-[#94A3B8]">{m.params}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Savings Summary Banner inside Left Card */}
+                <div className="mt-8 p-6 rounded-2xl bg-[#F0FDF4] border border-emerald-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div>
+                    <div className="text-xs font-body text-emerald-800 font-semibold">
+                      Estimated Monthly Savings
+                    </div>
+                    <div className="flex items-baseline gap-2 mt-1">
+                      <span className="font-heading font-bold text-3xl sm:text-4xl text-[#059669]">
+                        ${savings.toLocaleString()}
+                      </span>
+                      <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-heading font-bold">
+                        {savingsPercent}% Lower TCO
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="text-right sm:text-right w-full sm:w-auto">
+                    <div className="text-[11px] font-mono text-[#64748B]">
+                      CSky: <b className="text-[#0F1B2D]">${monthlyCost.toLocaleString()}/mo</b>
+                    </div>
+                    <div className="text-[11px] font-mono text-[#94A3B8] line-through mt-0.5">
+                      Competitor: ${competitorMonthlyCost.toLocaleString()}/mo
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            </FadeIn>
           </div>
-        </FadeIn>
+
+          {/* Right: 2x2 Capabilities Matrix (Reference Screenshot 111339.png) */}
+          <div className="lg:col-span-5 flex flex-col justify-between gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <FadeIn delay={120}>
+                <div className="card-premium bg-white rounded-[24px] p-5 border border-[#E8EDF2] shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#DDD6FE]/60 to-transparent rounded-bl-full pointer-events-none" />
+                  <div className="w-9 h-9 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-3">
+                    <AkashSymbol size={20} color="#4F46E5" />
+                  </div>
+                  <h4 className="font-heading font-bold text-sm text-[#0F1B2D]">Zero Token Markups</h4>
+                  <p className="font-body text-xs text-[#64748B] mt-1 leading-snug">
+                    Open weights mean you pay bare hardware cost, never 10x proprietary markups.
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={160}>
+                <div className="card-premium bg-white rounded-[24px] p-5 border border-[#E8EDF2] shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#FED7AA]/60 to-transparent rounded-bl-full pointer-events-none" />
+                  <div className="w-9 h-9 rounded-xl bg-[#FFF7ED] flex items-center justify-center mb-3">
+                    <AgniSymbol size={20} color="#EA580C" />
+                  </div>
+                  <h4 className="font-heading font-bold text-sm text-[#0F1B2D]">No Per-Seat Gates</h4>
+                  <p className="font-body text-xs text-[#64748B] mt-1 leading-snug">
+                    Deploy across 1,000 developers with zero incremental license friction.
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={200}>
+                <div className="card-premium bg-white rounded-[24px] p-5 border border-[#E8EDF2] shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#BBF7D0]/60 to-transparent rounded-bl-full pointer-events-none" />
+                  <div className="w-9 h-9 rounded-xl bg-[#F0FDF4] flex items-center justify-center mb-3">
+                    <PrithviSymbol size={20} color="#059669" />
+                  </div>
+                  <h4 className="font-heading font-bold text-sm text-[#0F1B2D]">Fixed Reserved Nodes</h4>
+                  <p className="font-body text-xs text-[#64748B] mt-1 leading-snug">
+                    Lock in guaranteed compute SLAs without peak-hour throttling or queuing.
+                  </p>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={240}>
+                <div className="card-premium bg-white rounded-[24px] p-5 border border-[#E8EDF2] shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-[#BAE6FD]/60 to-transparent rounded-bl-full pointer-events-none" />
+                  <div className="w-9 h-9 rounded-xl bg-[#F0F9FF] flex items-center justify-center mb-3">
+                    <DrishtiSymbol size={20} color="#0284C7" />
+                  </div>
+                  <h4 className="font-heading font-bold text-sm text-[#0F1B2D]">100% Data Sovereignty</h4>
+                  <p className="font-body text-xs text-[#64748B] mt-1 leading-snug">
+                    Zero retention agreements legally guaranteed across all API requests.
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Bottom Mini SDK Pills */}
+            <FadeIn delay={280}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="card-premium bg-white rounded-2xl p-3.5 border border-[#E8EDF2] text-left">
+                  <div className="font-heading font-bold text-xs text-[#0F1B2D]">Pay Monthly</div>
+                  <p className="font-body text-[11px] text-[#64748B] mt-0.5">Cancel anytime, no lock-in</p>
+                </div>
+                <div className="card-premium bg-white rounded-2xl p-3.5 border border-[#E8EDF2] text-left">
+                  <div className="font-heading font-bold text-xs text-[#0F1B2D]">Free Trial</div>
+                  <p className="font-body text-[11px] text-[#64748B] mt-0.5">$50 dev credits included</p>
+                </div>
+                <div className="card-premium bg-white rounded-2xl p-3.5 border border-[#E8EDF2] text-left">
+                  <div className="font-heading font-bold text-xs text-[#0F1B2D]">Invoicing</div>
+                  <p className="font-body text-[11px] text-[#64748B] mt-0.5">Wire / Net-30 enterprise</p>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
       </section>
 
       {/* 4. EXPANDABLE FAQ ACCORDIONS */}
-      <section className="max-w-4xl mx-auto px-6 py-20">
+      <section className="relative z-10 max-w-4xl mx-auto px-6 py-20">
         <FadeIn delay={100}>
           <div className="text-center mb-12">
             <span className="text-xs font-heading font-semibold text-[#0284c7] uppercase tracking-wider">
@@ -426,7 +533,7 @@ export function PricingView({ onNavigate }: PricingViewProps) {
               return (
                 <div
                   key={faq.q}
-                  className="bg-white rounded-2xl border border-[#E8EDF2] overflow-hidden transition-all shadow-2xs"
+                  className="card-premium bg-white rounded-2xl border border-[#E8EDF2] overflow-hidden transition-all duration-300 shadow-2xs hover:shadow-sm"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}

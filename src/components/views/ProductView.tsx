@@ -8,6 +8,7 @@ import { getModelTraditionalSymbol } from "@/components/TraditionalSymbols";
 import { ModelArchitectureDiagram } from "@/components/ModelArchitectureDiagram";
 import { InteractiveReasoningDemo } from "@/components/InteractiveReasoningDemo";
 import { BenchmarkComparisonChart } from "@/components/BenchmarkComparisonChart";
+import { PageBackgroundSymbols } from "@/components/PageBackgroundSymbols";
 
 interface ProductViewProps {
   product: ProductConfig;
@@ -29,7 +30,9 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
   );
 
   return (
-    <div className="min-h-screen bg-[#F8FAFE] text-[#0F1B2D]">
+    <div className="min-h-screen bg-[#F8FAFE] text-[#0F1B2D] relative overflow-hidden">
+      {/* Universal Page Background Sacred Geometry in Gray */}
+      <PageBackgroundSymbols theme={product.id} />
       {/* 1. DEDICATED FULL-VIEWPORT HERO (Clean, immersive, cards below the fold) */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6 pt-28 pb-20">
         {/* GSAP-Animated Real Flowing Fluted Glass Bars & Ambient Blur Clouds */}
