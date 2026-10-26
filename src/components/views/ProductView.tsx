@@ -218,28 +218,33 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
             {product.highlights.map((h, idx) => (
               <FadeIn key={h.title} delay={idx * 120}>
                 <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                  <div
-                    className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl pointer-events-none opacity-20 group-hover:opacity-50 transition-opacity duration-500"
-                    style={{ background: product.colorScheme.primary }}
-                  />
-                  <div className="absolute right-3 -bottom-3 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] group-hover:scale-105 transition-all duration-500 select-none">
-                    {getModelTraditionalSymbol(product.name, 110, product.colorScheme.primary)}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl z-0">
+                    <div
+                      className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-20 group-hover:opacity-50 transition-opacity duration-500"
+                      style={{ background: product.colorScheme.primary }}
+                    />
+                    <div className="absolute right-3 -bottom-3 opacity-[0.04] group-hover:opacity-[0.08] group-hover:scale-105 transition-all duration-500 select-none">
+                      {getModelTraditionalSymbol(product.name, 110, product.colorScheme.primary)}
+                    </div>
                   </div>
-                  <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center font-heading font-bold text-sm mb-6"
-                    style={{
-                      background: product.colorScheme.light,
-                      color: product.colorScheme.primary,
-                    }}
-                  >
-                    0{idx + 1}
+
+                  <div className="relative z-10">
+                    <div
+                      className="w-10 h-10 rounded-xl flex items-center justify-center font-heading font-bold text-sm mb-6"
+                      style={{
+                        background: product.colorScheme.light,
+                        color: product.colorScheme.primary,
+                      }}
+                    >
+                      0{idx + 1}
+                    </div>
+                    <h3 className="font-heading font-semibold text-xl text-[#0F1B2D]">
+                      {h.title}
+                    </h3>
+                    <p className="font-body text-sm md:text-base text-[#5A6B7F] mt-3 leading-relaxed">
+                      {h.desc}
+                    </p>
                   </div>
-                  <h3 className="font-heading font-semibold text-xl text-[#0F1B2D]">
-                    {h.title}
-                  </h3>
-                  <p className="font-body text-sm md:text-base text-[#5A6B7F] mt-3 leading-relaxed">
-                    {h.desc}
-                  </p>
                 </div>
               </FadeIn>
             ))}

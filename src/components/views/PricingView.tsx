@@ -136,7 +136,9 @@ export function PricingView({ onNavigate }: PricingViewProps) {
           {/* Tier 1: Open Weights Self-Hosted */}
           <FadeIn delay={50}>
             <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
-              <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-emerald-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px] z-0">
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-emerald-500/10 blur-xl group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              </div>
               
               <div className="relative z-10">
                 <div className="inline-block px-3 py-1 rounded-full bg-[#ECFDF5] text-[#059669] text-xs font-heading font-semibold mb-4 border border-emerald-100 shadow-2xs">
@@ -282,7 +284,9 @@ export function PricingView({ onNavigate }: PricingViewProps) {
           {/* Tier 3: Dedicated Sovereign GPU Cluster */}
           <FadeIn delay={180}>
             <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
-              <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-indigo-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px] z-0">
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-indigo-500/10 blur-xl group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              </div>
               
               <div className="relative z-10">
                 <div className="inline-block px-3 py-1 rounded-full bg-[#EEF2FF] text-[#4F46E5] text-xs font-heading font-semibold mb-4 border border-indigo-100 shadow-2xs">

@@ -121,10 +121,12 @@ export function ManifestoView({ onGetAccess }: { onGetAccess: () => void }) {
             {principles.map((principle, index) => (
               <FadeIn key={principle.num} delay={index * 100}>
                 <div className="card-premium group relative overflow-hidden rounded-[32px] p-8 bg-white border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between">
-                  {/* Subtle Corner Gradient Bloom */}
-                  <div
-                    className={`absolute -top-12 -right-12 w-36 h-36 rounded-full bg-gradient-to-br ${principle.bgGradient} blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500`}
-                  />
+                  {/* Subtle Corner Gradient Bloom contained safely */}
+                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px] z-0">
+                    <div
+                      className={`absolute -top-12 -right-12 w-36 h-36 rounded-full bg-gradient-to-br ${principle.bgGradient} blur-xl group-hover:opacity-100 opacity-40 transition-opacity duration-500`}
+                    />
+                  </div>
 
                   <div className="relative z-10">
                     <div className="flex items-center justify-between mb-5">

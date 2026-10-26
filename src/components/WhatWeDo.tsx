@@ -65,17 +65,19 @@ export function WhatWeDo() {
         </div>
 
         {/* 3 Pillars Cards (Restored Original Layout with Smooth Premium Hover Curves) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 items-stretch">
           {items.map((item, index) => (
-            <FadeIn key={item.title} delay={index * 120}>
+            <FadeIn key={item.title} delay={index * 120} className="h-full">
               <div className="card-premium h-full bg-white rounded-3xl p-8 sm:p-9 flex flex-col justify-between group relative overflow-hidden border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300">
-                {/* Subtle top corner gradient bloom */}
-                <div
-                  className="absolute -top-12 -right-12 w-36 h-36 rounded-full pointer-events-none opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500"
-                  style={{ background: item.accentColor }}
-                />
+                {/* Subtle top corner gradient bloom contained safely */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl z-0">
+                  <div
+                    className="absolute -top-12 -right-12 w-36 h-36 rounded-full opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-500"
+                    style={{ background: item.accentColor }}
+                  />
+                </div>
 
-                <div className="relative z-10">
+                <div className="relative z-10 flex flex-col flex-1">
                   <div className="flex items-center justify-between">
                     <div
                       className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-2xs transition-transform duration-300 group-hover:scale-105"
@@ -99,7 +101,7 @@ export function WhatWeDo() {
                     {item.title}
                   </h3>
 
-                  <p className="font-body text-[#5A6B7F] mt-3 leading-relaxed text-sm md:text-base">
+                  <p className="font-body text-[#5A6B7F] mt-3 leading-relaxed text-sm md:text-base flex-1">
                     {item.description}
                   </p>
 
@@ -117,7 +119,7 @@ export function WhatWeDo() {
                 </div>
 
                 {/* Bottom Metric Pill */}
-                <div className="mt-8 pt-4 border-t border-[#F1F5F9] flex items-center justify-between text-xs font-heading font-medium">
+                <div className="mt-8 pt-4 border-t border-[#F1F5F9] flex items-center justify-between text-xs font-heading font-medium relative z-10">
                   <span className="text-[#64748B]">Impact Guarantee</span>
                   <span
                     className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold"

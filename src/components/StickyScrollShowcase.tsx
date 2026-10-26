@@ -270,8 +270,11 @@ export function StickyScrollShowcase({ onNavigate }: { onNavigate?: (tab: string
                 }}
                 className="card-premium group relative overflow-hidden bg-[#F8FAFE] rounded-[32px] p-7 sm:p-9 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] scroll-mt-28"
               >
-                {/* Subtle top corner gradient bloom */}
-                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-orange-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+                {/* Subtle top corner gradient bloom contained safely */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px] z-0">
+                  <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-orange-500/10 blur-xl group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+                </div>
+
                 <div className="relative z-10">
                   {/* Micro Step Tag */}
                   <div className="flex items-center justify-between mb-4">
