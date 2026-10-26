@@ -58,22 +58,27 @@ export function Story({ onReadManifesto }: { onReadManifesto?: () => void }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
           {pillars.map((pillar, idx) => (
             <FadeIn key={pillar.title} delay={idx * 100}>
-              <div className="card-premium p-8 rounded-3xl bg-[#F8FAFE]/60 border border-[#E8EDF2] hover:bg-white transition-all h-full flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-mono font-medium text-[#2563eb] bg-[#EFF6FF] px-2.5 py-1 rounded-md">
-                      {pillar.sanskrit}
-                    </span>
-                    <span className="text-[11px] font-mono text-[#64748B] uppercase tracking-wider bg-white border border-[#E2E8F0] px-2 py-0.5 rounded-full">
-                      {pillar.tag}
-                    </span>
+              <div className="card-premium group relative overflow-hidden p-8 rounded-3xl bg-white border border-[#E8EDF2] hover:border-blue-300 hover:shadow-[0_16px_40px_rgba(37,99,235,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out h-full flex flex-col justify-between">
+                <div className="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-blue-500 blur-3xl pointer-events-none opacity-25 group-hover:opacity-80 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                <div className="absolute -top-20 left-1/4 w-40 h-32 rounded-full bg-sky-400 blur-3xl pointer-events-none opacity-15 group-hover:opacity-45 transition-all duration-500 ease-out z-0" />
+
+                <div className="relative z-10 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="text-xs font-mono font-medium text-[#2563eb] bg-[#EFF6FF] px-2.5 py-1 rounded-md">
+                        {pillar.sanskrit}
+                      </span>
+                      <span className="text-[11px] font-mono text-[#64748B] uppercase tracking-wider bg-white border border-[#E2E8F0] px-2 py-0.5 rounded-full">
+                        {pillar.tag}
+                      </span>
+                    </div>
+                    <h3 className="font-heading font-bold text-xl text-[#0F1B2D] mb-3">
+                      {pillar.title}
+                    </h3>
+                    <p className="font-body text-sm text-[#5A6B7F] leading-relaxed">
+                      {pillar.description}
+                    </p>
                   </div>
-                  <h3 className="font-heading font-bold text-xl text-[#0F1B2D] mb-3">
-                    {pillar.title}
-                  </h3>
-                  <p className="font-body text-sm text-[#5A6B7F] leading-relaxed">
-                    {pillar.description}
-                  </p>
                 </div>
               </div>
             </FadeIn>

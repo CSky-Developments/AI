@@ -131,10 +131,24 @@ export function UseCasesView({ onNavigate }: UseCasesViewProps) {
         <div className="space-y-14">
           {cases.map((c, idx) => (
             <FadeIn key={c.id} delay={idx * 120}>
-              <div className="card-premium group relative overflow-hidden bg-white rounded-[36px] p-8 md:p-12 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                {/* Subtle top corner gradient bloom */}
+              <div
+                className="card-premium group relative overflow-hidden bg-white rounded-[36px] p-8 md:p-12 border border-[#E8EDF2] hover:-translate-y-1.5 transition-all duration-500 ease-out"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `${c.accent}60`;
+                  e.currentTarget.style.boxShadow = `0 20px 50px -4px ${c.accent}25, 0 0 24px ${c.accent}18`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "";
+                  e.currentTarget.style.boxShadow = "";
+                }}
+              >
+                {/* Luminous Ambient Corner Blooms */}
                 <div
-                  className="absolute -top-16 -right-16 w-52 h-52 rounded-full blur-2xl pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity duration-500"
+                  className="absolute -top-20 -right-20 w-64 h-64 rounded-full blur-3xl pointer-events-none opacity-35 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500 ease-out z-0"
+                  style={{ background: c.accent }}
+                />
+                <div
+                  className="absolute -top-20 left-1/3 w-52 h-44 rounded-full blur-3xl pointer-events-none opacity-20 group-hover:opacity-50 transition-all duration-500 ease-out z-0"
                   style={{ background: c.accent }}
                 />
 
@@ -326,21 +340,24 @@ export function UseCasesView({ onNavigate }: UseCasesViewProps) {
       {/* 3. CTA */}
       <section className="relative z-10 max-w-4xl mx-auto px-6 py-16 text-center">
         <FadeIn delay={100}>
-          <div className="card-premium group relative overflow-hidden bg-[#EEF2FF] rounded-[32px] p-10 md:p-14 border border-[#C7D2FE] shadow-sm hover:shadow-xl transition-all duration-500">
-            <h3 className="font-heading font-bold text-2xl md:text-3xl text-[#1E1B4B]">
-              Ready to architect your sovereign pipeline?
-            </h3>
-            <p className="font-body text-sm md:text-base text-[#4338CA] mt-3 max-w-xl mx-auto">
-              Our theoretical and systems engineering team is ready to assist with model quantization, private cluster topology, and vLLM benchmarking.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <button
-                data-magnetic
-                onClick={() => onNavigate("access")}
-                className="bg-[#4F46E5] hover:bg-[#4338CA] text-white font-body font-medium text-xs sm:text-sm rounded-full px-8 py-3.5 transition-colors shadow-md hover:shadow-lg cursor-pointer"
-              >
-                Request Sovereign Architecture Review →
-              </button>
+          <div className="card-premium group relative overflow-hidden bg-[#EEF2FF] rounded-[32px] p-10 md:p-14 border border-[#C7D2FE] hover:border-indigo-300 hover:shadow-[0_20px_50px_rgba(79,70,229,0.18)] hover:-translate-y-1.5 transition-all duration-500 ease-out">
+            <div className="absolute -top-16 -right-16 w-60 h-60 rounded-full bg-indigo-400 blur-3xl pointer-events-none opacity-30 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+            <div className="relative z-10">
+              <h3 className="font-heading font-bold text-2xl md:text-3xl text-[#1E1B4B]">
+                Ready to architect your sovereign pipeline?
+              </h3>
+              <p className="font-body text-sm md:text-base text-[#4338CA] mt-3 max-w-xl mx-auto">
+                Our theoretical and systems engineering team is ready to assist with model quantization, private cluster topology, and vLLM benchmarking.
+              </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
+                <button
+                  data-magnetic
+                  onClick={() => onNavigate("access")}
+                  className="bg-[#4F46E5] hover:bg-[#4338CA] text-white font-body font-medium text-xs sm:text-sm rounded-full px-8 py-3.5 transition-colors shadow-md hover:shadow-lg cursor-pointer"
+                >
+                  Request Sovereign Architecture Review →
+                </button>
+              </div>
             </div>
           </div>
         </FadeIn>

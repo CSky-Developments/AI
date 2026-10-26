@@ -48,25 +48,28 @@ function AnimatedStat({
   }, [value]);
 
   return (
-    <div ref={containerRef} className="card-premium h-full rounded-3xl p-8 text-left flex flex-col justify-between">
-      <div>
-        <div className="flex items-center justify-between mb-4">
-          <span className="text-xs font-mono font-medium text-[#64748B]">
-            {label}
-          </span>
-          <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-heading font-semibold border border-emerald-200/60">
-            {trend}
-          </span>
+    <div ref={containerRef} className="card-premium group relative overflow-hidden h-full rounded-3xl p-8 text-left flex flex-col justify-between hover:border-blue-300 hover:shadow-[0_16px_40px_rgba(37,99,235,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out">
+      <div className="absolute -top-14 -right-14 w-44 h-44 rounded-full bg-blue-500 blur-2xl pointer-events-none opacity-25 group-hover:opacity-80 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+      <div className="relative z-10 flex flex-col justify-between flex-1">
+        <div>
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xs font-mono font-medium text-[#64748B]">
+              {label}
+            </span>
+            <span className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-heading font-semibold border border-emerald-200/60">
+              {trend}
+            </span>
+          </div>
+
+          <div className="font-heading font-bold text-5xl md:text-6xl text-[#0F1B2D] tracking-tight">
+            {displayValue}
+            <span className="text-[#2563eb]">{suffix}</span>
+          </div>
         </div>
 
-        <div className="font-heading font-bold text-5xl md:text-6xl text-[#0F1B2D] tracking-tight">
-          {displayValue}
-          <span className="text-[#2563eb]">{suffix}</span>
+        <div className="mt-6 pt-4 border-t border-[#F1F5F9] text-xs font-body text-[#64748B] leading-relaxed">
+          {subtext}
         </div>
-      </div>
-
-      <div className="mt-6 pt-4 border-t border-[#F1F5F9] text-xs font-body text-[#64748B] leading-relaxed">
-        {subtext}
       </div>
     </div>
   );
@@ -168,31 +171,34 @@ export function Proof() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {citations.map((item, index) => (
               <FadeIn key={item.author} delay={index * 120}>
-                <div className="card-premium h-full rounded-3xl p-8 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="font-heading text-3xl text-[#2563eb] leading-none select-none">
-                        “
-                      </span>
-                      <span className="px-2.5 py-0.5 rounded-full bg-[#EFF6FF] text-[#2563eb] text-[10px] font-heading font-semibold">
-                        {item.badge}
-                      </span>
+                <div className="card-premium group relative overflow-hidden h-full rounded-3xl p-8 flex flex-col justify-between hover:border-blue-300 hover:shadow-[0_16px_40px_rgba(37,99,235,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out">
+                  <div className="absolute -top-14 -right-14 w-44 h-44 rounded-full bg-blue-500 blur-2xl pointer-events-none opacity-25 group-hover:opacity-80 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                  <div className="relative z-10 flex flex-col justify-between flex-1">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="font-heading text-3xl text-[#2563eb] leading-none select-none">
+                          “
+                        </span>
+                        <span className="px-2.5 py-0.5 rounded-full bg-[#EFF6FF] text-[#2563eb] text-[10px] font-heading font-semibold">
+                          {item.badge}
+                        </span>
+                      </div>
+
+                      <p className="font-body text-[#1E293B] leading-relaxed text-sm md:text-base">
+                        {item.quote}
+                      </p>
                     </div>
 
-                    <p className="font-body text-[#1E293B] leading-relaxed text-sm md:text-base">
-                      {item.quote}
-                    </p>
-                  </div>
-
-                  <div className="mt-8 pt-4 border-t border-[#F1F5F9]">
-                    <div className="font-heading font-bold text-sm text-[#0F1B2D]">
-                      {item.author}
-                    </div>
-                    <div className="font-body text-xs text-[#2563eb] font-medium mt-0.5">
-                      {item.role}
-                    </div>
-                    <div className="font-body text-[11px] text-[#64748B] mt-0.5">
-                      {item.org}
+                    <div className="mt-8 pt-4 border-t border-[#F1F5F9]">
+                      <div className="font-heading font-bold text-sm text-[#0F1B2D]">
+                        {item.author}
+                      </div>
+                      <div className="font-body text-xs text-[#2563eb] font-medium mt-0.5">
+                        {item.role}
+                      </div>
+                      <div className="font-body text-[11px] text-[#64748B] mt-0.5">
+                        {item.org}
+                      </div>
                     </div>
                   </div>
                 </div>

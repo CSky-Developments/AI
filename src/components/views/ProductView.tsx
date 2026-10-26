@@ -136,9 +136,23 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
         <section className="relative z-10 pb-12 bg-[#F8FAFE]">
           <div className="max-w-4xl mx-auto px-6">
             <FadeIn delay={100}>
-              <div className="card-premium group relative overflow-hidden bg-white rounded-3xl p-6 sm:p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+              <div
+                className="card-premium group relative overflow-hidden bg-white rounded-3xl p-6 sm:p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-500 ease-out"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `${product.colorScheme.primary}60`;
+                  e.currentTarget.style.boxShadow = `0 18px 45px -4px ${product.colorScheme.primary}20, 0 0 24px ${product.colorScheme.primary}15`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "";
+                  e.currentTarget.style.boxShadow = "";
+                }}
+              >
                 <div
-                  className="absolute -top-16 -right-16 w-44 h-44 rounded-full blur-2xl pointer-events-none opacity-25 group-hover:opacity-50 transition-opacity duration-500"
+                  className="absolute -top-16 -right-16 w-52 h-52 rounded-full blur-3xl pointer-events-none opacity-35 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500 ease-out z-0"
+                  style={{ background: product.colorScheme.primary }}
+                />
+                <div
+                  className="absolute -top-20 left-1/4 w-44 h-36 rounded-full blur-3xl pointer-events-none opacity-20 group-hover:opacity-50 transition-all duration-500 ease-out z-0"
                   style={{ background: product.colorScheme.primary }}
                 />
 
@@ -217,20 +231,36 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {product.highlights.map((h, idx) => (
               <FadeIn key={h.title} delay={idx * 120}>
-                <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-3xl z-0">
-                    <div
-                      className="absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-20 group-hover:opacity-50 transition-opacity duration-500"
-                      style={{ background: product.colorScheme.primary }}
-                    />
-                    <div className="absolute right-3 -bottom-3 opacity-[0.04] group-hover:opacity-[0.08] group-hover:scale-105 transition-all duration-500 select-none">
-                      {getModelTraditionalSymbol(product.name, 110, product.colorScheme.primary)}
-                    </div>
+                <div
+                  className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-between"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = `${product.colorScheme.primary}60`;
+                    e.currentTarget.style.boxShadow = `0 18px 45px -4px ${product.colorScheme.primary}25, 0 0 24px ${product.colorScheme.primary}18`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "";
+                    e.currentTarget.style.boxShadow = "";
+                  }}
+                >
+                  {/* Primary Vibrant Ambient Bloom */}
+                  <div
+                    className="absolute -top-16 -right-16 w-52 h-52 rounded-full blur-3xl pointer-events-none opacity-35 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500 ease-out z-0"
+                    style={{ background: product.colorScheme.primary }}
+                  />
+                  {/* Secondary Ambient Wash */}
+                  <div
+                    className="absolute -top-20 left-1/4 w-44 h-36 rounded-full blur-3xl pointer-events-none opacity-20 group-hover:opacity-50 transition-all duration-500 ease-out z-0"
+                    style={{ background: product.colorScheme.primary }}
+                  />
+                  {/* Subtle traditional watermark watermark */}
+                  <div className="absolute right-3 -bottom-3 opacity-[0.04] group-hover:opacity-[0.09] group-hover:scale-105 transition-all duration-500 pointer-events-none select-none z-0">
+                    {getModelTraditionalSymbol(product.name, 110, product.colorScheme.primary)}
                   </div>
 
-                  <div className="relative z-10">
+                  {/* Clean Content Container with zero top gap */}
+                  <div className="relative z-10 flex flex-col flex-1">
                     <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center font-heading font-bold text-sm mb-6"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center font-heading font-bold text-sm mb-6 shadow-2xs"
                       style={{
                         background: product.colorScheme.light,
                         color: product.colorScheme.primary,
@@ -241,7 +271,7 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
                     <h3 className="font-heading font-semibold text-xl text-[#0F1B2D]">
                       {h.title}
                     </h3>
-                    <p className="font-body text-sm md:text-base text-[#5A6B7F] mt-3 leading-relaxed">
+                    <p className="font-body text-sm md:text-base text-[#5A6B7F] mt-3 leading-relaxed flex-1">
                       {h.desc}
                     </p>
                   </div>
@@ -306,9 +336,25 @@ export function ProductView({ product, onNavigate }: ProductViewProps) {
                 <button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className="text-left p-8 rounded-3xl bg-white border border-[#E8EDF2] hover:border-[#3b82f6]/40 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group cursor-pointer relative overflow-hidden"
+                  className="card-premium text-left p-8 rounded-3xl bg-white border border-[#E8EDF2] hover:-translate-y-1.5 transition-all duration-500 ease-out group cursor-pointer relative overflow-hidden"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = `${item.colorScheme.primary}60`;
+                    e.currentTarget.style.boxShadow = `0 18px 45px -4px ${item.colorScheme.primary}25, 0 0 24px ${item.colorScheme.primary}18`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "";
+                    e.currentTarget.style.boxShadow = "";
+                  }}
                 >
-                  <div className="flex items-start sm:items-center gap-4">
+                  <div
+                    className="absolute -top-16 -right-16 w-52 h-52 rounded-full blur-3xl pointer-events-none opacity-30 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500 ease-out z-0"
+                    style={{ background: item.colorScheme.primary }}
+                  />
+                  <div
+                    className="absolute -top-20 left-1/4 w-44 h-36 rounded-full blur-3xl pointer-events-none opacity-15 group-hover:opacity-50 transition-all duration-500 ease-out z-0"
+                    style={{ background: item.colorScheme.primary }}
+                  />
+                  <div className="relative z-10 flex items-start sm:items-center gap-4">
                     <div className="w-14 h-14 rounded-2xl bg-[#F8FAFE] border border-[#E8EDF2] flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform">
                       {getModelTraditionalSymbol(item.name, 28, item.colorScheme.primary)}
                     </div>

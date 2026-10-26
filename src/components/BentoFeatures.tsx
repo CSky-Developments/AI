@@ -36,8 +36,8 @@ export function BentoFeatures() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mb-10">
           {/* Left: Chat Card */}
           <FadeIn delay={0}>
-            <div className="card-premium bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-[#FED7AA]/40 to-transparent rounded-bl-full pointer-events-none" />
+            <div className="card-premium bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:border-amber-300 hover:shadow-[0_16px_40px_rgba(217,119,6,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-44 h-44 bg-gradient-to-bl from-[#FED7AA]/50 to-transparent rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform duration-500" />
 
               <div>
                 <span className="font-heading font-bold text-base text-[#0F1B2D]">Chat</span>
@@ -66,8 +66,8 @@ export function BentoFeatures() {
 
           {/* Right: Work Card */}
           <FadeIn delay={100}>
-            <div className="card-premium bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#BBF7D0]/40 to-transparent rounded-bl-full pointer-events-none" />
+            <div className="card-premium bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:border-emerald-300 hover:shadow-[0_16px_40px_rgba(5,150,105,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-[#BBF7D0]/50 to-transparent rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform duration-500" />
 
               <div>
                 <span className="font-heading font-bold text-base text-[#0F1B2D]">Work</span>
@@ -188,8 +188,9 @@ export function BentoFeatures() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
             {/* Bento Card 1: Connectors with Scalloped Hill */}
             <FadeIn delay={100}>
-              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
-                <div>
+              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:border-emerald-300 hover:shadow-[0_16px_40px_rgba(5,150,105,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-emerald-400 blur-2xl pointer-events-none opacity-20 group-hover:opacity-60 group-hover:scale-125 transition-all duration-500 z-0" />
+                <div className="relative z-10">
                   <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">Connectors</h4>
                   <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
                     Connect Slack, GitHub, Linear, PostgreSQL, and private internal databases. Agents read verified context and execute safe transactions.
@@ -197,7 +198,7 @@ export function BentoFeatures() {
                 </div>
 
                 {/* Scalloped Hill with Floating Tool Pills */}
-                <div className="relative h-32 rounded-2xl bg-gradient-to-t from-emerald-100/70 via-emerald-50/40 to-transparent flex items-end justify-center p-3 overflow-hidden">
+                <div className="relative h-32 rounded-2xl bg-gradient-to-t from-emerald-100/70 via-emerald-50/40 to-transparent flex items-end justify-center p-3 overflow-hidden z-10">
                   <div className="flex flex-wrap gap-2 justify-center relative z-10">
                     {["PostgreSQL", "Linear", "GitHub", "Slack", "Kafka"].map((pill) => (
                       <span
@@ -214,8 +215,9 @@ export function BentoFeatures() {
 
             {/* Bento Card 2: Skills with Scalloped Peach Hill */}
             <FadeIn delay={200}>
-              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
-                <div>
+              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:border-orange-300 hover:shadow-[0_16px_40px_rgba(234,88,12,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-orange-400 blur-2xl pointer-events-none opacity-20 group-hover:opacity-60 group-hover:scale-125 transition-all duration-500 z-0" />
+                <div className="relative z-10">
                   <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">Skills</h4>
                   <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
                     Skills define the mathematical and formal constraints an agent must satisfy before emitting output. They enforce zero-hallucination bounds.
@@ -223,7 +225,7 @@ export function BentoFeatures() {
                 </div>
 
                 {/* Scalloped Peach Hill with Skill Pills */}
-                <div className="relative h-32 rounded-2xl bg-gradient-to-t from-orange-100/70 via-orange-50/40 to-transparent flex flex-col items-center justify-end p-3 gap-2 overflow-hidden">
+                <div className="relative h-32 rounded-2xl bg-gradient-to-t from-orange-100/70 via-orange-50/40 to-transparent flex flex-col items-center justify-end p-3 gap-2 overflow-hidden z-10">
                   <div className="px-4 py-1.5 rounded-xl bg-white border border-[#E2E8F0] shadow-2xs font-body text-xs font-semibold text-[#0F1B2D] flex items-center gap-2">
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-orange-600">
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
@@ -243,8 +245,9 @@ export function BentoFeatures() {
 
             {/* Bento Card 3: Sub-Agents with Scalloped Lavender Hill */}
             <FadeIn delay={300}>
-              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
-                <div>
+              <div className="card-premium bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:border-indigo-300 hover:shadow-[0_16px_40px_rgba(99,102,241,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[360px] flex flex-col justify-between relative overflow-hidden group">
+                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-indigo-400 blur-2xl pointer-events-none opacity-20 group-hover:opacity-60 group-hover:scale-125 transition-all duration-500 z-0" />
+                <div className="relative z-10">
                   <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">Sub-agents</h4>
                   <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
                     A lead agent decomposes large jobs among specialized sub-agents with isolated memory sandboxes, then validates their joint outcome.
@@ -252,10 +255,10 @@ export function BentoFeatures() {
                 </div>
 
                 {/* Scalloped Lavender Hill with Sub-agent Card */}
-                <div className="relative h-32 rounded-2xl bg-gradient-to-t from-indigo-100/70 via-indigo-50/40 to-transparent flex items-end justify-center p-3 overflow-hidden">
+                <div className="relative h-32 rounded-2xl bg-gradient-to-t from-indigo-100/70 via-indigo-50/40 to-transparent flex items-end justify-center p-3 overflow-hidden z-10">
                   <div className="w-full bg-white p-3 rounded-xl border border-[#E2E8F0] shadow-sm">
                     <div className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-[#6366F1]" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#6366F1]" />
                       <span className="font-heading font-bold text-xs text-[#0F1B2D]">
                         Compiler RCA Sub-Agent
                       </span>

@@ -163,7 +163,7 @@ export function ResearchView({ onNavigate }: ResearchViewProps) {
       {/* 2. FEATURED FLAGSHIP RESEARCH CARD (Top-Visual Banner like Reference 111309.png) */}
       <section className="relative z-10 max-w-6xl mx-auto px-6 py-12">
         <FadeIn>
-          <div className="card-premium group relative overflow-hidden rounded-[36px] bg-white border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+          <div className="card-premium group relative overflow-hidden rounded-[36px] bg-white border border-[#E8EDF2] hover:border-blue-300 hover:shadow-[0_20px_50px_rgba(37,99,235,0.18)] hover:-translate-y-1.5 transition-all duration-500 ease-out">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left Column: Visual Banner Canvas */}
               <div className="lg:col-span-5 h-64 lg:h-full min-h-[280px] bg-gradient-to-br from-[#1E40AF] via-[#2563EB] to-[#60A5FA] p-8 flex flex-col justify-between relative overflow-hidden">
@@ -260,50 +260,55 @@ export function ResearchView({ onNavigate }: ResearchViewProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredPapers.map((paper, idx) => (
             <FadeIn key={paper.id} delay={idx * 100}>
-              <div className="card-premium group relative overflow-hidden rounded-[32px] bg-white p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center justify-between text-xs mb-3">
-                    <span className="px-3 py-1 rounded-full bg-[#EFF6FF] text-[#2563eb] font-heading font-semibold text-[11px] border border-blue-100">
-                      {paper.categoryLabel}
-                    </span>
-                    <span className="font-mono text-xs text-[#94A3B8]">
-                      {paper.arxiv}
-                    </span>
+              <div className="card-premium group relative overflow-hidden rounded-[32px] bg-white p-8 border border-[#E8EDF2] hover:border-blue-300 hover:shadow-[0_16px_40px_rgba(37,99,235,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out h-full flex flex-col justify-between">
+                <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-blue-500 blur-3xl pointer-events-none opacity-30 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                <div className="absolute -top-20 left-1/4 w-44 h-36 rounded-full bg-sky-400 blur-3xl pointer-events-none opacity-15 group-hover:opacity-50 transition-all duration-500 ease-out z-0" />
+
+                <div className="relative z-10 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex items-center justify-between text-xs mb-3">
+                      <span className="px-3 py-1 rounded-full bg-[#EFF6FF] text-[#2563eb] font-heading font-semibold text-[11px] border border-blue-100">
+                        {paper.categoryLabel}
+                      </span>
+                      <span className="font-mono text-xs text-[#94A3B8]">
+                        {paper.arxiv}
+                      </span>
+                    </div>
+
+                    <h3 className="font-heading font-bold text-xl text-[#0F1B2D] mt-3 leading-snug group-hover:text-[#2563eb] transition-colors">
+                      {paper.title}
+                    </h3>
+
+                    <div className="font-body text-xs text-[#64748B] mt-2 font-medium">
+                      {paper.authors}
+                    </div>
+
+                    <p className="font-body text-sm text-[#5A6B7F] mt-3.5 leading-relaxed">
+                      {paper.abstract}
+                    </p>
+
+                    <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-heading font-medium border border-emerald-200/60">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      {paper.metric}
+                    </div>
                   </div>
 
-                  <h3 className="font-heading font-bold text-xl text-[#0F1B2D] mt-3 leading-snug group-hover:text-[#2563eb] transition-colors">
-                    {paper.title}
-                  </h3>
+                  <div className="mt-8 pt-4 border-t border-[#F1F5F9] flex items-center justify-between gap-3">
+                    <button
+                      onClick={() => handleCopyBibtex(paper.id, paper.bibtex)}
+                      className="text-xs font-body font-medium text-[#475569] hover:text-[#0F1B2D] cursor-pointer"
+                    >
+                      {copiedBibtex === paper.id ? "✓ BibTeX Copied" : "BibTeX"}
+                    </button>
 
-                  <div className="font-body text-xs text-[#64748B] mt-2 font-medium">
-                    {paper.authors}
+                    <button
+                      onClick={() => onNavigate("models")}
+                      className="font-heading text-xs font-semibold text-[#2563eb] hover:underline flex items-center gap-1 cursor-pointer"
+                    >
+                      <span>Weights</span>
+                      <span>→</span>
+                    </button>
                   </div>
-
-                  <p className="font-body text-sm text-[#5A6B7F] mt-3.5 leading-relaxed">
-                    {paper.abstract}
-                  </p>
-
-                  <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-heading font-medium border border-emerald-200/60">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    {paper.metric}
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-[#F1F5F9] flex items-center justify-between gap-3">
-                  <button
-                    onClick={() => handleCopyBibtex(paper.id, paper.bibtex)}
-                    className="text-xs font-body font-medium text-[#475569] hover:text-[#0F1B2D] cursor-pointer"
-                  >
-                    {copiedBibtex === paper.id ? "✓ BibTeX Copied" : "BibTeX"}
-                  </button>
-
-                  <button
-                    onClick={() => onNavigate("models")}
-                    className="font-heading text-xs font-semibold text-[#2563eb] hover:underline flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Weights</span>
-                    <span>→</span>
-                  </button>
                 </div>
               </div>
             </FadeIn>

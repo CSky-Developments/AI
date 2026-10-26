@@ -120,38 +120,53 @@ export function ManifestoView({ onGetAccess }: { onGetAccess: () => void }) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {principles.map((principle, index) => (
               <FadeIn key={principle.num} delay={index * 100}>
-                <div className="card-premium group relative overflow-hidden rounded-[32px] p-8 bg-white border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between">
-                  {/* Subtle Corner Gradient Bloom contained safely */}
-                  <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px] z-0">
-                    <div
-                      className={`absolute -top-12 -right-12 w-36 h-36 rounded-full bg-gradient-to-br ${principle.bgGradient} blur-xl group-hover:opacity-100 opacity-40 transition-opacity duration-500`}
-                    />
-                  </div>
+                <div
+                  className="card-premium group relative overflow-hidden rounded-[32px] p-8 bg-white border border-[#E8EDF2] hover:-translate-y-1.5 transition-all duration-500 ease-out h-full flex flex-col justify-between"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = `${principle.accent}60`;
+                    e.currentTarget.style.boxShadow = `0 18px 45px -4px ${principle.accent}25, 0 0 24px ${principle.accent}18`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = "";
+                    e.currentTarget.style.boxShadow = "";
+                  }}
+                >
+                  {/* Luminous Ambient Blooms */}
+                  <div
+                    className="absolute -top-16 -right-16 w-52 h-52 rounded-full blur-3xl pointer-events-none opacity-35 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500 ease-out z-0"
+                    style={{ background: principle.accent }}
+                  />
+                  <div
+                    className="absolute -top-20 left-1/4 w-44 h-36 rounded-full blur-3xl pointer-events-none opacity-20 group-hover:opacity-50 transition-all duration-500 ease-out z-0"
+                    style={{ background: principle.accent }}
+                  />
 
-                  <div className="relative z-10">
-                    <div className="flex items-center justify-between mb-5">
-                      <div className="w-12 h-12 rounded-2xl bg-[#F8FAFE] border border-[#E8EDF2] flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform">
-                        {principle.icon}
+                  <div className="relative z-10 flex flex-col justify-between flex-1">
+                    <div>
+                      <div className="flex items-center justify-between mb-5">
+                        <div className="w-12 h-12 rounded-2xl bg-[#F8FAFE] border border-[#E8EDF2] flex items-center justify-center shadow-2xs group-hover:scale-105 transition-transform">
+                          {principle.icon}
+                        </div>
+                        <span className="font-mono text-xs font-bold text-[#94A3B8]">
+                          Principle {principle.num}
+                        </span>
                       </div>
-                      <span className="font-mono text-xs font-bold text-[#94A3B8]">
-                        Principle {principle.num}
-                      </span>
+
+                      <div
+                        className="text-xs font-heading font-semibold tracking-wide"
+                        style={{ color: principle.accent }}
+                      >
+                        {principle.sanskrit}
+                      </div>
+
+                      <h3 className="font-heading font-bold text-xl sm:text-2xl text-[#0F1B2D] mt-2 leading-snug">
+                        {principle.title}
+                      </h3>
+
+                      <p className="font-body text-[#5A6B7F] mt-3.5 leading-relaxed text-sm">
+                        {principle.body}
+                      </p>
                     </div>
-
-                    <div
-                      className="text-xs font-heading font-semibold tracking-wide"
-                      style={{ color: principle.accent }}
-                    >
-                      {principle.sanskrit}
-                    </div>
-
-                    <h3 className="font-heading font-bold text-xl sm:text-2xl text-[#0F1B2D] mt-2 leading-snug">
-                      {principle.title}
-                    </h3>
-
-                    <p className="font-body text-[#5A6B7F] mt-3.5 leading-relaxed text-sm">
-                      {principle.body}
-                    </p>
                   </div>
                 </div>
               </FadeIn>
@@ -161,20 +176,23 @@ export function ManifestoView({ onGetAccess }: { onGetAccess: () => void }) {
 
         {/* CTA */}
         <FadeIn delay={200}>
-          <div className="card-premium group relative overflow-hidden mt-20 text-center p-10 md:p-14 rounded-[36px] bg-[#EEF2FF] border border-[#C7D2FE] shadow-sm hover:shadow-xl transition-all duration-500">
-            <h3 className="font-heading font-bold text-2xl md:text-3xl text-[#1E1B4B]">
-              Build with us in the open.
-            </h3>
-            <p className="font-body text-sm md:text-base text-[#4338CA] mt-2 max-w-md mx-auto">
-              Our research papers, model checkpoints, and developer SDKs are available now with zero gatekeeping.
-            </p>
-            <button
-              data-magnetic
-              onClick={onGetAccess}
-              className="mt-6 bg-[#4F46E5] hover:bg-[#4338CA] text-white font-body font-medium text-sm rounded-full px-8 py-3.5 transition-all shadow-md hover:shadow-lg cursor-pointer"
-            >
-              Get Early Access →
-            </button>
+          <div className="card-premium group relative overflow-hidden mt-20 text-center p-10 md:p-14 rounded-[36px] bg-[#EEF2FF] border border-[#C7D2FE] hover:border-indigo-300 hover:shadow-[0_20px_50px_rgba(79,70,229,0.18)] hover:-translate-y-1.5 transition-all duration-500 ease-out">
+            <div className="absolute -top-16 -right-16 w-60 h-60 rounded-full bg-indigo-400 blur-3xl pointer-events-none opacity-30 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+            <div className="relative z-10">
+              <h3 className="font-heading font-bold text-2xl md:text-3xl text-[#1E1B4B]">
+                Build with us in the open.
+              </h3>
+              <p className="font-body text-sm md:text-base text-[#4338CA] mt-2 max-w-md mx-auto">
+                Our research papers, model checkpoints, and developer SDKs are available now with zero gatekeeping.
+              </p>
+              <button
+                data-magnetic
+                onClick={onGetAccess}
+                className="mt-6 bg-[#4F46E5] hover:bg-[#4338CA] text-white font-body font-medium text-sm rounded-full px-8 py-3.5 transition-all shadow-md hover:shadow-lg cursor-pointer"
+              >
+                Get Early Access →
+              </button>
+            </div>
           </div>
         </FadeIn>
       </div>

@@ -32,6 +32,7 @@ print("Connected to Sovereign Cluster: 6 Models Ready")`,
       sanskrit: "अन्वेषण · Explore",
       title: "Explore",
       description: "Ask complex multi-domain questions. Get auditable mathematical proof trees, not opaque guesses.",
+      icon: <DrishtiSymbol size={26} color="#2563eb" />,
       codeTitle: "Step 2: Stream Verified Multi-Step Proofs",
       codeSnippet: `# Query Akash 405B with formal theorem checking enabled
 stream = client.reasoning.stream(
@@ -46,6 +47,7 @@ stream = client.reasoning.stream(
       sanskrit: "क्रिया · Act",
       title: "Act",
       description: "Deploy verified models directly to production CI/CD, local edge devices, or air-gapped VPCs.",
+      icon: <KriyaChakraSymbol size={26} color="#2563eb" />,
       codeTitle: "Step 3: Instant Production Deployment",
       codeSnippet: `# Export optimized FP8 tensor kernels for deployment
 csky export --model drishti-70b --format vllm-fp8 --target ./deploy
@@ -80,42 +82,52 @@ csky export --model drishti-70b --format vllm-fp8 --target ./deploy
               <FadeIn key={step.num} delay={index * 120}>
                 <div
                   onClick={() => setActiveStep(index)}
-                  className={`card-premium rounded-3xl p-8 cursor-pointer transition-all duration-300 relative ${
+                  className={`card-premium group relative overflow-hidden rounded-3xl p-8 cursor-pointer transition-all duration-500 ease-out hover:-translate-y-1.5 flex flex-col justify-between ${
                     isSelected
-                      ? "border-2 border-[#2563eb] shadow-md bg-white"
-                      : "border border-[#E8EDF2] bg-white/70 hover:bg-white"
+                      ? "border-2 border-[#2563eb] shadow-[0_16px_40px_rgba(37,99,235,0.18)] bg-white"
+                      : "border border-[#E8EDF2] bg-white hover:border-blue-300 hover:shadow-[0_16px_40px_rgba(37,99,235,0.14)]"
                   }`}
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="w-14 h-14 rounded-2xl bg-[#E8F0FE] flex items-center justify-center border border-[#E2E8F0] shadow-2xs">
-                      {step.icon}
+                  {/* Primary Vibrant Ambient Bloom */}
+                  <div className={`absolute -top-16 -right-16 w-48 h-48 rounded-full bg-blue-500 blur-3xl pointer-events-none transition-all duration-500 ease-out z-0 ${
+                    isSelected ? "opacity-60 scale-110" : "opacity-25 group-hover:opacity-80 group-hover:scale-125"
+                  }`} />
+                  <div className={`absolute -top-20 left-1/4 w-40 h-32 rounded-full bg-sky-400 blur-3xl pointer-events-none transition-all duration-500 ease-out z-0 ${
+                    isSelected ? "opacity-35" : "opacity-15 group-hover:opacity-45"
+                  }`} />
+
+                  <div className="relative z-10 flex flex-col flex-1">
+                    <div className="flex items-center justify-between">
+                      <div className="w-14 h-14 rounded-2xl bg-[#E8F0FE] flex items-center justify-center border border-[#E2E8F0] shadow-2xs group-hover:scale-105 transition-transform">
+                        {step.icon}
+                      </div>
+                      <span
+                        className={`font-mono text-xs font-bold px-2.5 py-1 rounded-full ${
+                          isSelected
+                            ? "bg-[#2563eb] text-white"
+                            : "bg-[#F1F5F9] text-[#64748B]"
+                        }`}
+                      >
+                        {step.num}
+                      </span>
                     </div>
-                    <span
-                      className={`font-mono text-xs font-bold px-2.5 py-1 rounded-full ${
-                        isSelected
-                          ? "bg-[#2563eb] text-white"
-                          : "bg-[#F1F5F9] text-[#64748B]"
-                      }`}
-                    >
-                      {step.num}
-                    </span>
-                  </div>
 
-                  <div className="text-xs font-heading font-semibold text-[#2563eb] mt-6 tracking-wide">
-                    {step.sanskrit}
-                  </div>
+                    <div className="text-xs font-heading font-semibold text-[#2563eb] mt-6 tracking-wide">
+                      {step.sanskrit}
+                    </div>
 
-                  <h3 className="font-heading text-xl font-bold mt-1 text-[#0F1B2D]">
-                    {step.title}
-                  </h3>
+                    <h3 className="font-heading text-xl font-bold mt-1 text-[#0F1B2D]">
+                      {step.title}
+                    </h3>
 
-                  <p className="font-body text-[#5A6B7F] mt-3 leading-relaxed text-sm">
-                    {step.description}
-                  </p>
+                    <p className="font-body text-[#5A6B7F] mt-3 leading-relaxed text-sm flex-1">
+                      {step.description}
+                    </p>
 
-                  <div className="mt-6 flex items-center gap-1.5 text-xs font-heading font-semibold text-[#2563eb]">
-                    <span>{isSelected ? "Active Pipeline Stage" : "Click to Inspect"}</span>
-                    <span>→</span>
+                    <div className="mt-6 flex items-center gap-1.5 text-xs font-heading font-semibold text-[#2563eb]">
+                      <span>{isSelected ? "Active Pipeline Stage" : "Click to Inspect"}</span>
+                      <span>→</span>
+                    </div>
                   </div>
                 </div>
               </FadeIn>

@@ -92,7 +92,9 @@ export function EarlyAccessView() {
           {/* Left Column (col-span-7): Application Form */}
           <div className="lg:col-span-7">
             <FadeIn delay={100}>
-              <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-8 sm:p-10 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+              <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-8 sm:p-10 border border-[#E8EDF2] hover:border-sky-300 hover:shadow-[0_20px_50px_rgba(2,132,199,0.16)] transition-all duration-500 ease-out">
+                <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-sky-400 blur-3xl pointer-events-none opacity-20 group-hover:opacity-70 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                <div className="relative z-10">
                 {submitted ? (
                   <div className="py-12 text-center">
                     <div className="w-16 h-16 rounded-full bg-[#E0F2FE] flex items-center justify-center mx-auto text-[#0284c7] mb-6 shadow-sm">
@@ -225,6 +227,7 @@ export function EarlyAccessView() {
                     </div>
                   </form>
                 )}
+                </div>
               </div>
             </FadeIn>
           </div>
@@ -232,7 +235,9 @@ export function EarlyAccessView() {
           {/* Right Column (col-span-5): Pilot Perks & Floating Constellation (From Reference 111608.png) */}
           <div className="lg:col-span-5 space-y-6">
             <FadeIn delay={150}>
-              <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-500">
+              <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-7 border border-[#E8EDF2] hover:border-sky-300 hover:shadow-[0_20px_50px_rgba(2,132,199,0.16)] transition-all duration-500 ease-out">
+                <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-sky-400 blur-3xl pointer-events-none opacity-20 group-hover:opacity-70 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                <div className="relative z-10">
                 <div className="flex items-center justify-between pb-4 border-b border-[#F1F5F9]">
                   <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
                     Developer Pilot Inclusions
@@ -323,6 +328,7 @@ export function EarlyAccessView() {
                     </div>
                   </div>
                 </div>
+                </div>
               </div>
             </FadeIn>
           </div>
@@ -344,8 +350,9 @@ export function EarlyAccessView() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {faqs.map((faq, i) => (
               <FadeIn key={faq.q} delay={i * 80}>
-                <div className="card-premium group relative overflow-hidden bg-white rounded-3xl p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between">
-                  <div>
+                <div className="card-premium group relative overflow-hidden bg-white rounded-3xl p-7 border border-[#E8EDF2] hover:border-sky-300 hover:shadow-[0_16px_40px_rgba(2,132,199,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-out h-full flex flex-col justify-between">
+                  <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-sky-400 blur-2xl pointer-events-none opacity-15 group-hover:opacity-65 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                  <div className="relative z-10">
                     <h3 className="font-heading font-semibold text-base text-[#0F1B2D]">
                       {faq.q}
                     </h3>

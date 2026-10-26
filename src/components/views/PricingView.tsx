@@ -135,9 +135,9 @@ export function PricingView({ onNavigate }: PricingViewProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch pt-4">
           {/* Tier 1: Open Weights Self-Hosted */}
           <FadeIn delay={50}>
-            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:border-emerald-300 hover:shadow-[0_20px_50px_rgba(5,150,105,0.14)] hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
               <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px] z-0">
-                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-emerald-500/10 blur-xl group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+                <div className="absolute -top-12 -right-12 -top-14 -right-14 w-48 h-48 rounded-full bg-emerald-400 blur-2xl opacity-35 group-hover:opacity-80 group-hover:scale-125 transition-all duration-500" />
               </div>
               
               <div className="relative z-10">
@@ -206,10 +206,10 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
           {/* Tier 2: Managed Serverless Endpoints (Highlighted) */}
           <FadeIn delay={120}>
-            <div className="card-premium group relative h-full bg-white rounded-[32px] p-8 border-2 border-[#0284c7] shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+            <div className="card-premium group relative h-full bg-white rounded-[32px] p-8 border-2 border-[#0284c7] shadow-md hover:border-sky-400 hover:shadow-[0_24px_60px_rgba(2,132,199,0.22)] hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
               {/* Contained glow bloom */}
               <div className="absolute inset-0 rounded-[32px] overflow-hidden pointer-events-none">
-                <div className="absolute -top-12 -right-12 w-40 h-40 rounded-full bg-sky-500/15 blur-xl group-hover:opacity-100 opacity-50 transition-opacity duration-500" />
+                <div className="absolute -top-12 -right-12 -top-14 -right-14 w-52 h-52 rounded-full bg-sky-400 blur-2xl opacity-40 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500" />
               </div>
 
               {/* Floating "Most Popular" Badge - Crisp, fully visible, unclipped */}
@@ -283,9 +283,9 @@ export function PricingView({ onNavigate }: PricingViewProps) {
 
           {/* Tier 3: Dedicated Sovereign GPU Cluster */}
           <FadeIn delay={180}>
-            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
+            <div className="card-premium group relative overflow-hidden h-full bg-white rounded-[32px] p-8 border border-[#E8EDF2] shadow-sm hover:border-emerald-300 hover:shadow-[0_20px_50px_rgba(5,150,105,0.14)] hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between">
               <div className="absolute inset-0 overflow-hidden pointer-events-none rounded-[32px] z-0">
-                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-indigo-500/10 blur-xl group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+                <div className="absolute -top-12 -right-12 -top-14 -right-14 w-48 h-48 rounded-full bg-indigo-400 blur-2xl opacity-35 group-hover:opacity-80 group-hover:scale-125 transition-all duration-500" />
               </div>
               
               <div className="relative z-10">

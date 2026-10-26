@@ -221,7 +221,17 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {flagshipModels.map((m, idx) => (
             <FadeIn key={m.id} delay={idx * 120}>
-              <div className="card-premium group relative overflow-hidden rounded-[32px] bg-white border border-[#E8EDF2] shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-full flex flex-col justify-between">
+              <div
+                className="card-premium group relative overflow-hidden rounded-[32px] bg-white border border-[#E8EDF2] hover:-translate-y-2 transition-all duration-500 ease-out h-full flex flex-col justify-between"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `${m.accentColor}60`;
+                  e.currentTarget.style.boxShadow = `0 20px 50px -4px ${m.accentColor}30, 0 0 28px ${m.accentColor}20`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "";
+                  e.currentTarget.style.boxShadow = "";
+                }}
+              >
                 <div>
                   {/* Top 40% Visual Canvas with Vibrant Pastel/Gradient Texture & 3D Relief Emblem */}
                   <div
@@ -341,8 +351,28 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
           {specializedModels.map((sm, idx) => (
             <FadeIn key={sm.id} delay={idx * 120}>
-              <div className="card-premium group relative overflow-hidden rounded-[32px] bg-white p-7 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] h-[380px] flex flex-col justify-between">
-                <div>
+              <div
+                className="card-premium group relative overflow-hidden rounded-[32px] bg-white p-7 border border-[#E8EDF2] hover:-translate-y-1.5 transition-all duration-500 ease-out h-[380px] flex flex-col justify-between"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = `${sm.accent}60`;
+                  e.currentTarget.style.boxShadow = `0 18px 45px -4px ${sm.accent}25, 0 0 24px ${sm.accent}18`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "";
+                  e.currentTarget.style.boxShadow = "";
+                }}
+              >
+                {/* Luminous Ambient Corner Blooms */}
+                <div
+                  className="absolute -top-16 -right-16 w-52 h-52 rounded-full blur-3xl pointer-events-none opacity-35 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500 ease-out z-0"
+                  style={{ background: sm.accent }}
+                />
+                <div
+                  className="absolute -top-20 left-1/4 w-44 h-36 rounded-full blur-3xl pointer-events-none opacity-20 group-hover:opacity-50 transition-all duration-500 ease-out z-0"
+                  style={{ background: sm.accent }}
+                />
+
+                <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <div
                       className="w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 shadow-2xs group-hover:scale-105 transition-transform"
@@ -378,7 +408,7 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
 
                 {/* Scalloped Hill with Floating Pills (From Reference Bento Screenshot 111614.png) */}
                 <div
-                  className="relative rounded-2xl p-4 overflow-hidden flex flex-wrap gap-2 items-center justify-center border"
+                  className="relative z-10 rounded-2xl p-4 overflow-hidden flex flex-wrap gap-2 items-center justify-center border"
                   style={{
                     backgroundColor: `${sm.bgLight}90`,
                     borderColor: `${sm.accent}25`,
@@ -394,7 +424,7 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
                   ))}
                 </div>
 
-                <div className="pt-2 flex items-center justify-between text-xs">
+                <div className="pt-2 flex items-center justify-between text-xs relative z-10">
                   {onNavigate && (
                     <button
                       onClick={() => onNavigate(`csky-${sm.id}`)}
@@ -492,62 +522,70 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
           <div className="lg:col-span-6 flex flex-col justify-between gap-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <FadeIn delay={80}>
-                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#DDD6FE]/60 via-[#EDE9FE]/30 to-transparent rounded-bl-full pointer-events-none" />
-                  <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-4">
-                    <AkashSymbol size={22} color="#4F46E5" />
+                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] hover:border-indigo-300 hover:shadow-[0_16px_40px_rgba(79,70,229,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out relative overflow-hidden group">
+                  <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-indigo-500 blur-2xl pointer-events-none opacity-25 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                  <div className="relative z-10">
+                    <div className="w-10 h-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center mb-4 shadow-2xs">
+                      <AkashSymbol size={22} color="#4F46E5" />
+                    </div>
+                    <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
+                      FP8 Native Cache
+                    </h4>
+                    <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
+                      Pre-quantized FP8 weights reduce KV-cache memory by 38% with zero precision degradation.
+                    </p>
                   </div>
-                  <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
-                    FP8 Native Cache
-                  </h4>
-                  <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
-                    Pre-quantized FP8 weights reduce KV-cache memory by 38% with zero precision degradation.
-                  </p>
                 </div>
               </FadeIn>
 
               <FadeIn delay={140}>
-                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#FED7AA]/60 via-[#FFEDD5]/30 to-transparent rounded-bl-full pointer-events-none" />
-                  <div className="w-10 h-10 rounded-xl bg-[#FFF7ED] flex items-center justify-center mb-4">
-                    <AgniSymbol size={22} color="#EA580C" />
+                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] hover:border-orange-300 hover:shadow-[0_16px_40px_rgba(234,88,12,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out relative overflow-hidden group">
+                  <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-orange-500 blur-2xl pointer-events-none opacity-25 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                  <div className="relative z-10">
+                    <div className="w-10 h-10 rounded-xl bg-[#FFF7ED] flex items-center justify-center mb-4 shadow-2xs">
+                      <AgniSymbol size={22} color="#EA580C" />
+                    </div>
+                    <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
+                      Lean 4 Formal Proofs
+                    </h4>
+                    <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
+                      Automated theorem prover pipeline verifies each mathematical lemma before commit.
+                    </p>
                   </div>
-                  <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
-                    Lean 4 Formal Proofs
-                  </h4>
-                  <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
-                    Automated theorem prover pipeline verifies each mathematical lemma before commit.
-                  </p>
                 </div>
               </FadeIn>
 
               <FadeIn delay={200}>
-                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#BBF7D0]/60 via-[#DCFCE7]/30 to-transparent rounded-bl-full pointer-events-none" />
-                  <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] flex items-center justify-center mb-4">
-                    <PrithviSymbol size={22} color="#059669" />
+                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] hover:border-emerald-300 hover:shadow-[0_16px_40px_rgba(5,150,105,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out relative overflow-hidden group">
+                  <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-emerald-500 blur-2xl pointer-events-none opacity-25 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                  <div className="relative z-10">
+                    <div className="w-10 h-10 rounded-xl bg-[#F0FDF4] flex items-center justify-center mb-4 shadow-2xs">
+                      <PrithviSymbol size={22} color="#059669" />
+                    </div>
+                    <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
+                      22 Indic Languages
+                    </h4>
+                    <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
+                      Native multilingual semantics without English pivots, maintaining cultural idioms and legal nuance.
+                    </p>
                   </div>
-                  <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
-                    22 Indic Languages
-                  </h4>
-                  <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
-                    Native multilingual semantics without English pivots, maintaining cultural idioms and legal nuance.
-                  </p>
                 </div>
               </FadeIn>
 
               <FadeIn delay={260}>
-                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#BAE6FD]/60 via-[#E0F2FE]/30 to-transparent rounded-bl-full pointer-events-none" />
-                  <div className="w-10 h-10 rounded-xl bg-[#F0F9FF] flex items-center justify-center mb-4">
-                    <DrishtiSymbol size={22} color="#0284C7" />
+                <div className="card-premium bg-white rounded-[28px] p-6 border border-[#E8EDF2] hover:border-sky-300 hover:shadow-[0_16px_40px_rgba(2,132,199,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out relative overflow-hidden group">
+                  <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-sky-500 blur-2xl pointer-events-none opacity-25 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                  <div className="relative z-10">
+                    <div className="w-10 h-10 rounded-xl bg-[#F0F9FF] flex items-center justify-center mb-4 shadow-2xs">
+                      <DrishtiSymbol size={22} color="#0284C7" />
+                    </div>
+                    <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
+                      Air-Gapped Sovereign
+                    </h4>
+                    <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
+                      Weights run 100% locally on commodity hardware or isolated VPCs with zero external telemetry.
+                    </p>
                   </div>
-                  <h4 className="font-heading font-bold text-lg text-[#0F1B2D]">
-                    Air-Gapped Sovereign
-                  </h4>
-                  <p className="font-body text-xs sm:text-sm text-[#64748B] mt-2 leading-relaxed">
-                    Weights run 100% locally on commodity hardware or isolated VPCs with zero external telemetry.
-                  </p>
                 </div>
               </FadeIn>
             </div>
@@ -618,31 +656,34 @@ export function ModelsView({ onGetAccess, onNavigate }: ModelsViewProps) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {papers.map((paper, idx) => (
             <FadeIn key={paper.title} delay={idx * 120}>
-              <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] shadow-sm flex flex-col justify-between hover:shadow-xl hover:-translate-y-1.5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-blue-500/10 blur-xl pointer-events-none group-hover:opacity-100 opacity-40 transition-opacity duration-500" />
+              <div className="card-premium group relative overflow-hidden h-full bg-white rounded-3xl p-8 border border-[#E8EDF2] hover:border-blue-300 hover:shadow-[0_16px_40px_rgba(37,99,235,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out flex flex-col justify-between">
+                <div className="absolute -top-16 -right-16 w-52 h-52 rounded-full bg-blue-500 blur-3xl pointer-events-none opacity-30 group-hover:opacity-85 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                <div className="absolute -top-20 left-1/4 w-44 h-36 rounded-full bg-sky-400 blur-3xl pointer-events-none opacity-15 group-hover:opacity-50 transition-all duration-500 ease-out z-0" />
 
-                <div className="relative z-10">
-                  <div className="flex items-center justify-between text-xs font-body text-[#8A95A5]">
-                    <span className="font-heading font-semibold text-[#2563eb] uppercase tracking-wider text-[11px] px-2.5 py-0.5 rounded-full bg-[#EFF6FF] border border-blue-100">
-                      {paper.category}
-                    </span>
-                    <span>{paper.date}</span>
+                <div className="relative z-10 flex flex-col justify-between flex-1">
+                  <div>
+                    <div className="flex items-center justify-between text-xs font-body text-[#8A95A5]">
+                      <span className="font-heading font-semibold text-[#2563eb] uppercase tracking-wider text-[11px] px-2.5 py-0.5 rounded-full bg-[#EFF6FF] border border-blue-100">
+                        {paper.category}
+                      </span>
+                      <span>{paper.date}</span>
+                    </div>
+                    <h3 className="font-heading text-lg font-bold text-[#0F1B2D] mt-4 leading-snug group-hover:text-[#2563eb] transition-colors duration-300">
+                      {paper.title}
+                    </h3>
+                    <p className="font-body text-sm text-[#5A6B7F] mt-3 leading-relaxed">
+                      {paper.abstract}
+                    </p>
                   </div>
-                  <h3 className="font-heading text-lg font-bold text-[#0F1B2D] mt-4 leading-snug group-hover:text-[#2563eb] transition-colors duration-300">
-                    {paper.title}
-                  </h3>
-                  <p className="font-body text-sm text-[#5A6B7F] mt-3 leading-relaxed">
-                    {paper.abstract}
-                  </p>
-                </div>
-                <div className="mt-6 pt-4 border-t border-[#F1F5F9] relative z-10">
-                  <button
-                    onClick={() => onNavigate ? onNavigate("research") : onGetAccess()}
-                    className="font-heading text-xs font-semibold text-[#2563eb] group-hover:text-[#1e40af] flex items-center gap-1.5 cursor-pointer transition-all duration-300 group-hover:translate-x-1"
-                  >
-                    <span>Read full paper & BibTeX citation</span>
-                    <span>→</span>
-                  </button>
+                  <div className="mt-6 pt-4 border-t border-[#F1F5F9]">
+                    <button
+                      onClick={() => onNavigate ? onNavigate("research") : onGetAccess()}
+                      className="font-heading text-xs font-semibold text-[#2563eb] group-hover:text-[#1e40af] flex items-center gap-1.5 cursor-pointer transition-all duration-300 group-hover:translate-x-1"
+                    >
+                      <span>Read full paper & BibTeX citation</span>
+                      <span>→</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </FadeIn>

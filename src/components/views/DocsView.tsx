@@ -181,8 +181,9 @@ ollama run csky/soma:14b-q8`,
           {/* Left: Code Box Card */}
           <div className="lg:col-span-7">
             <FadeIn>
-              <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-6 sm:p-8 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                <div className="flex flex-col sm:flex-row items-baseline justify-between gap-2 mb-6">
+              <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-6 sm:p-8 border border-[#E8EDF2] hover:border-blue-300 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)] transition-all duration-500 ease-out">
+                <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-blue-500 blur-3xl pointer-events-none opacity-25 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                <div className="relative z-10 flex flex-col sm:flex-row items-baseline justify-between gap-2 mb-6">
                   <h3 className="font-heading font-bold text-2xl text-[#0F1B2D]">
                     SDK &amp; Platform Quickstart
                   </h3>
@@ -263,19 +264,19 @@ ollama run csky/soma:14b-q8`,
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {capabilities.map((cap, idx) => (
                 <FadeIn key={cap.title} delay={idx * 70}>
-                  <div className="card-premium bg-white rounded-[24px] p-5 border border-[#E8EDF2] shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
-                    <div
-                      className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl ${cap.color} rounded-bl-full pointer-events-none`}
-                    />
-                    <div className="w-9 h-9 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center mb-3">
-                      {cap.icon}
+                  <div className="card-premium bg-white rounded-[24px] p-5 border border-[#E8EDF2] hover:border-blue-300 hover:shadow-[0_14px_36px_rgba(37,99,235,0.14)] hover:-translate-y-1.5 transition-all duration-500 ease-out relative overflow-hidden group">
+                    <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-blue-500 blur-2xl pointer-events-none opacity-20 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+                    <div className="relative z-10">
+                      <div className="w-9 h-9 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] flex items-center justify-center mb-3 shadow-2xs group-hover:scale-105 transition-transform">
+                        {cap.icon}
+                      </div>
+                      <h4 className="font-heading font-bold text-sm text-[#0F1B2D]">
+                        {cap.title}
+                      </h4>
+                      <p className="font-body text-xs text-[#64748B] mt-1.5 leading-snug">
+                        {cap.desc}
+                      </p>
                     </div>
-                    <h4 className="font-heading font-bold text-sm text-[#0F1B2D]">
-                      {cap.title}
-                    </h4>
-                    <p className="font-body text-xs text-[#64748B] mt-1.5 leading-snug">
-                      {cap.desc}
-                    </p>
                   </div>
                 </FadeIn>
               ))}
@@ -305,8 +306,10 @@ ollama run csky/soma:14b-q8`,
       {/* 3. CORE REST ENDPOINT REFERENCE BENTO CARDS */}
       <section className="relative z-10 max-w-5xl mx-auto px-6 py-12">
         <FadeIn delay={100}>
-          <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-8 md:p-10 border border-[#E8EDF2] shadow-sm hover:shadow-xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-            <span className="text-xs font-heading font-semibold text-[#0284c7] uppercase tracking-wider">
+          <div className="card-premium group relative overflow-hidden bg-white rounded-[32px] p-8 md:p-10 border border-[#E8EDF2] hover:border-blue-300 hover:shadow-[0_20px_50px_rgba(37,99,235,0.16)] hover:-translate-y-1.5 transition-all duration-500 ease-out">
+            <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-blue-500 blur-3xl pointer-events-none opacity-25 group-hover:opacity-75 group-hover:scale-125 transition-all duration-500 ease-out z-0" />
+            <div className="relative z-10">
+              <span className="text-xs font-heading font-semibold text-[#0284c7] uppercase tracking-wider">
               API Reference
             </span>
             <h3 className="font-heading font-bold text-2xl text-[#0F1B2D] mt-2">
@@ -364,6 +367,7 @@ ollama run csky/soma:14b-q8`,
               >
                 Create API Key &amp; Start Building →
               </button>
+            </div>
             </div>
           </div>
         </FadeIn>
