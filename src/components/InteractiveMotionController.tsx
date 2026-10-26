@@ -7,25 +7,7 @@ export function InteractiveMotionController() {
   useEffect(() => {
     const supportsHover = window.matchMedia("(hover: hover)").matches;
 
-    // 1. Passive Cursor Spotlight on .card-premium and .card-spotlight
-    const handlePointerMove = (e: PointerEvent) => {
-      const target = (e.target as HTMLElement | null)?.closest?.(
-        ".card-premium, .card-spotlight"
-      ) as HTMLElement | null;
-
-      if (!target) return;
-
-      const rect = target.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      target.style.setProperty("--mouse-x", `${x}px`);
-      target.style.setProperty("--mouse-y", `${y}px`);
-    };
-
-    window.addEventListener("pointermove", handlePointerMove, { passive: true });
-
-    // 2. GSAP Magnetic Physics on [data-magnetic] elements
+    // 1. GSAP Magnetic Physics on [data-magnetic] elements
     const activeMagneticElements = new Set<HTMLElement>();
 
     const bindMagneticElement = (el: HTMLElement) => {
@@ -74,7 +56,7 @@ export function InteractiveMotionController() {
 
     initMagnetic();
 
-    // 3. GSAP Floating Physics for .constellation-tile elements
+    // 2. GSAP Floating Physics for .constellation-tile elements
     const constellationTweens: gsap.core.Tween[] = [];
 
     const initConstellation = () => {
@@ -101,7 +83,7 @@ export function InteractiveMotionController() {
 
     initConstellation();
 
-    // 4. MutationObserver to handle dynamic page changes / tab switches
+    // 3. MutationObserver to handle dynamic page changes / tab switches
     const observer = new MutationObserver(() => {
       initMagnetic();
       initConstellation();
@@ -113,7 +95,6 @@ export function InteractiveMotionController() {
     });
 
     return () => {
-      window.removeEventListener("pointermove", handlePointerMove);
       observer.disconnect();
 
       activeMagneticElements.forEach((el) => {
