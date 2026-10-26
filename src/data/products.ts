@@ -506,4 +506,319 @@ export const PRODUCTS_DATA: Record<string, ProductConfig> = {
       code: "pip install csky-ai  # or: npm install @csky/sdk",
     },
   },
+
+  "vayu-engine": {
+    id: "vayu-engine",
+    category: "software",
+    name: "CSky Vayu Core",
+    tagline: "High-Throughput Local Edge Inference Engine & OpenAI Gateway",
+    description:
+      "CSky Vayu Core (वायु) is an ultra-fast local inference server engineered for edge machines, laptops, and sovereign cloud clusters. Features native OpenAI-compatible HTTP/SSE streaming, FP8 and 4-bit quantization kernels, dynamic KV-cache memory tracking, and sub-15ms cold start times.",
+    badge: "Edge Inference Runtime",
+    colorScheme: {
+      primary: "#059669", // Mint Sage
+      buttonHover: "#047857",
+      light: "#D1FAE5",
+      glow: "rgba(5, 150, 105, 0.4)",
+      bgWash: "#F0FDF4",
+      hueRotate: "285deg",
+      saturation: "1.25",
+    },
+    metrics: [
+      { label: "API Protocol", value: "OpenAI v1 Compatible" },
+      { label: "TTFT Latency", value: "< 14 ms" },
+      { label: "Quantization", value: "FP8, Q4_K_M, INT8" },
+      { label: "Streaming", value: "Zero-Lag SSE" },
+    ],
+    highlights: [
+      {
+        title: "Drop-in OpenAI API Replacement",
+        desc: "Point existing OpenAI SDK clients or LangChain pipelines to http://localhost:8000/v1 with zero code modifications.",
+      },
+      {
+        title: "Vedic Celestial Model Support",
+        desc: "Native out-of-the-box support for Akash 405B, Drishti 70B, Agni 120B, Prithvi 32B, Soma 14B, and Vayu 8B.",
+      },
+      {
+        title: "Dynamic KV Cache & VRAM Profiling",
+        desc: "Real-time telemetry measuring GPU/CPU memory allocation, active token generation throughput, and KV cache efficiency.",
+      },
+    ],
+    primaryCta: { label: "Launch Vayu Engine", action: "launch" },
+    secondaryCta: { label: "API Specification", action: "docs" },
+    codeSnippet: {
+      language: "bash",
+      code: "python -m vayu_engine.cli serve --host 127.0.0.1 --port 8000 --model csky/vayu-8b",
+    },
+  },
+
+  "drishti-guard": {
+    id: "drishti-guard",
+    category: "software",
+    name: "CSky Drishti Guard",
+    tagline: "Enterprise AI Safety, Hallucination Auditing & Prompt-Injection Firewall",
+    description:
+      "CSky Drishti Guard (दृष्टि) delivers production-grade security and reliability for generative AI. Operates as an intelligent reverse proxy that intercepts malicious prompt injections, masks sensitive PII (emails, cards, SSNs, API keys), and verifies factual consistency before tokens reach the user.",
+    badge: "Enterprise AI Safety & Firewall",
+    colorScheme: {
+      primary: "#D97706", // Warm Golden Amber
+      buttonHover: "#B45309",
+      light: "#FEF3C7",
+      glow: "rgba(217, 119, 6, 0.4)",
+      bgWash: "#FEFCE8",
+      hueRotate: "195deg",
+      saturation: "1.3",
+    },
+    metrics: [
+      { label: "Jailbreak Accuracy", value: "99.4%" },
+      { label: "PII Latency", value: "< 2.8 ms" },
+      { label: "Architecture", value: "Transparent Proxy" },
+      { label: "Factual Verifier", value: "Semantic Claim Graph" },
+    ],
+    highlights: [
+      {
+        title: "Inbound Attack Firewall",
+        desc: "Defends against DAN exploits, delimiter bypasses, indirect prompt injections, and base64 encoded exfiltration attacks.",
+      },
+      {
+        title: "Reversible PII Anonymization",
+        desc: "Replaces sensitive data with cryptographic session tokens before LLM inference, flawlessly restoring original values on return.",
+      },
+      {
+        title: "Real-Time Factuality Scoring",
+        desc: "Deconstructs generated sentences into atomic factual claims and measures groundedness against reference documents.",
+      },
+    ],
+    primaryCta: { label: "Deploy Drishti Guard", action: "deploy" },
+    secondaryCta: { label: "Safety Docs", action: "docs" },
+    codeSnippet: {
+      language: "bash",
+      code: "python -m drishti_guard.cli serve --port 8080 --upstream-url http://127.0.0.1:8000",
+    },
+  },
+
+  "agni-swarm": {
+    id: "agni-swarm",
+    category: "software",
+    name: "CSky Agni Swarm",
+    tagline: "Autonomous Multi-Agent DAG Orchestrator & Tool Sandbox",
+    description:
+      "CSky Agni Swarm (अग्नि) orchestrates cooperative multi-agent networks to solve enterprise engineering workflows. Uses directed acyclic graph (DAG) task scheduling, parallel execution queues, sandboxed tool runtimes, and persistent SQLite checkpointing.",
+    badge: "Multi-Agent DAG Engine",
+    colorScheme: {
+      primary: "#EA580C", // Vibrant Solar Flame
+      buttonHover: "#C2410C",
+      light: "#FFEDD5",
+      glow: "rgba(234, 88, 12, 0.4)",
+      bgWash: "#FFF7ED",
+      hueRotate: "35deg",
+      saturation: "1.2",
+    },
+    metrics: [
+      { label: "Topology", value: "Topological DAG" },
+      { label: "Concurrency", value: "Asyncio Parallel" },
+      { label: "Sandbox", value: "Conconfined Subprocess" },
+      { label: "State Store", value: "SQLite + JSON" },
+    ],
+    highlights: [
+      {
+        title: "Specialized Role Swarms",
+        desc: "Built-in roles for System Architects, Algorithmic Coders, Unit Testers, and Security Auditors cooperating autonomously.",
+      },
+      {
+        title: "Path-Conconfined Tool Execution",
+        desc: "Agents execute filesystem operations, Python scripts, and API queries within isolated, cryptographically bounded sandboxes.",
+      },
+      {
+        title: "Full Execution Tracing & Replay",
+        desc: "Step-by-step telemetry captures all agent messages, tool inputs/outputs, and decision trees for complete human auditability.",
+      },
+    ],
+    primaryCta: { label: "Run Agni Swarm", action: "run" },
+    secondaryCta: { label: "Swarm Documentation", action: "docs" },
+    codeSnippet: {
+      language: "bash",
+      code: "python -m agni_swarm.cli run --workflow software-pipeline --goal \"Build high-speed cache\"",
+    },
+  },
+
+  "akash-auditor": {
+    id: "akash-auditor",
+    category: "software",
+    name: "CSky Akash Auditor",
+    tagline: "Frontier AST Code Security Review & Automated Patch Synthesis",
+    description:
+      "CSky Akash Auditor (आकाश) brings the deductive reasoning of our flagship model to static code analysis. Inspects Abstract Syntax Trees (ASTs) across Python, JavaScript, and Docker to detect vulnerabilities, generating verifiable unified diff patches automatically.",
+    badge: "AST Code Security Engine",
+    colorScheme: {
+      primary: "#E11D48", // Celestial Rose
+      buttonHover: "#BE123C",
+      light: "#FFE4E6",
+      glow: "rgba(225, 29, 72, 0.4)",
+      bgWash: "#FFF1F2",
+      hueRotate: "145deg",
+      saturation: "1.25",
+    },
+    metrics: [
+      { label: "Analysis Engine", value: "AST Visitor Trees" },
+      { label: "Standard Output", value: "OASIS SARIF v2.1.0" },
+      { label: "Remediation", value: "Automated Unidiff" },
+      { label: "Languages", value: "Python, TS, Docker" },
+    ],
+    highlights: [
+      {
+        title: "Deterministic Taint & AST Analysis",
+        desc: "Discovers SQL injection, command execution risks, hardcoded tokens, insecure deserialization, and dangerous crypto.",
+      },
+      {
+        title: "Automated Git Patch Generation",
+        desc: "Synthesizes surgical, compilable unified diff patches that can be reviewed and applied immediately with git apply.",
+      },
+      {
+        title: "GitHub Advanced Security Native",
+        desc: "Outputs SARIF 2.1.0 JSON reports that seamlessly integrate with GitHub PR security checks and CI/CD pipelines.",
+      },
+    ],
+    primaryCta: { label: "Scan Codebase", action: "scan" },
+    secondaryCta: { label: "SARIF Reference", action: "docs" },
+    codeSnippet: {
+      language: "bash",
+      code: "python -m akash_auditor.cli scan ./src --format sarif --output audit.sarif",
+    },
+  },
+
+  "prithvi-docsense": {
+    id: "prithvi-docsense",
+    category: "software",
+    name: "CSky Prithvi DocSense",
+    tagline: "Multimodal Document Intelligence & Spatial Vision Extraction",
+    description:
+      "CSky Prithvi DocSense (पृथ्वी) extracts structured intelligence from complex, messy multi-page PDFs, invoices, blueprints, and scanned tables. Maps 2D spatial layouts, computes bounding coordinates, and outputs clean hierarchical JSON and Markdown tables.",
+    badge: "Multimodal Document Vision",
+    colorScheme: {
+      primary: "#C2410C", // Terracotta Bronze
+      buttonHover: "#9A3412",
+      light: "#FFEDD5",
+      glow: "rgba(194, 65, 12, 0.4)",
+      bgWash: "#FFFBF7",
+      hueRotate: "25deg",
+      saturation: "1.15",
+    },
+    metrics: [
+      { label: "Input Formats", value: "PDF, PNG, JPEG, TIFF" },
+      { label: "Spatial Output", value: "2D Bounding Boxes" },
+      { label: "Table Fidelity", value: "100% Cell Alignment" },
+      { label: "Extraction Schema", value: "Invoice & Tabular JSON" },
+    ],
+    highlights: [
+      {
+        title: "Spatial Geometry & Layout Parsing",
+        desc: "Detects headers, multi-column articles, footnotes, signature lines, and official stamps without downsampling.",
+      },
+      {
+        title: "High-Fidelity Table Extraction",
+        desc: "Transforms borderless financial tables and dense spreadsheets into structured JSON arrays and pristine Markdown tables.",
+      },
+      {
+        title: "Automated Invoice & Receipt Parsing",
+        desc: "Extracts invoice IDs, vendor info, line items, tax subtotals, and total amounts with spatial bounding box proofs.",
+      },
+    ],
+    primaryCta: { label: "Parse Document", action: "parse" },
+    secondaryCta: { label: "Model Specs", action: "docs" },
+    codeSnippet: {
+      language: "bash",
+      code: "python -m prithvi_docsense.cli parse-invoice invoice.pdf --format json",
+    },
+  },
+
+  "soma-eval": {
+    id: "soma-eval",
+    category: "software",
+    name: "CSky Soma Eval",
+    tagline: "Formal LLM Regression & Mathematical Benchmark Suite",
+    description:
+      "CSky Soma Eval (सोम) enforces mathematical rigor on AI model deployments. Evaluates RAG groundedness, hallucination rates, semantic answer relevance, mathematical reasoning validity, and generates standalone interactive HTML reports with radar metrics.",
+    badge: "Formal AI Benchmark Suite",
+    colorScheme: {
+      primary: "#4F46E5", // Celestial Indigo
+      buttonHover: "#4338CA",
+      light: "#EEF2FF",
+      glow: "rgba(79, 70, 229, 0.4)",
+      bgWash: "#F8F9FF",
+      hueRotate: "245deg",
+      saturation: "1.2",
+    },
+    metrics: [
+      { label: "Core Metrics", value: "Faithfulness & Math Rigor" },
+      { label: "Latency Tracking", value: "TTFT, p50, p95, p99" },
+      { label: "Visual Reporting", value: "Interactive HTML Radar" },
+      { label: "CI/CD Gate", value: "Configurable Exit Codes" },
+    ],
+    highlights: [
+      {
+        title: "RAG Faithfulness & Groundedness",
+        desc: "Measures claim adherence against reference context, alerting teams whenever hallucination scores exceed safe thresholds.",
+      },
+      {
+        title: "Mathematical Deduction Verification",
+        desc: "Verifies Olympiad-level math derivations, symbolic expressions, and Lean 4 formal deduction steps.",
+      },
+      {
+        title: "Publication-Quality HTML Reports",
+        desc: "Generates self-contained interactive visual dashboards with SVG radar charts, latency distributions, and cost estimations.",
+      },
+    ],
+    primaryCta: { label: "Run Benchmark", action: "run" },
+    secondaryCta: { label: "Metric Guidelines", action: "docs" },
+    codeSnippet: {
+      language: "bash",
+      code: "python -m soma_eval.cli run --dataset rag --output-html report.html",
+    },
+  },
+
+  "csky-hub": {
+    id: "csky-hub",
+    category: "software",
+    name: "CSky Hub & Studio",
+    tagline: "The Unified Mission Control for All CSky AI Engines",
+    description:
+      "The comprehensive developer portal and real-time interactive studio uniting all 8 CSky products. Test inference, inspect guardrails, design agent swarms, review AST security scans, parse documents, and run benchmark evaluations from one beautiful interface.",
+    badge: "Unified Ecosystem Console",
+    colorScheme: {
+      primary: "#3B82F6", // Brand Sky Blue
+      buttonHover: "#2563EB",
+      light: "#DBEAFE",
+      glow: "rgba(59, 130, 246, 0.4)",
+      bgWash: "#EFF6FF",
+      hueRotate: "0deg",
+      saturation: "1.1",
+    },
+    metrics: [
+      { label: "Playgrounds", value: "8 Live Interactive Studios" },
+      { label: "Telemetry", value: "Real-Time Cluster Health" },
+      { label: "Design System", value: "Vedic Fluted Glass UI" },
+      { label: "Stack", value: "Next.js 16 + React 19" },
+    ],
+    highlights: [
+      {
+        title: "Live Interactive Playgrounds",
+        desc: "Direct browser-based playgrounds to test streaming completions, test prompt injection attacks, run multi-agent swarms, and audit code.",
+      },
+      {
+        title: "Unified Cluster Health Monitor",
+        desc: "Real-time telemetry showing uptime, port bindings, active connections, and latency profiles across all CSky services.",
+      },
+      {
+        title: "Vedic Geometry & Optical Depth",
+        desc: "Exquisite architectural styling featuring fluted glass cards, celestial accent colors, and authentic sacred geometry watermarks.",
+      },
+    ],
+    primaryCta: { label: "Open CSky Studio", action: "launch" },
+    secondaryCta: { label: "Cluster Telemetry", action: "telemetry" },
+    codeSnippet: {
+      language: "bash",
+      code: "npm --prefix csky-hub run dev  # Opens at http://localhost:3000",
+    },
+  },
 };

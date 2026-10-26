@@ -36,6 +36,13 @@ const KNOWN_TABS = [
   "csky-app",
   "csky-extensions",
   "csky-sdk",
+  "vayu-engine",
+  "drishti-guard",
+  "agni-swarm",
+  "akash-auditor",
+  "prithvi-docsense",
+  "soma-eval",
+  "csky-hub",
 ];
 
 export default function Home() {

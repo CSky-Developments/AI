@@ -45,12 +45,19 @@ const BUTTON_THEMES: Record<string, { bg: string; hover: string }> = {
   "csky-soma": { bg: "#4f46e5", hover: "#4338ca" },
   soma: { bg: "#4f46e5", hover: "#4338ca" },
 
-  // Developer Tools
+  // Developer Tools & Products
   "csky-ide": { bg: "#6366f1", hover: "#4f46e5" },
   "csky-cli": { bg: "#0891b2", hover: "#0e7490" },
   "csky-app": { bg: "#2563eb", hover: "#1d4ed8" },
   "csky-extensions": { bg: "#8b5cf6", hover: "#7c3aed" },
   "csky-sdk": { bg: "#f43f5e", hover: "#e11d48" },
+  "vayu-engine": { bg: "#059669", hover: "#047857" },
+  "drishti-guard": { bg: "#d97706", hover: "#b45309" },
+  "agni-swarm": { bg: "#ea580c", hover: "#c2410c" },
+  "akash-auditor": { bg: "#e11d48", hover: "#be123c" },
+  "prithvi-docsense": { bg: "#c2410c", hover: "#9a3412" },
+  "soma-eval": { bg: "#4f46e5", hover: "#4338ca" },
+  "csky-hub": { bg: "#2563eb", hover: "#1d4ed8" },
 };
 
 export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
@@ -383,151 +390,151 @@ export function Navbar({ activeTab, onSelectTab }: NavbarProps) {
             {/* Right Side: Products List with Outline Icons */}
             <div className="md:col-span-7 md:border-l md:border-[#F1F5F9] md:pl-10">
               <span className="block font-body text-xs font-semibold text-[#6B7280] mb-4">
-                Products
+                Enterprise AI Suite & Tools
               </span>
 
-              <div className="space-y-4">
-                {/* Product 1: CSky App */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {/* Product: Vayu Core */}
                 <button
-                  onClick={() => handleTabClick("csky-app")}
-                  className="w-full flex items-center justify-between text-left group p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
+                  onClick={() => handleTabClick("vayu-engine")}
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-[#4B5563] group-hover:text-[#3b82f6] transition-colors"
-                    >
-                      <path d="M12 2L2 22H22L12 2Z" />
-                    </svg>
-                    <span className="font-body text-sm font-medium text-[#1F2937] group-hover:text-[#0F1B2D]">
-                      CSky App
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#059669]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#059669] block">
+                        Vayu Core
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">Edge Inference Server</span>
+                    </div>
                   </div>
                 </button>
 
-                {/* Product 2: CSky Extensions */}
+                {/* Product: Drishti Guard */}
                 <button
-                  onClick={() => handleTabClick("csky-extensions")}
-                  className="w-full flex items-center justify-between text-left group p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
+                  onClick={() => handleTabClick("drishti-guard")}
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-[#4B5563] group-hover:text-[#3b82f6] transition-colors"
-                    >
-                      <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
-                      <line x1="16" y1="8" x2="2" y2="22" />
-                      <line x1="17.5" y1="15" x2="9" y2="15" />
-                    </svg>
-                    <span className="font-body text-sm font-medium text-[#1F2937] group-hover:text-[#0F1B2D]">
-                      CSky Extensions
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#D97706]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#D97706] block">
+                        Drishti Guard
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">Safety & PII Firewall</span>
+                    </div>
                   </div>
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="text-[#9CA3AF]"
-                  >
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
                 </button>
 
-                {/* Product 3: CSky CLI */}
+                {/* Product: Agni Swarm */}
+                <button
+                  onClick={() => handleTabClick("agni-swarm")}
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#EA580C]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#EA580C] block">
+                        Agni Swarm
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">Multi-Agent DAG</span>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Product: Akash Auditor */}
+                <button
+                  onClick={() => handleTabClick("akash-auditor")}
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#E11D48]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#E11D48] block">
+                        Akash Auditor
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">AST Code Security</span>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Product: Prithvi DocSense */}
+                <button
+                  onClick={() => handleTabClick("prithvi-docsense")}
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#C2410C]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#C2410C] block">
+                        Prithvi DocSense
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">Document Vision AI</span>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Product: Soma Eval */}
+                <button
+                  onClick={() => handleTabClick("soma-eval")}
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#4F46E5]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#4F46E5] block">
+                        Soma Eval
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">Formal AI Benchmarks</span>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Product: CSky CLI */}
                 <button
                   onClick={() => handleTabClick("csky-cli")}
-                  className="w-full flex items-center justify-between text-left group p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-[#4B5563] group-hover:text-[#3b82f6] transition-colors"
-                    >
-                      <rect x="2" y="4" width="20" height="16" rx="2" />
-                      <path d="M6 9l4 3-4 3" />
-                      <path d="M12 15h6" />
-                    </svg>
-                    <span className="font-body text-sm font-medium text-[#1F2937] group-hover:text-[#0F1B2D]">
-                      CSky CLI
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#0891b2]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#0891b2] block">
+                        CSky CLI
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">Terminal & Unix Pipes</span>
+                    </div>
                   </div>
                 </button>
 
-                {/* Product 4: CSky IDE */}
-                <button
-                  onClick={() => handleTabClick("csky-ide")}
-                  className="w-full flex items-center justify-between text-left group p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
-                >
-                  <div className="flex items-center gap-3">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-[#4B5563] group-hover:text-[#3b82f6] transition-colors"
-                    >
-                      <polyline points="16 18 22 12 16 6" />
-                      <polyline points="8 6 2 12 8 18" />
-                    </svg>
-                    <span className="font-body text-sm font-medium text-[#1F2937] group-hover:text-[#0F1B2D]">
-                      CSky IDE
-                    </span>
-                  </div>
-                </button>
-
-                {/* Product 5: CSky SDK */}
+                {/* Product: CSky SDK */}
                 <button
                   onClick={() => handleTabClick("csky-sdk")}
-                  className="w-full flex items-center justify-between text-left group p-2 -mx-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors"
                 >
-                  <div className="flex items-center gap-3">
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1.8"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="text-[#4B5563] group-hover:text-[#3b82f6] transition-colors"
-                    >
-                      <rect x="4" y="4" width="16" height="16" rx="2" />
-                      <path d="M9 9h6v6H9z" />
-                    </svg>
-                    <span className="font-body text-sm font-medium text-[#1F2937] group-hover:text-[#0F1B2D]">
-                      CSky SDK
-                    </span>
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#F43F5E]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#F43F5E] block">
+                        CSky SDK
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">Python & TypeScript</span>
+                    </div>
+                  </div>
+                </button>
+
+                {/* Product: CSky Hub */}
+                <button
+                  onClick={() => handleTabClick("csky-hub")}
+                  className="w-full flex items-center justify-between text-left group p-2 rounded-xl hover:bg-[#F8FAFC] transition-colors sm:col-span-2"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <span className="w-2 h-2 rounded-full bg-[#2563EB]" />
+                    <div>
+                      <span className="font-body text-xs sm:text-sm font-medium text-[#1F2937] group-hover:text-[#2563EB] block">
+                        CSky Hub & Studio
+                      </span>
+                      <span className="text-[11px] text-[#94A3B8]">Centralized Ecosystem Console & Interactive Playgrounds</span>
+                    </div>
                   </div>
                 </button>
               </div>
