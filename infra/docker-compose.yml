@@ -1,0 +1,27 @@
+name: csky-ai
+
+services:
+  csky-ai:
+    container_name: csky-ai
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    image: ghcr.io/${GITHUB_REPOSITORY:-csky-developments/ai}:latest
+    restart: always
+    user: "${PUID}:${PGID}"
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - VIRTUAL_HOST=${VIRTUAL_HOST:-ai.csky.dev}
+      - LETSENCRYPT_HOST=${LETSENCRYPT_HOST:-ai.csky.dev}
+      - VIRTUAL_PORT=3000
+    volumes:
+      - ./data:/app/data
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
